@@ -19,6 +19,16 @@ oww3.occ.classif.df <- read.csv("/Users/travismcarthur/Desktop/Dropbox/718 paper
 
 oww3.ind.classif.df <- read.csv("/Users/travismcarthur/Desktop/Dropbox/718 paper/data/oww3 industry classification.csv", stringsAsFactors=FALSE)
 
+names(oww3.ind.classif.df) <- c("ind.class", "y3", "ind.description")
+names(oww3.occ.classif.df) <- c("occ.class", "y4", "occ.description")
+
+nrow(oww3.df)
+oww3.df <- merge(oww3.df, oww3.ind.classif.df)
+oww3.df <- merge(oww3.df, oww3.occ.classif.df)
+nrow(oww3.df)
+# Hmm. missing some observations now
+
+
 
 
 
