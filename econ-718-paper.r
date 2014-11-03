@@ -13,11 +13,52 @@ if (Sys.info()["user"]=="patchachaikitmongkol") {
 
 library("foreign")
 
+
+
+pwt80.df <- read.dta(paste0(work.dir, "pwt80.dta"))
+# From http://www.rug.nl/research/ggdc/data/penn-world-table
+
+#attr(pwt80.df, "var.labels")
+# ck: "Capital stock at current PPPs (in mil. 2005US$)"                                                  
+# rkna: "Capital stock at constant 2005 national prices (in mil. 2005US$)"     
+# I'll go with "rkna" variable
+# Ok, now try other var:
+
+colnames(pwt80.df)[colnames(pwt80.df)=="country"] <- "country.name"
+colnames(pwt80.df)[colnames(pwt80.df)=="countrycode"] <- "country"
+colnames(pwt80.df)[colnames(pwt80.df)=="rkna"] <- "capital.stock"
+#colnames(pwt80.df)[colnames(pwt80.df)=="ck"] <- "capital.stock"
+
+# This below determines the year periods:
+
+early.period <- 1985:1989
+later.period <- 2003:2007
+
+pwt80.df$period <- NA
+pwt80.df$period[pwt80.df$year %in% early.period] <- "early"
+pwt80.df$period[pwt80.df$year %in% later.period] <- "later"
+
+
+pwt80.df <- pwt80.df[!is.na(pwt80.df$period), ]
+# Removing years that we don't deal with
+
+
+capital.agg <- aggregate( x=pwt80.df$capital.stock,  
+  by=list(country=pwt80.df$country,
+          country.name=pwt80.df$country.name,
+          period=pwt80.df$period),
+  FUN=mean, na.rm=TRUE)
+
+colnames(capital.agg)[colnames(capital.agg)=="x"] <- "capital.stock"
+
+
+
+
 oww3.df <- read.dta(paste0(work.dir, "oww3.dta"))
 
-oww3.occ.classif.df <- read.csv("/Users/travismcarthur/Desktop/Dropbox/718 paper/data/oww3 occ classification.csv", stringsAsFactors=FALSE)
+oww3.occ.classif.df <- read.csv(paste0(work.dir, "oww3 occ classification.csv"), stringsAsFactors=FALSE)
 
-oww3.ind.classif.df <- read.csv("/Users/travismcarthur/Desktop/Dropbox/718 paper/data/oww3 industry classification.csv", stringsAsFactors=FALSE, na.strings="")
+oww3.ind.classif.df <- read.csv(paste0(work.dir, "oww3 industry classification.csv"), stringsAsFactors=FALSE, na.strings="")
 
 names(oww3.ind.classif.df) <- c("ind.class", "y3", "ind.description")
 names(oww3.occ.classif.df) <- c("occ.class", "y4", "occ.description")
@@ -28,10 +69,8 @@ oww3.df <- merge(oww3.df, oww3.occ.classif.df)
 nrow(oww3.df)
 
 
-# This below determines the year periods:
 
-early.period <- 1988:1992
-later.period <- 1998:2002
+
 
 oww3.df$period <- NA
 oww3.df$period[oww3.df$y0 %in% early.period] <- "early"
@@ -76,9 +115,69 @@ wages.agg$wage.NP.over.wage.P <- wages.agg$wage.NP / wages.agg$wage.P
 
 table(is.na(wages.agg$wage.NP.over.wage.P))
 
+table(oww3.df$occ.class, oww3.df$ind.description=="Iron and steel basic industries")
+
+table(oww3.df$occ.description, oww3.df$ind.description=="Iron and steel basic industries")
+table(oww3.df$occ.description, oww3.df$ind.description=="Manufacture of wearing apparel (except footwear)")
+
+
+tariffs.df <- read.table(paste0(work.dir, "TariffsEarlyLateRev2.txt"), header=TRUE, stringsAsFactors=FALSE)
+# From http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files
+
+colnames(tariffs.df) <- c("country", "tariff.yr", "tau.cap", "tau.con", "tau.int", "tau.nes")
+
+tariffs.df$period <- ifelse(tariffs.df$tariff.yr < 1995, "early", "later")
+
+
+income.class.df <- read.csv(paste0(work.dir, "WB income classification.csv"), stringsAsFactors=FALSE)
+# http://siteresources.worldbank.org/DATASTATISTICS/Resources/CLASS.XLS
+
+table(income.class.df$Income.group)
+unique(income.class.df$Income.group)
+
+income.class.df$income.class <- ifelse(income.class.df$Income.group %in% c("High income: nonOECD", "High income: OECD"), "developed", "developing")
+
+
+# Chile, HK, Korea, Trinidad & Tobago, Uruguay, classed as developed here. 
+# Let's do a few fixes:
+
+income.class.df$income.class[
+  income.class.df$Economy %in% c("Chile", "Korea, Rep.", "Trinidad and Tobago", "Uruguay")] <- "developing"
 
 
 
+income.class.df <- income.class.df[, c("Code", "income.class")]
+colnames(income.class.df) <- c("country", "income.class" )
+
+
+final.df <- merge(capital.agg, tariffs.df)
+final.df <- merge(final.df, income.class.df)
+#final.df <- merge(final.df, wages.agg)
+
+final.df$period.binary <- ifelse(final.df$period=="early", 0, 1)
+
+library("plm")
+library("sandwich")
+library("lmtest")
+
+final.plm.df <- plm.data(final.df, indexes=c("country", "period.binary"))
+
+summary(first.stage.plm <- plm(capital.stock ~ tau.cap*tau.con, 
+  data=final.plm.df[final.plm.df$income.class=="developing", ], 
+  effect = "individual", model="fd"))
+
+
+coeftest(first.stage.plm, vcov=vcovBK(first.stage.plm, type="HC1"))
+
+cor.test(final.plm.df$tau.cap[final.plm.df$period=="early"], final.plm.df$tau.con[final.plm.df$period=="early"])
+
+
+cor.test(final.plm.df$tau.cap[final.plm.df$period=="later"], final.plm.df$tau.con[final.plm.df$period=="later"])
+
+cor.test(final.plm.df$tau.cap[final.plm.df$period=="later"] -
+    final.plm.df$tau.cap[final.plm.df$period=="early"], 
+  final.plm.df$tau.con[final.plm.df$period=="later"] - 
+    final.plm.df$tau.con[final.plm.df$period=="early"])
 
 
 
