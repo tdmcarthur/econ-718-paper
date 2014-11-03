@@ -4,8 +4,8 @@ if (Sys.info()["user"]=="travismcarthur") {
   work.dir <- "/Users/travismcarthur/Desktop/Dropbox/718 paper/data/"
 }
 
-if (Sys.info()["user"]=="patchachaikitmongkol") {
-  work.dir <- ""
+if (Sys.info()["user"]=="Mint") {
+  work.dir <- "/Users/Mint/Dropbox/718 paper/data/"
   # MINT: Put the directory of your data folder above
 }
 
