@@ -218,8 +218,11 @@ final.wide.df$tau.con.dif <- final.wide.df$tau.con.early - final.wide.df$tau.con
 final.wide.df$capital.stock.dif <- final.wide.df$capital.stock.later - 
   final.wide.df$capital.stock.early
 
+library(AER)
 
-
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.dif:tau.con.dif + tau.con.dif | gatt75.later:tau.k85.later + gtdep.later:tau.k85.later, 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+                          
 
 
 
