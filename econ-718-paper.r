@@ -204,3 +204,9 @@ madd2004gtdep.df$country <- madd2004gtdep.df$isocode
 
 final.plm.df <- merge(final.plm.df, madd2004gtdep.df)
 
+final.plm.df$tau.k85 <- final.plm.df$tau.cap[final.plm.df$period=='early']
+
+summary(first.stage.plm <- plm(capital.stock ~ , 
+                               data=final.plm.df[final.plm.df$income.class=="developing", ], 
+                               effect = "individual", model="fd"))
+
