@@ -204,9 +204,33 @@ madd2004gtdep.df$country <- madd2004gtdep.df$isocode
 
 final.plm.df <- merge(final.plm.df, madd2004gtdep.df)
 
-final.plm.df$tau.k85 <- final.plm.df$tau.cap[final.plm.df$period=='early']
+final.plm.df <- final.plm.df[order(final.plm.df$country,final.plm.df$period), ]
 
-summary(first.stage.plm <- plm(capital.stock ~ , 
-                               data=final.plm.df[final.plm.df$income.class=="developing", ], 
-                               effect = "individual", model="fd"))
+final.plm.df$tau.k85 <- 0 
+final.plm.df$tau.k85[final.plm.df$period=="later"] <- final.plm.df$tau.cap[final.plm.df$period=="later"]
+
+final.plm.df <- final.plm.df[,!colnames(final.plm.df) %in% c("maddname","rose","maddnum","gdppop","pop","gdp","ypop35","ypop29")]
+
+final.wide.df <- reshape(final.plm.df, idvar = "country", timevar = "period", direction = "wide") 
+
+final.wide.df$tau.cap.dif <- final.wide.df$tau.cap.early - final.wide.df$tau.cap.later
+final.wide.df$tau.con.dif <- final.wide.df$tau.con.early - final.wide.df$tau.con.later
+final.wide.df$capital.stock.dif <- final.wide.df$capital.stock.later - 
+  final.wide.df$capital.stock.early
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
