@@ -6,7 +6,6 @@ if (Sys.info()["user"]=="travismcarthur") {
 
 if (Sys.info()["user"]=="Mint") {
   work.dir <- "/Users/Mint/Dropbox/718 paper/data/"
-  # MINT: Put the directory of your data folder above
 }
 
 
@@ -26,8 +25,8 @@ pwt80.df <- read.dta(paste0(work.dir, "pwt80.dta"))
 
 colnames(pwt80.df)[colnames(pwt80.df)=="country"] <- "country.name"
 colnames(pwt80.df)[colnames(pwt80.df)=="countrycode"] <- "country"
+# Different measures of capital stock
 colnames(pwt80.df)[colnames(pwt80.df)=="rkna"] <- "capital.stock"
-#colnames(pwt80.df)[colnames(pwt80.df)=="ck"] <- "capital.stock"
 
 # This below determines the year periods:
 
@@ -43,7 +42,7 @@ pwt80.df <- pwt80.df[!is.na(pwt80.df$period), ]
 # Removing years that we don't deal with
 
 
-capital.agg <- aggregate( x=pwt80.df$capital.stock,  
+capital.agg <- aggregate( x=pwt80.df$capital.stock,   
   by=list(country=pwt80.df$country,
           country.name=pwt80.df$country.name,
           period=pwt80.df$period),
@@ -166,6 +165,11 @@ summary(first.stage.plm <- plm(capital.stock ~ tau.cap*tau.con,
   data=final.plm.df[final.plm.df$income.class=="developing", ], 
   effect = "individual", model="fd"))
 
+summary(first.stage.plm <- plm(capital.stock ~ tau.int*tau.con, 
+  data=final.plm.df[final.plm.df$income.class=="developing", ], 
+  effect = "individual", model="fd"))
+# including tau.int with tau.con... both of them have the signs we expect. 
+# level model seems to fit the data better
 
 coeftest(first.stage.plm, vcov=vcovBK(first.stage.plm, type="HC1"))
 
@@ -179,8 +183,24 @@ cor.test(final.plm.df$tau.cap[final.plm.df$period=="later"] -
   final.plm.df$tau.con[final.plm.df$period=="later"] - 
     final.plm.df$tau.con[final.plm.df$period=="early"])
 
+developing.final.df <- final.plm.df[final.plm.df$income.class=="developing", ]
 
 
+### Instrumental variable approach ###
+# (Data from ET NBER working paper 14264 from http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files)
 
+# GATT membership in 1975 (Rose, 2001)
+roseaccession.df <- read.delim (paste0(work.dir, "roseaccession.tab"))
+roseaccession.df$gatt75 <- 0
+roseaccession.df$gatt75[roseaccession.df$rose <= 1975] <- 1
+roseaccession.df$country <- roseaccession.df$isocode 
 
+final.plm.df <- merge(final.plm.df, roseaccession.df)
+
+# Historical GDP (Maddison, 2001)
+madd2004gtdep.df <- read.delim(paste0(work.dir, "madd2004gtdep.tab"))
+madd2004gtdep.df$country <- madd2004gtdep.df$isocode 
+# gtdep = ypop35/ypop29
+
+final.plm.df <- merge(final.plm.df, madd2004gtdep.df)
 
