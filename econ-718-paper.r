@@ -161,6 +161,13 @@ colnames(tariffs.df) <- c("country", "tariff.yr", "tau.cap", "tau.con", "tau.int
 
 tariffs.df$period <- ifelse(tariffs.df$tariff.yr < 1995, "early", "later")
 
+efwdata2005.df <- read.delim(paste0(work.dir, "REStatReplicationFiles/efwdata2005.tab"))
+
+efwdata2005.df <- efwdata2005.df[efwdata2005.df$year==1985, c("isocode", "area4aiidata")]
+
+names(efwdata2005.df) <- c("country", "total.tau.1985")
+
+tariffs.df <- merge(tariffs.df, efwdata2005.df, all.x=TRUE)
 
 income.class.df <- read.csv(paste0(work.dir, "WB income classification.csv"), stringsAsFactors=FALSE)
 # http://siteresources.worldbank.org/DATASTATISTICS/Resources/CLASS.XLS
@@ -271,9 +278,54 @@ library(AER)
 
 summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.dif:tau.con.dif + tau.con.dif | gatt75.later:tau.k85.later + gtdep.later:tau.k85.later, 
       data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+# Above is original regression without the interaction difference fix
 
-summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif | gatt75.later:tau.k85.later + gtdep.later:tau.k85.later, 
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif + tau.cap.dif | gatt75.later:tau.k85.later + gtdep.later:tau.k85.later +
+    gatt75.later:tau.con.later + gtdep.later:tau.con.later, 
                                data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.dif | 
+    gatt75.later:total.tau.1985.early  , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+summary(test.lm <- lm(capital.stock.dif ~ tau.cap.dif + tau.cap.interact.dif + tau.con.dif  , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ I(tau.cap.interact.dif/sd(tau.cap.interact.dif)) + I(tau.con.dif/sd(tau.con.dif))  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ I(tau.cap.interact.dif/sd(tau.cap.interact.dif)) + I(tau.con.dif/sd(tau.con.dif))  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+plot(final.wide.df[final.wide.df$income.class.later=="developing", c("tau.cap.interact.dif", "capital.stock.dif")])
+
+
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif + tau.cap.dif | gatt75.later:tau.k85.later + 
+    gatt75.later:tau.con.early +
+    gatt75.later:tau.con.early:tau.k85.later, 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif  | 
+    gatt75.later:total.tau.1985.early + 
+    gatt75.later:tau.con.later +
+    gatt75.later:tau.cap.interact.dif, 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
 
 final.wide.df$wage.NP.over.wage.P.dif <- final.wide.df$wage.NP.over.wage.P.later - final.wide.df$wage.NP.over.wage.P.early 
 
