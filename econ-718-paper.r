@@ -30,8 +30,8 @@ colnames(pwt80.df)[colnames(pwt80.df)=="rkna"] <- "capital.stock"
 
 # This below determines the year periods:
 
-early.period <- 1985:1989
-later.period <- 2003:2007
+early.period <- 1985:1991
+later.period <- 1999:2008
 
 pwt80.df$period <- NA
 pwt80.df$period[pwt80.df$year %in% early.period] <- "early"
@@ -68,7 +68,7 @@ oww3.df <- merge(oww3.df, oww3.occ.classif.df)
 nrow(oww3.df)
 
 
-
+# View(oww3.df[oww3.df$country=="BOL",])
 
 
 oww3.df$period <- NA
@@ -102,8 +102,27 @@ oww3.df$y3[oww3.df$country==""]
 # weird. it has a missing code for World Bank code, but 
 # nonmissing for the ILO code
 
-colnames(wages.agg)[colnames(wages.agg)=="x"] <- "wage"
 
+
+
+
+
+
+
+
+
+
+
+
+#table(is.na(wages.agg$wage.NP.over.wage.P))
+
+#table(oww3.df$occ.class, oww3.df$ind.description=="Iron and steel basic industries")
+
+#table(oww3.df$occ.description, oww3.df$ind.description=="Iron and steel basic industries")
+#table(oww3.df$occ.description, oww3.df$ind.description=="Manufacture of wearing apparel (except footwear)")
+
+
+names(wages.agg)[names(wages.agg)=="x"] <-  "wage"
 
 wages.agg <- reshape(wages.agg, v.names="wage", timevar="occ.class",
   idvar=c("ind.description", "country", "period"),
@@ -112,12 +131,27 @@ wages.agg <- reshape(wages.agg, v.names="wage", timevar="occ.class",
 
 wages.agg$wage.NP.over.wage.P <- wages.agg$wage.NP / wages.agg$wage.P
 
-table(is.na(wages.agg$wage.NP.over.wage.P))
 
-table(oww3.df$occ.class, oww3.df$ind.description=="Iron and steel basic industries")
 
-table(oww3.df$occ.description, oww3.df$ind.description=="Iron and steel basic industries")
-table(oww3.df$occ.description, oww3.df$ind.description=="Manufacture of wearing apparel (except footwear)")
+
+
+wages.agg.final <- aggregate( x=oww3.df$hw3wlus,  
+  by=list(occ.class=oww3.df$occ.class,
+          country=oww3.df$country,
+          period=oww3.df$period),
+  FUN=mean, na.rm=TRUE)
+# Note that this remove aggregation by industry, so this is equiv to taking simple average
+# across industries
+
+colnames(wages.agg.final)[colnames(wages.agg.final)=="x"] <- "wage"
+
+
+wages.agg.final <- reshape(wages.agg.final, v.names="wage", timevar="occ.class",
+  idvar=c("country", "period"),
+  direction="wide"
+)
+
+wages.agg.final$wage.NP.over.wage.P <- wages.agg.final$wage.NP / wages.agg.final$wage.P
 
 
 tariffs.df <- read.table(paste0(work.dir, "TariffsEarlyLateRev2.txt"), header=TRUE, stringsAsFactors=FALSE)
@@ -190,19 +224,19 @@ developing.final.df <- final.plm.df[final.plm.df$income.class=="developing", ]
 # (Data from ET NBER working paper 14264 from http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files)
 
 # GATT membership in 1975 (Rose, 2001)
-roseaccession.df <- read.delim (paste0(work.dir, "roseaccession.tab"))
+roseaccession.df <- read.delim(paste0(work.dir, "roseaccession.tab"))
 roseaccession.df$gatt75 <- 0
 roseaccession.df$gatt75[roseaccession.df$rose <= 1975] <- 1
 roseaccession.df$country <- roseaccession.df$isocode 
 
-final.plm.df <- merge(final.plm.df, roseaccession.df)
+final.plm.df <- merge(final.plm.df, roseaccession.df, all.x=TRUE)
 
 # Historical GDP (Maddison, 2001)
 madd2004gtdep.df <- read.delim(paste0(work.dir, "madd2004gtdep.tab"))
 madd2004gtdep.df$country <- madd2004gtdep.df$isocode 
 # gtdep = ypop35/ypop29
 
-final.plm.df <- merge(final.plm.df, madd2004gtdep.df)
+final.plm.df <- merge(final.plm.df, madd2004gtdep.df, all.x=TRUE)
 
 final.plm.df <- final.plm.df[order(final.plm.df$country,final.plm.df$period), ]
 
@@ -211,21 +245,101 @@ final.plm.df$tau.k85[final.plm.df$period=="later"] <- final.plm.df$tau.cap[final
 
 final.plm.df <- final.plm.df[,!colnames(final.plm.df) %in% c("maddname","rose","maddnum","gdppop","pop","gdp","ypop35","ypop29")]
 
+unique(final.plm.df$country.name[!final.plm.df$country %in% 
+    wages.agg.final$country[!is.na(wages.agg.final$wage.NP.over.wage.P)]])
+
+unique(
+  wages.agg.final$country[!wages.agg.final$country %in% final.plm.df$country][!is.na(wages.agg.final$wage.NP.over.wage.P)] 
+    )
+
+# missing only Spain, France, and Sri Lanka in wages dataset (when only considering the set
+# of countries that is also in the final.plm.df dataset )
+
+final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
+
 final.wide.df <- reshape(final.plm.df, idvar = "country", timevar = "period", direction = "wide") 
 
-final.wide.df$tau.cap.dif <- final.wide.df$tau.cap.early - final.wide.df$tau.cap.later
-final.wide.df$tau.con.dif <- final.wide.df$tau.con.early - final.wide.df$tau.con.later
+final.wide.df$tau.cap.dif <- final.wide.df$tau.cap.later - final.wide.df$tau.cap.early
+final.wide.df$tau.con.dif <- final.wide.df$tau.con.later - final.wide.df$tau.con.early
 final.wide.df$capital.stock.dif <- final.wide.df$capital.stock.later - 
   final.wide.df$capital.stock.early
+# Wait, we had these reversed in the first version
+
+final.wide.df$tau.cap.interact.dif <- final.wide.df$tau.cap.later*final.wide.df$tau.con.later - final.wide.df$tau.cap.early*final.wide.df$tau.con.early
 
 library(AER)
 
 summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.dif:tau.con.dif + tau.con.dif | gatt75.later:tau.k85.later + gtdep.later:tau.k85.later, 
+      data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif | gatt75.later:tau.k85.later + gtdep.later:tau.k85.later, 
                                data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
-                          
+
+final.wide.df$wage.NP.over.wage.P.dif <- final.wide.df$wage.NP.over.wage.P.later - final.wide.df$wage.NP.over.wage.P.early 
+
+summary( last.stage.lm <- 
+    lm(wage.NP.over.wage.P.dif ~ capital.stock.dif, 
+      data=final.wide.df[final.wide.df$income.class.later=="developing", ])
+)
+
+#install.packages("systemfit")
+library("systemfit")
+
+eq.system <- list(first = capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif ,
+  second= wage.NP.over.wage.P.dif ~ capital.stock.dif)
 
 
 
+fit3sls <- systemfit( eq.system, "3SLS", 
+  inst = ~ gatt75.later:tau.k85.later + gtdep.later:tau.k85.later, 
+  data = final.wide.df[final.wide.df$income.class.later=="developing", ],
+  method3sls = "GMM" )
+
+summary(fit3sls)
+
+inst1 <- ~ gatt75.later:tau.k85.later + gtdep.later:tau.k85.later
+inst2 <- ~ tau.cap.interact.dif + tau.con.dif
+instlist <- list( inst1, inst2 )
+
+fit3sls <- systemfit( eq.system, "3SLS", 
+  inst = instlist, 
+  data = final.wide.df[final.wide.df$income.class.later=="developing", ],
+  method3sls = "GMM" )
+
+summary(fit3sls)
+
+
+
+summary(last.stage.plm <- ivreg(wage.NP.over.wage.P.dif ~ capital.stock.dif  | 
+    tau.cap.dif:tau.con.dif + tau.con.dif, 
+      data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+data( "Kmenta" )
+eqDemand <- consump ~ price + income
+eqSupply <- consump ~ price + farmPrice + trend
+system <- list( demand = eqDemand, supply = eqSupply )
+
+inst <- ~ income + farmPrice + trend
+fit3sls <- systemfit( system, "3SLS", inst = inst, data = Kmenta,
+method3sls = "GMM" )
+print( fit3sls )
+
+
+
+
+
+final.wide.df[, c("country", "income.class.later", "wage.NP.over.wage.P.later", "wage.NP.over.wage.P.early")]
+
+
+final.wide.df[final.wide.df$income.class.later=="developing", c("country", "income.class.later", "wage.NP.over.wage.P.later", "wage.NP.over.wage.P.early")]
+
+data.check 
+
+
+data.check <- final.wide.df[final.wide.df$income.class.later=="developing", c("country", "income.class.later", "wage.NP.over.wage.P.later", "wage.NP.over.wage.P.early")]
 
 
 
