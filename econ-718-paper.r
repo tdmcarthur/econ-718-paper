@@ -643,6 +643,82 @@ summary(fit3sls)
 
 
 
+eq.system <- list(first = double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif ,
+  second= wage.NP.over.wage.P.dif ~ capital.stock.p.c.dif)
+
+inst1 <- ~ gatt75.later:total.tau.1985.early
+inst2 <- ~ capital.stock.p.c.dif
+instlist <- list( inst1, inst2 )
+
+fit3sls <- systemfit( eq.system, "3SLS", 
+  inst = instlist, 
+  data = final.wide.df[final.wide.df$income.class.later=="developed", ],
+  method3sls = "GMM" )
+
+summary(fit3sls)
+
+
+
+
+
+eq.system <- list(first = double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif*income.class.early + log.tau.con.dif*income.class.early ,
+  second= wage.NP.over.wage.P.dif ~ capital.stock.p.c.dif*income.class.early)
+
+inst1 <- ~ gatt75.later:total.tau.1985.early*income.class.early + gtdep.early:total.tau.1985.early*income.class.early
+inst2 <- ~ capital.stock.p.c.dif*income.class.early
+instlist <- list( inst1, inst2 )
+
+fit3sls <- systemfit( eq.system, "3SLS", 
+  inst = instlist, 
+  data = final.wide.df,
+  method3sls = "GMM" )
+
+summary(fit3sls)
+
+
+
+
+eq.system <- list(first = double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif + log.tau.con.dif ,
+  second= wage.NP.over.wage.P.dif ~ capital.stock.p.c.dif)
+
+inst1 <- ~ gatt75.later:total.tau.1985.early
+inst2 <- ~ capital.stock.p.c.dif
+instlist <- list( inst1, inst2 )
+
+fit3sls <- systemfit( eq.system, "3SLS", 
+  inst = instlist, 
+  data = final.wide.df[final.wide.df$income.class.later=="developing", ],
+  method3sls = "GMM" )
+
+summary(fit3sls)
+
+
+
+
+
+
+
+
+with(final.wide.df, all(income.class.later == income.class.early))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 summary(lm(eq.system[[2]], data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
 
