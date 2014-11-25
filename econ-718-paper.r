@@ -214,7 +214,7 @@ income.class.df <- income.class.df[, c("Code", "income.class")]
 colnames(income.class.df) <- c("country", "income.class" )
 
 
-final.df <- merge(capital.agg, tariffs.df)
+final.df <- merge(capital.agg, tariffs.df, all.x=TRUE)
 final.df <- merge(final.df, income.class.df)
 #final.df <- merge(final.df, wages.agg)
 
@@ -307,11 +307,14 @@ final.wide.df$double.delta.GDP <- final.wide.df$GDP.growth2 -
 final.wide.df$capital.stock.p.c.dif <- final.wide.df$capital.stock.later/final.wide.df$population.later - 
   final.wide.df$capital.stock.early/final.wide.df$population.early
 
+final.wide.df$log.capital.stock.p.c.dif <- log(final.wide.df$capital.stock.later/final.wide.df$population.later) - 
+  log(final.wide.df$capital.stock.early/final.wide.df$population.early)
+
 final.wide.df$tau.cap.interact.dif <- final.wide.df$tau.cap.later*final.wide.df$tau.con.later - final.wide.df$tau.cap.early*final.wide.df$tau.con.early
 
 final.wide.df$log.tau.cap.interact.dif <- log(final.wide.df$tau.cap.later*final.wide.df$tau.con.later) - log(final.wide.df$tau.cap.early*final.wide.df$tau.con.early)
 
-final.wide.df$log.tau.con.dif <- log(final.wide.df$tau.con.later) - log(final.wide.df$tau.con.early)
+final.wide.df$log.tau.con.dif.old <- log(final.wide.df$tau.con.later) - log(final.wide.df$tau.con.early)
 final.wide.df$log.tau.cap.dif <- log(final.wide.df$tau.cap.later) - log(final.wide.df$tau.cap.early)
 
 final.wide.df <- within(final.wide.df, {
@@ -323,6 +326,8 @@ final.wide.df <- within(final.wide.df, {
   
     log.tau.cap.AND.int.interact.con.dif <- log(1+0.5*tau.cap.later/100+0.5*tau.int.later/100) * log(1 + tau.con.later/100)   - 
     log(1+0.5*tau.cap.early/100+0.5*tau.int.early/100) * log(1 + tau.con.early/100)
+  
+  log.tau.con.dif <- log(1+tau.con.later/100) - log(1+tau.con.early/100)
   
 })
 
@@ -388,11 +393,41 @@ summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.in
 
 
 
+
+summary(test.lm <- lm(double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif +
+    log.tau.con.dif + log.tau.cap.AND.int.dif , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
 summary(test.lm <- lm(double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif  , 
                                data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
 
 
+summary(test.lm <- lm(double.delta.capital.stock ~
+    log.tau.con.dif , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
 
+
+summary(test.lm <- lm(double.delta.capital.stock ~ 
+    log.tau.cap.AND.int.dif , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
+
+
+
+summary(test.lm <- lm( log.capital.stock.p.c.dif ~ log.tau.cap.AND.int.interact.con.dif +
+    log.tau.con.dif + log.tau.cap.AND.int.dif , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
+
+cor.test(final.wide.df$log.tau.cap.AND.int.dif, final.wide.df$log.tau.con.dif)
+
+test.cond.num <- as.matrix(final.wide.df[, c("log.tau.cap.AND.int.interact.con.dif", "log.tau.con.dif", "log.tau.cap.AND.int.dif")])
+
+test.cond.num <- test.cond.num[complete.cases(test.cond.num), ]
+
+#test.cond.num <- cbind(test.cond.num, test.cond.num[, 1] + test.cond.num[, 2])
+
+rcond(t(test.cond.num) %*% test.cond.num)
 
 
 
@@ -617,10 +652,10 @@ summary(fit3sls)
 
 
 eq.system <- list(first = double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif ,
-  second= wage.NP.over.wage.P.dif ~ capital.stock.dif)
+  second= wage.NP.over.wage.P.dif ~ capital.stock.p.c.dif)
 
 inst1 <- ~ gatt75.later:total.tau.1985.early
-inst2 <- ~ capital.stock.dif
+inst2 <- ~ capital.stock.p.c.dif
 instlist <- list( inst1, inst2 )
 
 fit3sls <- systemfit( eq.system, "3SLS", 
@@ -629,6 +664,8 @@ fit3sls <- systemfit( eq.system, "3SLS",
   method3sls = "GMM" )
 
 summary(fit3sls)
+
+
 
 
 summary(lm(eq.system[[2]], data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
