@@ -9,31 +9,28 @@ if (Sys.info()["user"]=="Mint") {
 }
 
 
-
 library("foreign")
 
 
+# Macro variables from Penn-World-Table -----------------------------------
 
 pwt80.df <- read.dta(paste0(work.dir, "pwt80.dta"))
 # From http://www.rug.nl/research/ggdc/data/penn-world-table
 
-#attr(pwt80.df, "var.labels")
-# ck: "Capital stock at current PPPs (in mil. 2005US$)"                                                  
-# rkna: "Capital stock at constant 2005 national prices (in mil. 2005US$)"     
-# I'll go with "rkna" variable
-# Ok, now try other var:
-# rgdpna is real GDP
-# pop is population
+#attr(pwt80.df, "var.labels")                                             
 
 colnames(pwt80.df)[colnames(pwt80.df)=="country"] <- "country.name"
 colnames(pwt80.df)[colnames(pwt80.df)=="countrycode"] <- "country"
-# Different measures of capital stock
 colnames(pwt80.df)[colnames(pwt80.df)=="rkna"] <- "capital.stock"
+# rkna: "Capital stock at constant 2005 national prices (in mil. 2005US$)"    
 colnames(pwt80.df)[colnames(pwt80.df)=="rgdpna"] <- "real.gdp"
 colnames(pwt80.df)[colnames(pwt80.df)=="pop"] <- "population"
 
-# This below determines the year periods:
+# Generate per capita variables:
+pwt80.df$capital.stock.per.cap <- pwt80.df$capital.stock/pwt80.df$population
+pwt80.df$real.gdp.per.cap <- pwt80.df$real.gdp/pwt80.df$population
 
+# This below determines the year periods:
 early.period <- 1985:1991
 later.period <- 1999:2008
 
@@ -41,29 +38,25 @@ pwt80.df$period <- NA
 pwt80.df$period[pwt80.df$year %in% early.period] <- "early"
 pwt80.df$period[pwt80.df$year %in% later.period] <- "later"
 
-
-# gen growth1 = (log(gdppc1990)-log(gdppc1975))/15
-# gen growth2 = (log(gdppc2004)-log(gdppc1990))/14
-
-pwt80.df$capital.stock.per.cap <- pwt80.df$capital.stock/pwt80.df$population
-pwt80.df$real.gdp.per.cap <- pwt80.df$real.gdp/pwt80.df$population
-
+# Reshape data from long to wide: 
 pwt80.wide.df <- reshape(pwt80.df, idvar = "country", timevar = "year", direction = "wide") 
 
+# Generate growth rate of capital stocks: 
 pwt80.wide.df <- within(pwt80.wide.df, {
   K.growth1 <- (log(capital.stock.per.cap.1990)-log(capital.stock.per.cap.1975))/15
   K.growth2 <- (log(capital.stock.per.cap.2004)-log(capital.stock.per.cap.1990))/14
+  # K.growth1 (K.growth2): avg growth per annum during early (later) period
+  
+  # Growth rate of GDP (This part is to check ET results. Delete later.)
   GDP.growth1 <- (log(real.gdp.per.cap.1990)-log(real.gdp.per.cap.1975))/15
   GDP.growth2 <- (log(real.gdp.per.cap.2004)-log(real.gdp.per.cap.1990))/14
   }
 )
 
-
-
+# Remove years that we don't deal with:
 pwt80.df <- pwt80.df[!is.na(pwt80.df$period), ]
-# Removing years that we don't deal with
 
-
+# Create dataframe for aggregate capital:
 capital.agg <- aggregate( x=pwt80.df[, c("capital.stock", "real.gdp", "population")],   
   by=list(country=pwt80.df$country,
           country.name=pwt80.df$country.name,
@@ -73,9 +66,7 @@ capital.agg <- aggregate( x=pwt80.df[, c("capital.stock", "real.gdp", "populatio
 #colnames(capital.agg)[colnames(capital.agg)=="x"] <- "capital.stock"
 
 
-
-
-
+# Wage data from OWW database  --------------------------------------------
 
 oww3.df <- read.dta(paste0(work.dir, "oww3.dta"))
 
@@ -91,29 +82,23 @@ oww3.df <- merge(oww3.df, oww3.ind.classif.df)
 oww3.df <- merge(oww3.df, oww3.occ.classif.df)
 nrow(oww3.df)
 
-
-# View(oww3.df[oww3.df$country=="BOL",])
-
-
+# Determine the year periods: 
 oww3.df$period <- NA
 oww3.df$period[oww3.df$y0 %in% early.period] <- "early"
 oww3.df$period[oww3.df$y0 %in% later.period] <- "later"
 
-
-
-
+# Remove non-manuf industries and years that we don't deal with:
 oww3.df <- oww3.df[!is.na(oww3.df$ind.class) & !is.na(oww3.df$period), ]
-# Removing non-manuf industries and years that we don't deal with
 
+# There are missing data for occupation class (production "P" or nonproduction "NP")
 oww3.df$occ.class[oww3.df$occ.class==""] <- "P"
 # setting the missings to P for production workers
-
 
 # w3wl is:
 # wage with country-specific calibration and imputation, lexicographic weighting
 # http://www.nber.org/oww/
 
-
+# Create dataframe for wages
 wages.agg <- aggregate( x=oww3.df$hw3wlus,  
   by=list(ind.description=oww3.df$ind.description,
           occ.class=oww3.df$occ.class,
@@ -126,72 +111,59 @@ oww3.df$y3[oww3.df$country==""]
 # weird. it has a missing code for World Bank code, but 
 # nonmissing for the ILO code
 
-
-
-
-
-
-
-
-
-
-
-
-
 #table(is.na(wages.agg$wage.NP.over.wage.P))
-
 #table(oww3.df$occ.class, oww3.df$ind.description=="Iron and steel basic industries")
-
 #table(oww3.df$occ.description, oww3.df$ind.description=="Iron and steel basic industries")
 #table(oww3.df$occ.description, oww3.df$ind.description=="Manufacture of wearing apparel (except footwear)")
 
-
 names(wages.agg)[names(wages.agg)=="x"] <-  "wage"
 
+# Reshape long to wide 
 wages.agg <- reshape(wages.agg, v.names="wage", timevar="occ.class",
   idvar=c("ind.description", "country", "period"),
-  direction="wide"
-)
+  direction="wide")
 
+# Computing wage ratio: indicator of wage inequality 
 wages.agg$wage.NP.over.wage.P <- wages.agg$wage.NP / wages.agg$wage.P
-
-
-
-
 
 wages.agg.final <- aggregate( x=oww3.df$hw3wlus,  
   by=list(occ.class=oww3.df$occ.class,
           country=oww3.df$country,
           period=oww3.df$period),
   FUN=mean, na.rm=TRUE)
-# Note that this remove aggregation by industry, so this is equiv to taking simple average
-# across industries
+# Note that this remove aggregation by industry, so this is equiv to taking simple average across industries
 
 colnames(wages.agg.final)[colnames(wages.agg.final)=="x"] <- "wage"
 
-
 wages.agg.final <- reshape(wages.agg.final, v.names="wage", timevar="occ.class",
   idvar=c("country", "period"),
-  direction="wide"
-)
+  direction="wide")
 
 wages.agg.final$wage.NP.over.wage.P <- wages.agg.final$wage.NP / wages.agg.final$wage.P
 
+
+# Disaggregate and aggregate tariff data from ET 2008  --------------------
+
+# Disaggregate tariffs
 
 tariffs.df <- read.table(paste0(work.dir, "TariffsEarlyLateRev2.txt"), header=TRUE, stringsAsFactors=FALSE)
 # From http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files
 
 colnames(tariffs.df) <- c("country", "tariff.yr", "tau.cap", "tau.con", "tau.int", "tau.nes")
 
+# Determine the time periods 
 tariffs.df$period <- ifelse(tariffs.df$tariff.yr < 1995, "early", "later")
 
+# Aggregate tariffs
+
 efwdata2005.df <- read.delim(paste0(work.dir, "REStatReplicationFiles/efwdata2005.tab"))
-
 efwdata2005.df <- efwdata2005.df[efwdata2005.df$year==1985, c("isocode", "area4aiidata")]
-
 names(efwdata2005.df) <- c("country", "total.tau.1985")
 
 tariffs.df <- merge(tariffs.df, efwdata2005.df, all.x=TRUE)
+
+
+# Income classification from World Bank  ----------------------------------
 
 income.class.df <- read.csv(paste0(work.dir, "WB income classification.csv"), stringsAsFactors=FALSE)
 # http://siteresources.worldbank.org/DATASTATISTICS/Resources/CLASS.XLS
@@ -201,18 +173,16 @@ unique(income.class.df$Income.group)
 
 income.class.df$income.class <- ifelse(income.class.df$Income.group %in% c("High income: nonOECD", "High income: OECD"), "developed", "developing")
 
-
-# Chile, HK, Korea, Trinidad & Tobago, Uruguay, classed as developed here. 
-# Let's do a few fixes:
-
+# Chile, HK, Korea, Trinidad & Tobago, Uruguay, classed as developed. Change to developing
 income.class.df$income.class[
   income.class.df$Economy %in% c("Chile", "Korea, Rep.", "Trinidad and Tobago", "Uruguay")] <- "developing"
 
-
-
+# Create dataframe for income class 
 income.class.df <- income.class.df[, c("Code", "income.class")]
 colnames(income.class.df) <- c("country", "income.class" )
 
+
+# Create new dataframe combining all variables  ---------------------------
 
 final.df <- merge(capital.agg, tariffs.df, all.x=TRUE)
 final.df <- merge(final.df, income.class.df)
@@ -220,21 +190,22 @@ final.df <- merge(final.df, income.class.df)
 
 final.df$period.binary <- ifelse(final.df$period=="early", 0, 1)
 
+
+# FIRST STAGE: Reg change in capital on change in tariffs -------------------
+
 library("plm")
 library("sandwich")
 library("lmtest")
 
 final.plm.df <- plm.data(final.df, indexes=c("country", "period.binary"))
 
-summary(first.stage.plm <- plm(capital.stock ~ tau.cap*tau.con, 
+summary(first.stage.plm <- plm(capital.stock.per.cap ~ tau.cap*tau.con, 
   data=final.plm.df[final.plm.df$income.class=="developing", ], 
   effect = "individual", model="fd"))
 
 summary(first.stage.plm <- plm(capital.stock ~ tau.int*tau.con, 
   data=final.plm.df[final.plm.df$income.class=="developing", ], 
   effect = "individual", model="fd"))
-# including tau.int with tau.con... both of them have the signs we expect. 
-# level model seems to fit the data better
 
 coeftest(first.stage.plm, vcov=vcovBK(first.stage.plm, type="HC1"))
 
@@ -248,59 +219,62 @@ cor.test(final.plm.df$tau.cap[final.plm.df$period=="later"] -
   final.plm.df$tau.con[final.plm.df$period=="later"] - 
     final.plm.df$tau.con[final.plm.df$period=="early"])
 
-developing.final.df <- final.plm.df[final.plm.df$income.class=="developing", ]
 
+# FIRST STAGE: IV  --------------------------------------------------------
+# Two instruments: 
+# 1) GATT membership in 1975 * overall tariff in 1985 
+# 2) Ratio of GDP per cap between 1935 and 1929 * overall tariff in 1985
 
-### Instrumental variable approach ###
-# (Data from ET NBER working paper 14264 from http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files)
+# GATT membership in 1975 
 
-# GATT membership in 1975 (Rose, 2001)
 roseaccession.df <- read.delim(paste0(work.dir, "roseaccession.tab"))
+# from http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files)
+
 roseaccession.df$gatt75 <- 0
 roseaccession.df$gatt75[roseaccession.df$rose <= 1975] <- 1
 roseaccession.df$country <- roseaccession.df$isocode 
 
 final.plm.df <- merge(final.plm.df, roseaccession.df, all.x=TRUE)
 
-# Historical GDP (Maddison, 2001)
+
+# Ratio of GDP per capita between 1935 and 1929 
+
 madd2004gtdep.df <- read.delim(paste0(work.dir, "madd2004gtdep.tab"))
+# from http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files)
 madd2004gtdep.df$country <- madd2004gtdep.df$isocode 
-# gtdep = ypop35/ypop29
 
 final.plm.df <- merge(final.plm.df, madd2004gtdep.df, all.x=TRUE)
-
 final.plm.df <- final.plm.df[order(final.plm.df$country,final.plm.df$period), ]
+
+
+# Overall tariff in 1985
 
 final.plm.df$tau.k85 <- 0 
 final.plm.df$tau.k85[final.plm.df$period=="later"] <- final.plm.df$tau.cap[final.plm.df$period=="later"]
 
+
+# Remove some unneeded variables 
 final.plm.df <- final.plm.df[,!colnames(final.plm.df) %in% c("maddname","rose","maddnum","gdppop","pop","gdp","ypop35","ypop29")]
 
-unique(final.plm.df$country.name[!final.plm.df$country %in% 
-    wages.agg.final$country[!is.na(wages.agg.final$wage.NP.over.wage.P)]])
-
-unique(
-  wages.agg.final$country[!wages.agg.final$country %in% final.plm.df$country][!is.na(wages.agg.final$wage.NP.over.wage.P)] 
-    )
-
-# missing only Spain, France, and Sri Lanka in wages dataset (when only considering the set
-# of countries that is also in the final.plm.df dataset )
-
-final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
-
+# Reshape data frame from long to wide 
 final.wide.df <- reshape(final.plm.df, idvar = "country", timevar = "period", direction = "wide") 
-
 final.wide.df <- merge(final.wide.df, pwt80.wide.df[, c("country", "K.growth1", "K.growth2", "GDP.growth1", "GDP.growth2")], all.x=TRUE)
+
+
+# Calculating dif variables 
 
 final.wide.df$tau.cap.dif <- final.wide.df$tau.cap.later - final.wide.df$tau.cap.early
 final.wide.df$tau.con.dif <- final.wide.df$tau.con.later - final.wide.df$tau.con.early
 final.wide.df$capital.stock.dif <- final.wide.df$capital.stock.later - 
   final.wide.df$capital.stock.early
+
+# Calculating growth in capital stock (double dif)
+
 final.wide.df$double.delta.capital.stock <- final.wide.df$K.growth2 - 
   final.wide.df$K.growth1
-
 final.wide.df$double.delta.GDP <- final.wide.df$GDP.growth2 - 
   final.wide.df$GDP.growth1
+# This last one is to check ET estim. Delete later. 
 
 # Wait, we had these reversed in the first version
 
@@ -713,6 +687,18 @@ data.check
 data.check <- final.wide.df[final.wide.df$income.class.later=="developing", c("country", "income.class.later", "wage.NP.over.wage.P.later", "wage.NP.over.wage.P.early")]
 
 
+# SECOND STAGE: Reg growth in wage ratio on growth in capital stock -------
+
+# Remove redundant columns
+unique(final.plm.df$country.name[!final.plm.df$country %in% 
+                                   wages.agg.final$country[!is.na(wages.agg.final$wage.NP.over.wage.P)]])
+
+unique(
+  wages.agg.final$country[!wages.agg.final$country %in% final.plm.df$country][!is.na(wages.agg.final$wage.NP.over.wage.P)] )
+
+# missing only Spain, France, and Sri Lanka in wages dataset (when only considering the set of countries that is also in the final.plm.df dataset )
+
+final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
 
 
 
