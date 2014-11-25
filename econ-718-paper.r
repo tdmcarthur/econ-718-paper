@@ -199,6 +199,8 @@ library("lmtest")
 
 final.plm.df <- plm.data(final.df, indexes=c("country", "period.binary"))
 
+final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
+
 summary(first.stage.plm <- plm(capital.stock.per.cap ~ tau.cap*tau.con, 
   data=final.plm.df[final.plm.df$income.class=="developing", ], 
   effect = "individual", model="fd"))
@@ -698,7 +700,7 @@ unique(
 
 # missing only Spain, France, and Sri Lanka in wages dataset (when only considering the set of countries that is also in the final.plm.df dataset )
 
-final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
+#final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
 
 
 
