@@ -22,11 +22,15 @@ pwt80.df <- read.dta(paste0(work.dir, "pwt80.dta"))
 # rkna: "Capital stock at constant 2005 national prices (in mil. 2005US$)"     
 # I'll go with "rkna" variable
 # Ok, now try other var:
+# rgdpna is real GDP
+# pop is population
 
 colnames(pwt80.df)[colnames(pwt80.df)=="country"] <- "country.name"
 colnames(pwt80.df)[colnames(pwt80.df)=="countrycode"] <- "country"
 # Different measures of capital stock
 colnames(pwt80.df)[colnames(pwt80.df)=="rkna"] <- "capital.stock"
+colnames(pwt80.df)[colnames(pwt80.df)=="rgdpna"] <- "real.gdp"
+colnames(pwt80.df)[colnames(pwt80.df)=="pop"] <- "population"
 
 # This below determines the year periods:
 
@@ -38,17 +42,37 @@ pwt80.df$period[pwt80.df$year %in% early.period] <- "early"
 pwt80.df$period[pwt80.df$year %in% later.period] <- "later"
 
 
+# gen growth1 = (log(gdppc1990)-log(gdppc1975))/15
+# gen growth2 = (log(gdppc2004)-log(gdppc1990))/14
+
+pwt80.df$capital.stock.per.cap <- pwt80.df$capital.stock/pwt80.df$population
+pwt80.df$real.gdp.per.cap <- pwt80.df$real.gdp/pwt80.df$population
+
+pwt80.wide.df <- reshape(pwt80.df, idvar = "country", timevar = "year", direction = "wide") 
+
+pwt80.wide.df <- within(pwt80.wide.df, {
+  K.growth1 <- (log(capital.stock.per.cap.1990)-log(capital.stock.per.cap.1975))/15
+  K.growth2 <- (log(capital.stock.per.cap.2004)-log(capital.stock.per.cap.1990))/14
+  GDP.growth1 <- (log(real.gdp.per.cap.1990)-log(real.gdp.per.cap.1975))/15
+  GDP.growth2 <- (log(real.gdp.per.cap.2004)-log(real.gdp.per.cap.1990))/14
+  }
+)
+
+
+
 pwt80.df <- pwt80.df[!is.na(pwt80.df$period), ]
 # Removing years that we don't deal with
 
 
-capital.agg <- aggregate( x=pwt80.df$capital.stock,   
+capital.agg <- aggregate( x=pwt80.df[, c("capital.stock", "real.gdp", "population")],   
   by=list(country=pwt80.df$country,
           country.name=pwt80.df$country.name,
           period=pwt80.df$period),
   FUN=mean, na.rm=TRUE)
 
-colnames(capital.agg)[colnames(capital.agg)=="x"] <- "capital.stock"
+#colnames(capital.agg)[colnames(capital.agg)=="x"] <- "capital.stock"
+
+
 
 
 
@@ -266,13 +290,47 @@ final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
 
 final.wide.df <- reshape(final.plm.df, idvar = "country", timevar = "period", direction = "wide") 
 
+final.wide.df <- merge(final.wide.df, pwt80.wide.df[, c("country", "K.growth1", "K.growth2", "GDP.growth1", "GDP.growth2")], all.x=TRUE)
+
 final.wide.df$tau.cap.dif <- final.wide.df$tau.cap.later - final.wide.df$tau.cap.early
 final.wide.df$tau.con.dif <- final.wide.df$tau.con.later - final.wide.df$tau.con.early
 final.wide.df$capital.stock.dif <- final.wide.df$capital.stock.later - 
   final.wide.df$capital.stock.early
+final.wide.df$double.delta.capital.stock <- final.wide.df$K.growth2 - 
+  final.wide.df$K.growth1
+
+final.wide.df$double.delta.GDP <- final.wide.df$GDP.growth2 - 
+  final.wide.df$GDP.growth1
+
 # Wait, we had these reversed in the first version
 
+final.wide.df$capital.stock.p.c.dif <- final.wide.df$capital.stock.later/final.wide.df$population.later - 
+  final.wide.df$capital.stock.early/final.wide.df$population.early
+
 final.wide.df$tau.cap.interact.dif <- final.wide.df$tau.cap.later*final.wide.df$tau.con.later - final.wide.df$tau.cap.early*final.wide.df$tau.con.early
+
+final.wide.df$log.tau.cap.interact.dif <- log(final.wide.df$tau.cap.later*final.wide.df$tau.con.later) - log(final.wide.df$tau.cap.early*final.wide.df$tau.con.early)
+
+final.wide.df$log.tau.con.dif <- log(final.wide.df$tau.con.later) - log(final.wide.df$tau.con.early)
+final.wide.df$log.tau.cap.dif <- log(final.wide.df$tau.cap.later) - log(final.wide.df$tau.cap.early)
+
+final.wide.df <- within(final.wide.df, {
+  log.tau.cap.AND.int.dif <- log(1+0.5*tau.cap.later/100+0.5*tau.int.later/100) - 
+    log(1+0.5*tau.cap.early/100+0.5*tau.int.early/100) 
+  
+#  log.tau.cap.AND.int.interact.con.dif <- log((1+0.5*tau.cap.later/100+0.5*tau.int.later/100) * (1 + tau.con.later/100) )  - 
+#    log((1+0.5*tau.cap.early/100+0.5*tau.int.early/100) * (1 + tau.con.early/100))  
+  
+    log.tau.cap.AND.int.interact.con.dif <- log(1+0.5*tau.cap.later/100+0.5*tau.int.later/100) * log(1 + tau.con.later/100)   - 
+    log(1+0.5*tau.cap.early/100+0.5*tau.int.early/100) * log(1 + tau.con.early/100)
+  
+})
+
+final.wide.df$log.tau.cap.dif <- log(final.wide.df$tau.cap.later) - log(final.wide.df$tau.cap.early)
+
+# gen ltki1 = log(1+0.5*tcap1/100+0.5*tint1/100)
+# gen ltki2 = log(1+0.5*tcap2/100+0.5*tint2/100)
+
 
 library(AER)
 
@@ -290,6 +348,167 @@ summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.
                                data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
 
 
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.interact.dif + log.tau.con.dif  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.dif  | 
+    gatt75.later:total.tau.1985.early +  gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.dif + log.tau.cap.AND.int.interact.con.dif  | 
+    gatt75.later:total.tau.1985.early +  gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.dif + log.tau.cap.AND.int.interact.con.dif  | 
+    gatt75.later:total.tau.1985.early +  gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif  | 
+    gatt75.later:total.tau.1985.early +  gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif  | 
+    gatt75.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+summary(test.lm <- lm(double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif  , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
+
+
+
+
+
+cor.test(final.wide.df$log.tau.cap.AND.int.dif, final.wide.df$log.tau.cap.AND.int.interact.con.dif)
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.dif  | 
+    gatt75.later:total.tau.1985.early  , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.dif  | 
+    gatt75.later:total.tau.1985.early  , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.dif  | 
+    gatt75.later:total.tau.1985.early +  gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df), diagnostics=TRUE)
+
+
+
+
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.capital.stock ~ log.tau.cap.AND.int.dif  | 
+     gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+
+
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.GDP ~ log.tau.cap.AND.int.dif + GDP.growth1  | 
+     gtdep.later:total.tau.1985.early  + GDP.growth1, 
+                               data=final.wide.df), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg(double.delta.GDP ~ log.tau.cap.AND.int.dif + GDP.growth1  | 
+    gatt75.later:total.tau.1985.early +  gtdep.later:total.tau.1985.early + GDP.growth1  , 
+                               data=final.wide.df), diagnostics=TRUE)
+
+
+
+
+
+summary(first.stage.plm <- ivreg(double.delta.GDP ~ log.tau.cap.AND.int.dif   | 
+     gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg(double.delta.GDP ~ log.tau.cap.AND.int.dif  | 
+    gatt75.later:total.tau.1985.early , 
+                               data=final.wide.df), diagnostics=TRUE)
+
+
+
+
+
+
+
+
+
+summary(first.stage.plm <- ivreg(capital.stock.p.c.dif ~ tau.cap.interact.dif + tau.con.dif  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+summary(test.lm <- ivreg(capital.stock.p.c.dif ~ tau.cap.interact.dif + tau.con.dif   , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
+
+
+summary(test.lm <- ivreg(capital.stock.p.c.dif ~ tau.cap.interact.dif + tau.con.dif   , 
+                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
+
+
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+     data=final.wide.df[final.wide.df$income.class.later=="developing", ],
+  weights= I(real.gdp.early/population.early)), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif + tau.con.dif  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+     data=final.wide.df[final.wide.df$income.class.later=="developing", ],
+  weights= real.gdp.early), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg( I(real.gdp.later - real.gdp.early) ~ 
+    tau.cap.interact.dif + tau.con.dif  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+     data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
 summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.dif | 
     gatt75.later:total.tau.1985.early  , 
                                data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
@@ -305,7 +524,42 @@ summary(first.stage.plm <- ivreg(capital.stock.dif ~ I(tau.cap.interact.dif/sd(t
 
 summary(first.stage.plm <- ivreg(capital.stock.dif ~ I(tau.cap.interact.dif/sd(tau.cap.interact.dif)) + I(tau.con.dif/sd(tau.con.dif))  | 
     gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
-                               data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+    data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+summary(first.stage.plm <- ivreg(I(capital.stock.dif/sd(capital.stock.dif)) ~ I(tau.cap.interact.dif/sd(tau.cap.interact.dif)) + I(tau.con.dif/sd(tau.con.dif))  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+    data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+summary(first.stage.plm <- ivreg(I(capital.stock.dif/sd(capital.stock.dif)) ~  I(tau.con.dif/sd(tau.con.dif)) + I(tau.cap.dif/sd(tau.cap.dif))  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+    data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+
+summary(first.stage.plm <- ivreg(I(capital.stock.dif/sd(capital.stock.dif)) ~  I(tau.con.dif/sd(tau.con.dif)) + I(tau.cap.dif/sd(tau.cap.dif))  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+    data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
+
+
+
+
+summary(first.stage.plm <- ivreg(I(capital.stock.dif/sd(capital.stock.dif)) ~ I(tau.cap.interact.dif/sd(tau.cap.interact.dif)) + I(tau.con.dif/sd(tau.con.dif))  | 
+    gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early , 
+    data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
+
+
+
+
 
 
 
@@ -349,7 +603,7 @@ fit3sls <- systemfit( eq.system, "3SLS",
 
 summary(fit3sls)
 
-inst1 <- ~ gatt75.later:tau.k85.later + gtdep.later:tau.k85.later
+inst1 <- ~ gatt75.later:total.tau.1985.early + gtdep.later:total.tau.1985.early
 inst2 <- ~ tau.cap.interact.dif + tau.con.dif
 instlist <- list( inst1, inst2 )
 
@@ -359,6 +613,34 @@ fit3sls <- systemfit( eq.system, "3SLS",
   method3sls = "GMM" )
 
 summary(fit3sls)
+
+
+
+eq.system <- list(first = double.delta.capital.stock ~ log.tau.cap.AND.int.interact.con.dif ,
+  second= wage.NP.over.wage.P.dif ~ capital.stock.dif)
+
+inst1 <- ~ gatt75.later:total.tau.1985.early
+inst2 <- ~ capital.stock.dif
+instlist <- list( inst1, inst2 )
+
+fit3sls <- systemfit( eq.system, "3SLS", 
+  inst = instlist, 
+  data = final.wide.df[final.wide.df$income.class.later=="developing", ],
+  method3sls = "GMM" )
+
+summary(fit3sls)
+
+
+summary(lm(eq.system[[2]], data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+
+
+
+
+
+
+
+
+
 
 
 
