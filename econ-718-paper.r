@@ -38,7 +38,7 @@ pwt80.df$period <- NA
 pwt80.df$period[pwt80.df$year %in% early.period] <- "early"
 pwt80.df$period[pwt80.df$year %in% later.period] <- "later"
 
-# Reshape data from long to wide: 
+# Wide data 
 pwt80.wide.df <- reshape(pwt80.df, idvar = "country", timevar = "year", direction = "wide") 
 
 # Generate growth rate of capital stocks: 
@@ -182,7 +182,7 @@ income.class.df <- income.class.df[, c("Code", "income.class")]
 colnames(income.class.df) <- c("country", "income.class" )
 
 
-# Create new dataframe combining all variables  ---------------------------
+# Combining data ----------------------------------------------------------
 
 final.df <- merge(capital.agg, tariffs.df, all.x=TRUE)
 final.df <- merge(final.df, income.class.df)
@@ -190,42 +190,13 @@ final.df <- merge(final.df, income.class.df)
 
 final.df$period.binary <- ifelse(final.df$period=="early", 0, 1)
 
-
-# FIRST STAGE: Reg change in capital on change in tariffs -------------------
-
-library("plm")
-library("sandwich")
-library("lmtest")
+library(plm)
 
 final.plm.df <- plm.data(final.df, indexes=c("country", "period.binary"))
 
 final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
 
-summary(first.stage.plm <- plm(capital.stock.per.cap ~ tau.cap*tau.con, 
-  data=final.plm.df[final.plm.df$income.class=="developing", ], 
-  effect = "individual", model="fd"))
-
-summary(first.stage.plm <- plm(capital.stock ~ tau.int*tau.con, 
-  data=final.plm.df[final.plm.df$income.class=="developing", ], 
-  effect = "individual", model="fd"))
-
-coeftest(first.stage.plm, vcov=vcovBK(first.stage.plm, type="HC1"))
-
-cor.test(final.plm.df$tau.cap[final.plm.df$period=="early"], final.plm.df$tau.con[final.plm.df$period=="early"])
-
-
-cor.test(final.plm.df$tau.cap[final.plm.df$period=="later"], final.plm.df$tau.con[final.plm.df$period=="later"])
-
-cor.test(final.plm.df$tau.cap[final.plm.df$period=="later"] -
-    final.plm.df$tau.cap[final.plm.df$period=="early"], 
-  final.plm.df$tau.con[final.plm.df$period=="later"] - 
-    final.plm.df$tau.con[final.plm.df$period=="early"])
-
-
-# FIRST STAGE: IV  --------------------------------------------------------
-# Two instruments: 
-# 1) GATT membership in 1975 * overall tariff in 1985 
-# 2) Ratio of GDP per cap between 1935 and 1929 * overall tariff in 1985
+# IV variables ------------------------------------------------------------
 
 # GATT membership in 1975 
 
@@ -255,6 +226,8 @@ final.plm.df$tau.k85 <- 0
 final.plm.df$tau.k85[final.plm.df$period=="later"] <- final.plm.df$tau.cap[final.plm.df$period=="later"]
 
 
+# Modify final data frame -------------------------------------------------
+
 # Remove some unneeded variables 
 final.plm.df <- final.plm.df[,!colnames(final.plm.df) %in% c("maddname","rose","maddnum","gdppop","pop","gdp","ypop35","ypop29")]
 
@@ -263,25 +236,104 @@ final.wide.df <- reshape(final.plm.df, idvar = "country", timevar = "period", di
 final.wide.df <- merge(final.wide.df, pwt80.wide.df[, c("country", "K.growth1", "K.growth2", "GDP.growth1", "GDP.growth2")], all.x=TRUE)
 
 
-# Calculating dif variables 
+# Create variables for first stage OLS ------------------------------------
 
-final.wide.df$tau.cap.dif <- final.wide.df$tau.cap.later - final.wide.df$tau.cap.early
-final.wide.df$tau.con.dif <- final.wide.df$tau.con.later - final.wide.df$tau.con.early
-final.wide.df$capital.stock.dif <- final.wide.df$capital.stock.later - 
-  final.wide.df$capital.stock.early
+# dif log variables 
 
-# Calculating growth in capital stock (double dif)
+final.wide.df <- within(final.wide.df, {
+  # tariffs 
+  ln.tau.con.early <- log(1+tau.con.early/100)
+  ln.tau.con.later <- log(1+tau.con.later/100)
+  d.ln.tau.con <- ln.tau.con.later-ln.tau.con.early
+  ln.tau.cap.early <- log(1+tau.cap.early/100)
+  ln.tau.cap.later <- log(1+tau.cap.later/100)
+  d.ln.tau.cap <- ln.tau.cap.later-ln.tau.cap.early
+  ln.tau.int.early <- log(1+tau.int.early/100)
+  ln.tau.int.later <- log(1+tau.int.later/100)
+  d.ln.tau.int <- ln.tau.int.later-ln.tau.int.early
+  # Simple avg between capital and intermediate tariffs
+  ln.tau.capint.early <- log(1+0.5*tau.cap.early/100+0.5*tau.int.early/100)
+  ln.tau.capint.later <- log(1+0.5*tau.cap.later/100+0.5*tau.int.later/100)
+  d.ln.tau.capint <- ln.tau.capint.later-ln.tau.capint.early
+  # Interaction of simple avg cap.int with con 
+  ln.tau.capint.con.early <- ln.tau.capint.early*ln.tau.con.early
+  ln.tau.capint.con.later <- ln.tau.capint.later*ln.tau.con.later
+  d.ln.tau.capint.con <- ln.tau.capint.con.later-ln.tau.capint.con.early
+  # Growth of log capital stock per cap
+  double.delta.capital.stock <- K.growth2 - K.growth1
+  # GDP (to check consistency with ET results. Delete later)
+  double.delta.GDP <- GDP.growth2 - GDP.growth1 
+}
+)
 
-final.wide.df$double.delta.capital.stock <- final.wide.df$K.growth2 - 
-  final.wide.df$K.growth1
-final.wide.df$double.delta.GDP <- final.wide.df$GDP.growth2 - 
-  final.wide.df$GDP.growth1
-# This last one is to check ET estim. Delete later. 
+# Liberalization dummy variable 
 
-# Wait, we had these reversed in the first version
+final.wide.df <- within(final.wide.df, {
+  # Median dif log tariffs
+  med.d.ln.tau.con <- median(d.ln.tau.con, na.rm=TRUE)
+  med.d.ln.tau.cap <- median(d.ln.tau.cap, na.rm=TRUE)
+  med.d.ln.tau.int <- median(d.ln.tau.int, na.rm=TRUE)
+  med.d.ln.tau.capint <- median(d.ln.tau.capint, na.rm=TRUE)
+  med.d.ln.tau.capint.con <- median(d.ln.tau.capint.con, na.rm=TRUE)
+  # Liberalization indicator (lib==1 if d.ln.tau < med.d.ln.tau)
+  lib.con <- as.numeric(d.ln.tau.con < med.d.ln.tau.con)
+  lib.cap <- as.numeric(d.ln.tau.cap < med.d.ln.tau.cap)
+  lib.int <- as.numeric(d.ln.tau.int < med.d.ln.tau.int)
+  lib.capint <- as.numeric(d.ln.tau.capint < med.d.ln.tau.capint)
+  lib.capint.con <- as.numeric(d.ln.tau.capint.con < med.d.ln.tau.capint.con)
+}
+)
 
-final.wide.df$capital.stock.p.c.dif <- final.wide.df$capital.stock.later/final.wide.df$population.later - 
-  final.wide.df$capital.stock.early/final.wide.df$population.early
+# FIRST STAGE: OLS regression with cont tariff ----------------------------
+# Hypo: lower tau.capint/tau.capint.con, higher k growth 
+#       lower tau.con, lower k growth 
+
+library(lm)
+
+# 1) capint + con
+
+summary(first.stage.lm <- lm(double.delta.capital.stock ~ 
+  d.ln.tau.capint + d.ln.tau.con, 
+  data=final.wide.df[final.wide.df$income.class.early=="developing", ], 
+  ))
+# Expected signs
+
+# 2) capint.con + con
+
+summary(first.stage.lm <- lm(double.delta.capital.stock ~ 
+  d.ln.tau.capint.con + d.ln.tau.con, 
+  data=final.wide.df[final.wide.df$income.class.early=="developing", ], 
+))
+# Expected signs. Coeff of capint.con is -.075 (-.045 for capint) 
+
+
+# FIRST STAGE: OLS regression with dummy liberalization-----------------
+# Hypo: lib.conint and/or lib.conint.con increase k growth, 
+#       lib.con decreases k growth
+
+# 1) capint + con
+
+summary(first.stage.lm <- lm(double.delta.capital.stock ~ 
+    lib.capint + lib.con, 
+    data=final.wide.df[final.wide.df$income.class.early=="developing", ], 
+))
+# Expected signs. Much lower P Values than continuous variable
+
+summary(first.stage.lm <- lm(double.delta.capital.stock ~ 
+    lib.capint.con + lib.con, 
+    data=final.wide.df[final.wide.df$income.class.early=="developing", ], 
+))
+# Expected signs. Result in first spec is better (higher coeff, lower p)
+
+
+# FIRST STAGE: IV  --------------------------------------------------------
+# Two instruments: 
+# 1) GATT membership in 1975 * overall tariff in 1985 
+# 2) Ratio of GDP per cap between 1935 and 1929 * overall tariff in 1985
+
+
+#final.wide.df$capital.stock.p.c.dif <- final.wide.df$capital.stock.later/final.wide.df$population.later - 
+  #final.wide.df$capital.stock.early/final.wide.df$population.early
 
 final.wide.df$log.capital.stock.p.c.dif <- log(final.wide.df$capital.stock.later/final.wide.df$population.later) - 
   log(final.wide.df$capital.stock.early/final.wide.df$population.early)
@@ -296,6 +348,7 @@ final.wide.df$log.tau.cap.dif <- log(final.wide.df$tau.cap.later) - log(final.wi
 final.wide.df <- within(final.wide.df, {
   log.tau.cap.AND.int.dif <- log(1+0.5*tau.cap.later/100+0.5*tau.int.later/100) - 
     log(1+0.5*tau.cap.early/100+0.5*tau.int.early/100) 
+}
   
 #  log.tau.cap.AND.int.interact.con.dif <- log((1+0.5*tau.cap.later/100+0.5*tau.int.later/100) * (1 + tau.con.later/100) )  - 
 #    log((1+0.5*tau.cap.early/100+0.5*tau.int.early/100) * (1 + tau.con.early/100))  
@@ -309,11 +362,6 @@ final.wide.df <- within(final.wide.df, {
 
 final.wide.df$log.tau.cap.dif <- log(final.wide.df$tau.cap.later) - log(final.wide.df$tau.cap.early)
 
-# gen ltki1 = log(1+0.5*tcap1/100+0.5*tint1/100)
-# gen ltki2 = log(1+0.5*tcap2/100+0.5*tint2/100)
-
-
-library(AER)
 
 summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.dif:tau.con.dif + tau.con.dif | gatt75.later:tau.k85.later + gtdep.later:tau.k85.later, 
       data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
