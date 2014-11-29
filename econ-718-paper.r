@@ -10,6 +10,7 @@ if (Sys.info()["user"]=="Mint") {
 
 
 library("foreign")
+library("AER")
 
 
 # Macro variables from Penn-World-Table -----------------------------------
@@ -263,6 +264,13 @@ final.wide.df <- within(final.wide.df, {
   double.delta.capital.stock <- K.growth2 - K.growth1
   # GDP (to check consistency with ET results. Delete later)
   double.delta.GDP <- GDP.growth2 - GDP.growth1 
+  
+  capital.stock.p.c.dif <- capital.stock.later/population.later - 
+    capital.stock.early/population.early
+  
+  ln.capital.stock.p.c.dif <- log(capital.stock.later/population.later) - 
+    log(capital.stock.early/population.early)
+  
 }
 )
 
@@ -288,7 +296,7 @@ final.wide.df <- within(final.wide.df, {
 # Hypo: lower tau.capint/tau.capint.con, higher k growth 
 #       lower tau.con, lower k growth 
 
-library(lm)
+
 
 # 1) capint + con
 
@@ -348,7 +356,7 @@ final.wide.df$log.tau.cap.dif <- log(final.wide.df$tau.cap.later) - log(final.wi
 final.wide.df <- within(final.wide.df, {
   log.tau.cap.AND.int.dif <- log(1+0.5*tau.cap.later/100+0.5*tau.int.later/100) - 
     log(1+0.5*tau.cap.early/100+0.5*tau.int.early/100) 
-}
+
   
 #  log.tau.cap.AND.int.interact.con.dif <- log((1+0.5*tau.cap.later/100+0.5*tau.int.later/100) * (1 + tau.con.later/100) )  - 
 #    log((1+0.5*tau.cap.early/100+0.5*tau.int.early/100) * (1 + tau.con.early/100))  
@@ -641,6 +649,8 @@ summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif  |
 
 
 final.wide.df$wage.NP.over.wage.P.dif <- final.wide.df$wage.NP.over.wage.P.later - final.wide.df$wage.NP.over.wage.P.early 
+
+final.wide.df$ln.wage.NP.over.wage.P.dif <- log(final.wide.df$wage.NP.over.wage.P.later) - log(final.wide.df$wage.NP.over.wage.P.early )
 
 summary( last.stage.lm <- 
     lm(wage.NP.over.wage.P.dif ~ capital.stock.dif, 
