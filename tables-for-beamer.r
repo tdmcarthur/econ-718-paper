@@ -29,7 +29,7 @@ eq.system <- list(first = double.delta.capital.stock ~ d.ln.tau.capint.con ,
 
 # + gtdep.early:total.tau.1985.early
 inst1 <- ~ d.ln.tau.capint.con
-inst2 <- ~ capital.stock.p.c.dif
+inst2 <- ~ ln.capital.stock.p.c.dif
 instlist <- list( inst1, inst2 )
 
 fit.SUR.only.developing <- systemfit( eq.system, "3SLS", 
@@ -124,7 +124,7 @@ eq.system <- list(first = double.delta.capital.stock ~ d.ln.tau.capint.con ,
 
 # + gtdep.early:total.tau.1985.early
 inst1 <- ~ gatt75.later:total.tau.1985.early
-inst2 <- ~ capital.stock.p.c.dif
+inst2 <- ~ ln.capital.stock.p.c.dif
 instlist <- list( inst1, inst2 )
 
 fit.3sls.iv.only.developing <- systemfit( eq.system, "3SLS", 
@@ -200,7 +200,7 @@ eq.system <- list(first = double.delta.capital.stock ~ d.ln.tau.capint.con + d.l
 
 # + gtdep.early:total.tau.1985.early
 inst1 <- ~ d.ln.tau.capint.con  + d.ln.tau.capint + d.ln.tau.con
-inst2 <- ~ capital.stock.p.c.dif
+inst2 <- ~ ln.capital.stock.p.c.dif
 instlist <- list( inst1, inst2 )
 
 fit.SUR.saturated.only.developing <- systemfit( eq.system, "3SLS", 
