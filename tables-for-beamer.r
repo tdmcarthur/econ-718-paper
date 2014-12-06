@@ -71,7 +71,7 @@ fit.SUR.texreg <- texreg( list(fit.SUR.only.developing, fit.SUR.world),
   digits=3,
   dcolumn=TRUE,
   use.packages=FALSE,
-  caption = "SUR without instrument on first equation \\newline (t-statistics in parentheses)", 
+  caption = "First difference SUR without instrument on first equation \\newline (t-statistics in parentheses)", 
   caption.above = TRUE,
   override.se = get.t.stats.systemfit(list(fit.SUR.only.developing, fit.SUR.world)))
 
@@ -81,17 +81,18 @@ fit.SUR.texreg <- strsplit(fit.SUR.texreg, "\n")[[1]]
 
 fit.SUR.texreg <- c(fit.SUR.texreg[1:6], "\\toprule
      &
-    \\multicolumn{4}{c}{Sample} &
+    \\multicolumn{4}{c}{Sample} \\\\
     \\cmidrule(lr){2-5} 
     &
     \\multicolumn{2}{c}{Developing countries} &
-    \\multicolumn{2}{c}{World} &
+    \\multicolumn{2}{c}{World} \\\\
     \\\\
 \\cmidrule(lr){2-3} \\cmidrule(lr){4-5}
      &
-    \\multicolumn{4}{c}{Dependent variable} &
-   \\\\
-    \\cmidrule(lr){2-5} " ,
+    \\multicolumn{4}{c}{Dependent variable} \\\\
+    \\cmidrule(lr){2-5} \\\\
+  & \\multicolumn{1}{c}{1st eqn} & \\multicolumn{1}{c}{2nd eqn} & \\multicolumn{1}{c}{1st eqn} & \\multicolumn{1}{c}{2nd eqn} \\\\
+  " ,
   fit.SUR.texreg[-(1:6)])
 # Thanks to http://tex.stackexchange.com/questions/59478/multi-column-problem
 
@@ -104,16 +105,31 @@ fit.SUR.texreg[grepl( "Num. obs.", fit.SUR.texreg)] <- paste0("Num. obs. & ",
   paste0(c(first.model.nobs, second.model.nobs), collapse=" & "), "            \\\\" )
 
 
-cat(fit.SUR.texreg, file=paste0(work.dir, "testtable1.tex"),
+cat(fit.SUR.texreg, file=paste0(work.dir, "table1.tex"),
   sep="\n")
 
+### TEST OF WEAK INSTRUMENT
 
 
+test.weak.inst.developing <- lm( d.ln.tau.capint.con ~ gatt75.later:total.tau.1985.early, data=final.wide.df[final.wide.df$income.class.later=="developing", ])
 
 
+test.weak.inst.world <- lm( d.ln.tau.capint.con ~ gatt75.later:total.tau.1985.early, data=final.wide.df)
 
 
+fit.weak.instr.texreg <- texreg( list(test.weak.inst.developing, test.weak.inst.world),
+  custom.model.names = c("Developing only", "World"),
+  digits=3,
+  dcolumn=TRUE,
+  use.packages=FALSE,
+  caption = "Test of instrument strength. \\newline Dependent variable: $\\Delta \\ln(1+\\tau_{K}/100)\\times\\ln(1+\\tau_{C}/100)$ \\newline (t-statistics in parentheses)", 
+  caption.above = TRUE,
+  override.se = list(
+    summary(test.weak.inst.developing)$coefficients[, "t value"], 
+    summary(test.weak.inst.world)$coefficients[, "t value"]))
 
+cat(fit.weak.instr.texreg, file=paste0(work.dir, "table2.tex"),
+  sep="\n")
 
 ##### 3SLS with only cap X con interaction, comparing developing-only vs. full sample
 
@@ -154,7 +170,7 @@ fit.3sls.iv.texreg <- texreg( list(fit.3sls.iv.only.developing, fit.3sls.iv.worl
   digits=3,
   dcolumn=TRUE,
   use.packages=FALSE,
-  caption = "3SLS with GATT membership $\\times$ 1985 average tariff as instrument on first equation \\newline (t-statistics in parentheses)", 
+  caption = "First difference 3SLS with GATT membership $\\times$ 1985 average tariff as instrument on first equation \\newline (t-statistics in parentheses)", 
   caption.above = TRUE,
   override.se = get.t.stats.systemfit(list(fit.3sls.iv.only.developing, fit.3sls.iv.world)))
 
@@ -164,17 +180,18 @@ fit.3sls.iv.texreg <- strsplit(fit.3sls.iv.texreg, "\n")[[1]]
 
 fit.3sls.iv.texreg <- c(fit.3sls.iv.texreg[1:6], "\\toprule
      &
-    \\multicolumn{4}{c}{Sample} &
+    \\multicolumn{4}{c}{Sample} \\\\
     \\cmidrule(lr){2-5} 
     &
     \\multicolumn{2}{c}{Developing countries} &
-    \\multicolumn{2}{c}{World} &
+    \\multicolumn{2}{c}{World} \\\\
     \\\\
 \\cmidrule(lr){2-3} \\cmidrule(lr){4-5}
      &
-    \\multicolumn{4}{c}{Dependent variable} &
-   \\\\
-    \\cmidrule(lr){2-5} " ,
+    \\multicolumn{4}{c}{Dependent variable} \\\\
+    \\cmidrule(lr){2-5} \\\\
+  & \\multicolumn{1}{c}{1st eqn} & \\multicolumn{1}{c}{2nd eqn} & \\multicolumn{1}{c}{1st eqn} & \\multicolumn{1}{c}{2nd eqn} \\\\
+  " ,
   fit.3sls.iv.texreg[-(1:6)])
 # Thanks to http://tex.stackexchange.com/questions/59478/multi-column-problem
 
@@ -185,7 +202,7 @@ fit.3sls.iv.texreg[grepl( "Num. obs.", fit.3sls.iv.texreg)] <- paste0("Num. obs.
   paste0(c(first.model.nobs, second.model.nobs), collapse=" & "), "            \\\\" )
 
 
-cat(fit.3sls.iv.texreg, file=paste0(work.dir, "testtable2.tex"),
+cat(fit.3sls.iv.texreg, file=paste0(work.dir, "table3.tex"),
   sep="\n")
 
 
@@ -233,7 +250,7 @@ fit.SUR.saturated.texreg <- texreg( list(fit.SUR.saturated.only.developing, fit.
   digits=3,
   dcolumn=TRUE,
   use.packages=FALSE,
-  caption = "Saturated SUR without instrument on first equation \\newline (t-statistics in parentheses)", 
+  caption = "First difference saturated SUR without instrument on first equation (t-statistics in parentheses)", 
   caption.above = TRUE,
   override.se = get.t.stats.systemfit(list(fit.SUR.saturated.only.developing, fit.SUR.saturated.world)))
 
@@ -243,17 +260,18 @@ fit.SUR.saturated.texreg <- strsplit(fit.SUR.saturated.texreg, "\n")[[1]]
 
 fit.SUR.saturated.texreg <- c(fit.SUR.saturated.texreg[1:6], "\\toprule
      &
-    \\multicolumn{4}{c}{Sample} &
+    \\multicolumn{4}{c}{Sample} \\\\
     \\cmidrule(lr){2-5} 
     &
     \\multicolumn{2}{c}{Developing countries} &
-    \\multicolumn{2}{c}{World} &
+    \\multicolumn{2}{c}{World} \\\\
     \\\\
 \\cmidrule(lr){2-3} \\cmidrule(lr){4-5}
      &
-    \\multicolumn{4}{c}{Dependent variable} &
-   \\\\
-    \\cmidrule(lr){2-5} " ,
+    \\multicolumn{4}{c}{Dependent variable} \\\\
+    \\cmidrule(lr){2-5} \\\\
+  & \\multicolumn{1}{c}{1st eqn} & \\multicolumn{1}{c}{2nd eqn} & \\multicolumn{1}{c}{1st eqn} & \\multicolumn{1}{c}{2nd eqn} \\\\
+  " ,
   fit.SUR.saturated.texreg[-(1:6)])
 # Thanks to http://tex.stackexchange.com/questions/59478/multi-column-problem
 
@@ -264,7 +282,7 @@ fit.SUR.saturated.texreg[grepl( "Num. obs.", fit.SUR.saturated.texreg)] <- paste
   paste0(c(first.model.nobs, second.model.nobs), collapse=" & "), "            \\\\" )
 
 
-cat(fit.SUR.saturated.texreg, file=paste0(work.dir, "testtable3.tex"),
+cat(fit.SUR.saturated.texreg, file=paste0(work.dir, "table4.tex"),
   sep="\n")
 
 
@@ -285,7 +303,7 @@ source(curl("https://raw.githubusercontent.com/tdmcarthur/misc/master/authored-f
 
 replace.vars(replacement.matrix=var.names, 
   directory=work.dir, 
-  file.pattern="testtable.*tex", table.only=TRUE)
+  file.pattern="table.*tex", table.only=TRUE)
 
 
 
