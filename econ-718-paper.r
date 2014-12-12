@@ -31,13 +31,21 @@ colnames(pwt80.df)[colnames(pwt80.df)=="pop"] <- "population"
 pwt80.df$capital.stock.per.cap <- pwt80.df$capital.stock/pwt80.df$population
 pwt80.df$real.gdp.per.cap <- pwt80.df$real.gdp/pwt80.df$population
 
+#colnames(pwt80.df)[colnames(pwt80.df)=="pl_i"] <- "investment.price"
+pwt80.df$investment.price <- pwt80.df$pl_i/pwt80.df$pl_c
+# "pl_i": Price level of capital formation,  price level of USA GDPo in 2005=1"
+# "pl_c":Price level of household consumption,  price level of USA GDPo in 2005=1
+
 # This below determines the year periods:
 early.period <- 1985:1991
 later.period <- 1999:2008
 
-pwt80.df$period <- NA
-pwt80.df$period[pwt80.df$year %in% early.period] <- "early"
-pwt80.df$period[pwt80.df$year %in% later.period] <- "later"
+early.period.K <- 1985:1990
+later.period.K <- 1999:2004
+
+pwt80.df$period.K <- NA
+pwt80.df$period.K[pwt80.df$year %in% early.period.K] <- "early"
+pwt80.df$period.K[pwt80.df$year %in% later.period.K] <- "later"
 
 # Wide data 
 pwt80.wide.df <- reshape(pwt80.df, idvar = "country", timevar = "year", direction = "wide") 
@@ -51,20 +59,27 @@ pwt80.wide.df <- within(pwt80.wide.df, {
   # Growth rate of GDP (This part is to check ET results. Delete later.)
   GDP.growth1 <- (log(real.gdp.per.cap.1990)-log(real.gdp.per.cap.1975))/15
   GDP.growth2 <- (log(real.gdp.per.cap.2004)-log(real.gdp.per.cap.1990))/14
+  
   }
 )
 
+pwt80.wide.df$i.price.integ1 <- rowMeans(pwt80.wide.df[, paste0("investment.price.", 1975:1990)])
+pwt80.wide.df$i.price.integ2 <- rowMeans(pwt80.wide.df[, paste0("investment.price.", 1991:2004)])
+# , na.rm=TRUE
+
+
 # Remove years that we don't deal with:
-pwt80.df <- pwt80.df[!is.na(pwt80.df$period), ]
+pwt80.df <- pwt80.df[!is.na(pwt80.df$period.K), ]
 
 # Create dataframe for aggregate capital:
 capital.agg <- aggregate( x=pwt80.df[, c("capital.stock", "real.gdp", "population")],   
   by=list(country=pwt80.df$country,
           country.name=pwt80.df$country.name,
-          period=pwt80.df$period),
+          period=pwt80.df$period.K),
   FUN=mean, na.rm=TRUE)
 
 #colnames(capital.agg)[colnames(capital.agg)=="x"] <- "capital.stock"
+colnames(capital.agg)[colnames(capital.agg)=="period.K"] <- "period"
 
 
 # Wage data from OWW database  --------------------------------------------
@@ -234,7 +249,7 @@ final.plm.df <- final.plm.df[,!colnames(final.plm.df) %in% c("maddname","rose","
 
 # Reshape data frame from long to wide 
 final.wide.df <- reshape(final.plm.df, idvar = "country", timevar = "period", direction = "wide") 
-final.wide.df <- merge(final.wide.df, pwt80.wide.df[, c("country", "K.growth1", "K.growth2", "GDP.growth1", "GDP.growth2")], all.x=TRUE)
+final.wide.df <- merge(final.wide.df, pwt80.wide.df[, c("country", "K.growth1", "K.growth2", "GDP.growth1", "GDP.growth2", "i.price.integ1", "i.price.integ2")], all.x=TRUE)
 
 
 # Create variables for first stage OLS ------------------------------------
@@ -264,6 +279,9 @@ final.wide.df <- within(final.wide.df, {
   double.delta.capital.stock <- K.growth2 - K.growth1
   # GDP (to check consistency with ET results. Delete later)
   double.delta.GDP <- GDP.growth2 - GDP.growth1 
+  i.price.integ.dif <- i.price.integ2 - i.price.integ1
+  ln.i.price.integ.dif <- log(i.price.integ2) - log(i.price.integ1)
+  double.ln.i.price.integ.dif <- log(log(i.price.integ2*100)) - log(log(i.price.integ1*100))
   
   capital.stock.p.c.dif <- capital.stock.later/population.later - 
     capital.stock.early/population.early
@@ -273,6 +291,7 @@ final.wide.df <- within(final.wide.df, {
   
 }
 )
+
 
 # Liberalization dummy variable 
 
@@ -291,6 +310,14 @@ final.wide.df <- within(final.wide.df, {
   lib.capint.con <- as.numeric(d.ln.tau.capint.con < med.d.ln.tau.capint.con)
 }
 )
+
+
+
+final.wide.df$wage.NP.over.wage.P.dif <- final.wide.df$wage.NP.over.wage.P.later - final.wide.df$wage.NP.over.wage.P.early 
+
+final.wide.df$ln.wage.NP.over.wage.P.dif <- log(final.wide.df$wage.NP.over.wage.P.later) - log(final.wide.df$wage.NP.over.wage.P.early )
+
+
 
 # FIRST STAGE: OLS regression with cont tariff ----------------------------
 # Hypo: lower tau.capint/tau.capint.con, higher k growth 
@@ -647,11 +674,6 @@ summary(first.stage.plm <- ivreg(capital.stock.dif ~ tau.cap.interact.dif  |
 
 
 
-
-final.wide.df$wage.NP.over.wage.P.dif <- final.wide.df$wage.NP.over.wage.P.later - final.wide.df$wage.NP.over.wage.P.early 
-
-final.wide.df$ln.wage.NP.over.wage.P.dif <- log(final.wide.df$wage.NP.over.wage.P.later) - log(final.wide.df$wage.NP.over.wage.P.early )
-
 summary( last.stage.lm <- 
     lm(wage.NP.over.wage.P.dif ~ capital.stock.dif, 
       data=final.wide.df[final.wide.df$income.class.later=="developing", ])
@@ -837,10 +859,50 @@ unique(
 #final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
 
 
+summary(lm(ln.capital.stock.p.c.dif ~ double.ln.i.price.integ.dif, data=final.wide.df))
+
+
+summary(lm(ln.capital.stock.p.c.dif ~ i.price.integ.dif, data=final.wide.df))
+summary(lm(ln.capital.stock.p.c.dif ~ ln.i.price.integ.dif, data=final.wide.df))
+summary(lm(capital.stock.p.c.dif ~ i.price.integ.dif, data=final.wide.df))
+summary(lm(capital.stock.p.c.dif ~ ln.i.price.integ.dif, data=final.wide.df))
+plot(lm(capital.stock.p.c.dif ~ ln.i.price.integ.dif, data=final.wide.df))
+plot(final.wide.df$ln.i.price.integ.dif, final.wide.df$capital.stock.p.c.dif)
+summary(lm(ln.capital.stock.p.c.dif ~ ln.i.price.integ.dif*income.class.later, data=final.wide.df))
+
+summary(lm(capital.stock.p.c.dif ~ i.price.integ.dif, data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+summary(lm(capital.stock.p.c.dif ~ ln.i.price.integ.dif, data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
+summary(lm(ln.capital.stock.p.c.dif ~ ln.i.price.integ.dif, data=final.wide.df[final.wide.df$income.class.later=="developing", ]))
 
 
 
+summary(first.stage.plm <- ivreg(ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif | ln.i.price.integ.dif, 
+      data=final.wide.df[final.wide.df$income.class.later=="developing", ]), diagnostics=TRUE)
 
+
+
+summary(first.stage.plm <- ivreg(ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif*income.class.later | ln.i.price.integ.dif*income.class.later, 
+      data=final.wide.df), diagnostics=TRUE)
+
+
+summary(first.stage.plm <- ivreg(ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif | ln.i.price.integ.dif, 
+      data=final.wide.df), diagnostics=TRUE)
+
+summary(first.stage.plm <- lm(ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif*income.class.later ,
+      data=final.wide.df))
+
+summary(first.stage.plm <- lm(ln.capital.stock.p.c.dif ~ ln.i.price.integ.dif ,
+      data=final.wide.df))
+
+
+summary(first.stage.plm <- lm(ln.capital.stock.p.c.dif ~ ln.i.price.integ.dif ,
+      data=final.wide.df[!is.na(final.wide.df$ln.wage.NP.over.wage.P.dif ),]))
+
+
+summary(first.stage.plm <- lm(ln.capital.stock.p.c.dif ~ i.price.integ.dif ,
+      data=final.wide.df[!is.na(final.wide.df$ln.wage.NP.over.wage.P.dif ),]))
+
+summary(lm(capital.stock ~ investment.price + country, data=pwt80.df))
 
 
 
