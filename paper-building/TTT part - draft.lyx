@@ -1,0 +1,276 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+%\linespread{1.6}
+\usepackage{setspace}
+\usepackage{bbm}
+\doublespacing
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{rotating}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We should be concerned about endogeneity in equation #<>.
+ Modeling only one side of the supply-demand relationship is a well-known
+ pitfall in econometrics.
+ However, the relationship between capital stock and the wage premium is
+ indirect: it operates through the complementarity of capital and high-skilled
+ labor.
+ Therefore, it is not appropriate to model the relationship as a full supply-dem
+and simultanous equation system.
+ 
+\end_layout
+
+\begin_layout Standard
+We will still take an instrumental variable approach.
+ A straightforward instrument for the level of capital stock is 
+\begin_inset Formula $r$
+\end_inset
+
+, the price of capital accumulation.
+ In a closed economy, 
+\begin_inset Formula $r$
+\end_inset
+
+ is determined endogenously; firms' solutions to their profit maximization
+ problems should ensure that 
+\begin_inset Formula $r=\nicefrac{\partial F}{\partial K}$
+\end_inset
+
+, where 
+\begin_inset Formula $F\left(\cdot\right)$
+\end_inset
+
+ represents the aggregate production function.
+ In an open economy, 
+\begin_inset Formula $r$
+\end_inset
+
+ can be determined exogenously.
+ The import price of capital goods determines the domestic capital price
+ in the Atolia model.
+ Clearly we want to avoid assuming aspects to the Atolia model while we
+ test it, however.
+ We can rely on other models in which international financial markets can
+ exogenously determine 
+\begin_inset Formula $r$
+\end_inset
+
+<citation?>.
+ Thus, 
+\begin_inset Formula $r$
+\end_inset
+
+ is determined in other countries rather than endogenously.
+ In principle, this could lead to all countries facing the same 
+\begin_inset Formula $r$
+\end_inset
+
+, which would present a statistical identification problem.
+ We observe that 
+\begin_inset Formula $r$
+\end_inset
+
+ is not equalized across countries, though, so we can proceed <make citation
+ of a paper dealing with this.
+ Also, this challenges a bit our assertion that r is exogenously determined>.
+ 
+\end_layout
+
+\begin_layout Standard
+According to the firm's optimization problem, if an exogenous shock to 
+\begin_inset Formula $r$
+\end_inset
+
+ leads to 
+\begin_inset Formula $\nicefrac{\partial F}{\partial K}<r$
+\end_inset
+
+, then capital should be accumulated faster.
+ If 
+\begin_inset Formula $\nicefrac{\partial F}{\partial K}>r$
+\end_inset
+
+, then the capital stock should shrink.
+ This leads to the following functional relationship: 
+\begin_inset Formula $\nicefrac{\partial K}{\partial t}=G\left(r\right)$
+\end_inset
+
+, i.e.
+ the change of 
+\begin_inset Formula $K$
+\end_inset
+
+ over time is a function of 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Our RHS variable in equation #<> is in levels of 
+\begin_inset Formula $K$
+\end_inset
+
+, not change, so we must integrate both sides with respect to time: 
+\begin_inset Formula $K=\intop_{a}^{b}G\left(r\right)dt$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $G\left(r\right)$
+\end_inset
+
+ is simply linear, then we can approximate this relationship by simply summing
+ over the value of 
+\begin_inset Formula $r$
+\end_inset
+
+ in each time period: 
+\begin_inset Formula $K=\sum_{t=a}^{b}r_{t}+\epsilon$
+\end_inset
+
+.
+ <TODO:FINISH>
+\end_layout
+
+\begin_layout Standard
+In a sense, this is 
+\begin_inset Quotes eld
+\end_inset
+
+assuming the model
+\begin_inset Quotes erd
+\end_inset
+
+.
+ cost of 
+\end_layout
+
+\begin_layout Standard
+As part of PPP calc, PWT does this...
+\end_layout
+
+\begin_layout Standard
+We must justify why might K price differ across countries.
+\end_layout
+
+\begin_layout Standard
+Partial eqm vs.
+ general eqm.
+\end_layout
+
+\begin_layout Standard
+Look at schooling - like the supply of high skilled labor
+\end_layout
+
+\begin_layout Standard
+DONE: Maybe graph the second stage result - make more flashy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
