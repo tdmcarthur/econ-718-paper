@@ -95,6 +95,466 @@
 \end_layout
 
 \begin_layout Standard
+__Data__
+\end_layout
+
+\begin_layout Standard
+We used data from three sources: the Penn World Table, Estevadeordal & Taylor
+ (2013), and Occupational Wages of the World.
+ Table #<> summarizes the variables and their sources.
+ Our sample size is limited by the coverage of the tariff data in Estevadeordal
+ & Taylor and the wage data in Occupational Wages of the World.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Data sources
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1st Period
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2nd Period
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Source
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Per capita capital stock growth
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1975-1990
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1990-2004
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Penn World Table
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Per capita capital stock
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1985-1990 mean
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1999-2004 mean
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Penn World Table
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Disaggregated tariffs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1985-1993
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2000-2004
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Estevadeordal and Taylor 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Disaggregated wages
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1985-1991 mean
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1999-2008 mean
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Occupational Wages of the World
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aggregated 1985 tariffs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Estevadeordal and Taylor 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Great Depression depth
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Estevadeordal and Taylor 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We measured the rate of capital stock accumulation as the geometric growth
+ between 1975 and 1990 for the first period and 1990 and 2004 for the second.
+ This corresponds to the GDP growth period that Estevadeordal & Taylor (2013)
+ use to estimate the effect of capital tariffs on GDP growth.
+ For measuring capital stock levels, we take the average of two six-year
+ periods to mitigate the impact of business cycles on the data.
+\end_layout
+
+\begin_layout Standard
+Wages in supervisory and technical occupations were defined as 
+\begin_inset Quotes eld
+\end_inset
+
+high skill
+\begin_inset Quotes erd
+\end_inset
+
+, while everyone else, such as production line workers, were defined as
+ 
+\begin_inset Quotes eld
+\end_inset
+
+low skill
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is in accordance with Zhu & Trefler <year>.
+ Only workers in the manufacturing sector were included.
+ Since we did not have measurements of the number of workers in each occupation,
+ we computed the simple average of all occupations in each skill category.
+ Ideally, the periods of time for measurement of capital stock and wages
+ would be the same, but missing occupational wage data was a serious problem.
+ Therefore, we somewhat extended the period of time of measuring wage data
+ to avoid dropping too many countries from the sample.
+\end_layout
+
+\begin_layout Standard
+Estevadeordal & Taylor recorded three different tariff measures: consumption
+ goods, intermediate goods, and capital goods.
+ They could not obtain disaggregated tariff data for the same years in each
+ country, so the measured tariff rates are spread over a number of years.
+ In their main regression specification, Estevadeordal & Taylor used the
+ simple average of intermediate and capital goods tariffs to explain GDP
+ growth.
+ Therefore, we will use this average and call it capital goods tariff for
+ the remainder of this paper.
+ 
+\end_layout
+
+\begin_layout Standard
+Table first difference
+\end_layout
+
+\begin_layout Standard
+We use the World Bank's classification of developing country as of the 1980's.
+\end_layout
+
+\begin_layout Standard
+Henceforth..
+\end_layout
+
+\begin_layout Standard
+<also, we dont know which tariff lines are included in which <although that
+ could be attainable>
+\end_layout
+
+\begin_layout Standard
+No obvious reason that selection bias may be at play.
+\end_layout
+
+\begin_layout Standard
+Say WB definition of developing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\vphantom{}$
 \end_inset
 
@@ -306,6 +766,38 @@ n, then it seems no other variable would be powerful enough to act as a
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{developing-summary-stats.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{developed-summary-stats.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 ___Results__
 \end_layout
 
@@ -360,15 +852,9 @@ We also include an estimation of the same model with both developed and
  not statistically significant.
  If these effects were statistically significant, we might conclude that
  the Atolia mechanism holds for developing countries but not developed countries.
- Finally, the results indicate that the positive effect of capital stock
+ Finally, the results suggest that the positive effect of capital stock
  on the wage premium holds only for developing countries.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
+ This result is visualized in Figure 1.
 \end_layout
 
 \begin_layout Standard
@@ -388,6 +874,36 @@ input{SUR-reg-parsimonious.tex}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Graphics
+	filename wage-K-scatter.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When the tariff level is instrumented by GATT membership 
+\begin_inset Formula $\times$
+\end_inset
+
+ 1985 average tariff, the results for the developing country sample, shown
+ in Table <>, are basically unchanged.
+ On the other hand, the signs of the coefficients on the capital-tariff
+ eqution for the world sample are the opposite of what they were in the
+ uninstrumented regression.
+ If these coefficients were statistically significant, it would challenge
+ the theory that lower capital tariffs increase the capital stock for developing
+ countries but not developed.
+ However, the very low precision of the estimates here (t-stats around 0.4)
+ means that we cannot conclude that any violation of the Atolia theory really
+ exists.
+ A Wu-Hausman test cannot reject the null hypothesis of no endogeneity,
+ but the test is expected to have low power in this environment of a small
+ number of observations.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -401,6 +917,32 @@ input{3sls-parsimonious.tex}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+For completeness, we also present the results with the 
+\begin_inset Quotes eld
+\end_inset
+
+saturated
+\begin_inset Quotes erd
+\end_inset
+
+ model of capital tariffs, consumption tariffs, and their product in Table
+ #<>.
+ As expected, the high correlation between the two tariffs greatly inflates
+ the variance of the coefficients.
+ The point estimates are consistent with the Atolia theory, however, since
+ the sign of the capital tariff coefficient is negative while the sign of
+ the consumption tariff is positive.
+ We also estimated a three-stage least squares model.
+ To instrument for the consumption tariff, we used the severity of the Great
+ Depression 
+\begin_inset Formula $\times$
+\end_inset
+
+ 1985 average tariff as Estevadoreal & Taylor did, but the variance of the
+ coefficients is so large that the results are not worth presenting.
 \end_layout
 
 \begin_layout Standard
@@ -420,12 +962,20 @@ input{SUR-reg-saturated.tex}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Graphics
-	filename wage-K-scatter.pdf
+___ DRawbacks__
+\end_layout
 
-\end_inset
+\begin_layout Standard
+___Conclusion/discussion___
+\end_layout
 
-
+\begin_layout Standard
+In light of our empirical test, we cannot reject the Atolia theory.
+ The positive effect of capital accumulation on the wage premium among developin
+g countries offers limited support for the theory.
+ In some sense, this effect is the less important part of the theory since
+ it could, arguably, be unrelated to trade.
+ Throughout, our analysis suffers from low statistical power <><> <elasicity>
 \end_layout
 
 \begin_layout Standard
@@ -444,6 +994,11 @@ input{SUR-reg-saturated.tex}
 
 \begin_layout Standard
 <in our data table, can say that a var coresponds to something in the PWT>
+\end_layout
+
+\begin_layout Standard
+<Should say something about having dif #'s of obseravtions in the two SUR
+ equations>
 \end_layout
 
 \begin_layout Standard

@@ -174,6 +174,8 @@ tariffs.df$period <- ifelse(tariffs.df$tariff.yr < 1995, "early", "later")
 # Aggregate tariffs
 
 efwdata2005.df <- read.delim(paste0(work.dir, "REStatReplicationFiles/efwdata2005.tab"))
+efwdata2005.df[efwdata2005.df$year==1985 & efwdata2005.df$isocode=="ISR", "area4aiidata"] <- efwdata2005.df[efwdata2005.df$year==1995 & efwdata2005.df$isocode=="ISR", "area4aiidata"]
+# Fixing Israel
 efwdata2005.df <- efwdata2005.df[efwdata2005.df$year==1985, c("isocode", "area4aiidata")]
 names(efwdata2005.df) <- c("country", "total.tau.1985")
 
@@ -217,12 +219,15 @@ final.plm.df <- merge(final.plm.df, wages.agg.final, all.x=TRUE)
 
 # GATT membership in 1975 
 
-roseaccession.df <- read.delim(paste0(work.dir, "roseaccession.tab"))
+roseaccession.df <- read.delim(paste0(work.dir, "roseaccession.tab"), stringsAsFactors=FALSE)
 # from http://thedata.harvard.edu/dvn/dv/restat/faces/study/StudyPage.xhtml?studyId=92217&tab=files)
 
 roseaccession.df$gatt75 <- 0
 roseaccession.df$gatt75[roseaccession.df$rose <= 1975] <- 1
+
+# Fix gernamny
 roseaccession.df$country <- roseaccession.df$isocode 
+roseaccession.df$country[roseaccession.df$country=="GER"] <- "DEU"
 
 final.plm.df <- merge(final.plm.df, roseaccession.df, all.x=TRUE)
 
