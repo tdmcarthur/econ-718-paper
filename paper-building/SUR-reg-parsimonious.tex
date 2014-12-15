@@ -1,0 +1,45 @@
+
+\begin{table}
+\caption{First difference SUR without instrument on first equation \newline (t-statistics in parentheses)}
+\begin{center}
+\begin{tabular}{l D{.}{.}{3.4}@{} D{.}{.}{3.5}@{} D{.}{.}{3.4}@{} D{.}{.}{3.4}@{} }
+\hline
+\toprule
+     &
+    \multicolumn{4}{c}{Sample} \\
+    \cmidrule(lr){2-5} 
+    &
+    \multicolumn{2}{c}{Developing countries} &
+    \multicolumn{2}{c}{World} \\
+    \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+     &
+    \multicolumn{4}{c}{Dependent variable} \\
+    \cmidrule(lr){2-5} \\
+  & \multicolumn{1}{c}{1st eqn} & \multicolumn{1}{c}{2nd eqn} & \multicolumn{1}{c}{1st eqn} & \multicolumn{1}{c}{2nd eqn} \\
+  
+                                                      & \multicolumn{1}{c}{$\%\Delta$ of per capita K} & \multicolumn{1}{c}{$\ln(w_{H}/w_{L})$} & \multicolumn{1}{c}{$\%\Delta$ of per capita K} & \multicolumn{1}{c}{$\ln(w_{H}/w_{L})$} \\
+\hline
+(Intercept)                                           & -0.008   & -0.085     & -0.006   & 0.144     \\
+                                                      & (-1.511) & (-1.324)   & (-1.389) & (1.127)   \\
+$\ln(1+\tau_{K}/100)\times\ln(1+\tau_{C}/100)$                                  & -0.042   &            & 0.306    &           \\
+                                                      & (-1.414) &            & (1.115)  &           \\
+$\ln($Per capita K stock)                             &          & 0.318^{**} &          & -0.311    \\
+                                                      &          & (2.536)    &          & (-0.890)  \\
+Developing country                         &          &            & -0.002   & -0.229    \\
+                                                      &          &            & (-0.303) & (-1.665)  \\
+$\ln(1+\tau_{K}/100)\times\ln(1+\tau_{C}/100)\times$ Dev cntry     &          &            & -0.348   &           \\
+                                                      &          &            & (-1.264) &           \\
+$\ln($Per capita K stock)$\times$ Developing country&          &            &          & 0.629^{*} \\
+                                                      &          &            &          & (1.733)   \\
+\hline
+R$^2$                                                 & 0.081    & 0.238      & 0.123    & 0.224     \\
+Adj. R$^2$                                            & 0.045    & 0.207      & 0.060    & 0.161     \\
+Num. obs. & 27 & 26 & 46 & 41            \\
+Residual $\rho$ between equations                     &          & 0.096      &          & 0.060     \\
+\hline
+\multicolumn{5}{l}{\scriptsize{$^{***}p<0.01$, $^{**}p<0.05$, $^*p<0.1$}}
+\end{tabular}
+\label{table:coefficients}
+\end{center}
+\end{table}

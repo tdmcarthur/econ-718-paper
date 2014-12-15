@@ -65,14 +65,29 @@ get.t.stats.systemfit <- function(models) {
 }
 
 
-fit.SUR.texreg <- texreg( list(fit.SUR.only.developing, fit.SUR.world),
+
+tr1 <- extract(fit.SUR.only.developing)
+tr1[[2]]@gof <- c(tr1[[2]]@gof, cov2cor(fit.SUR.only.developing$residCov )[2,1])
+tr1[[2]]@gof.names <- c(tr1[[2]]@gof.names, "Residual $\\rho$ between equations")
+tr1[[2]]@gof.decimal <- c(tr1[[2]]@gof.decimal, TRUE)
+
+tr2 <- extract(fit.SUR.world)
+tr2[[2]]@gof <- c(tr2[[2]]@gof, cov2cor(fit.SUR.world$residCov )[2,1])
+tr2[[2]]@gof.names <- c(tr2[[2]]@gof.names, "Residual $\\rho$ between equations")
+tr2[[2]]@gof.decimal <- c(tr2[[2]]@gof.decimal, TRUE)
+
+# trying something out in accordance with http://stackoverflow.com/questions/19888757/add-p-value-of-hausman-test-or-other-additional-gof-measure-to-texreg-table
+
+
+fit.SUR.texreg <- texreg( list(tr1[[1]], tr1[[2]], tr2[[1]], tr2[[2]]),
   custom.model.names = c("$\\%\\Delta$ of per capita K", "$\\ln(w_{H}/w_{L})$", "$\\%\\Delta$ of per capita K", "$\\ln(w_{H}/w_{L})$"),
   digits=3,
   dcolumn=TRUE,
   use.packages=FALSE,
   caption = "First difference SUR without instrument on first equation \\newline (t-statistics in parentheses)", 
   caption.above = TRUE,
-  override.se = get.t.stats.systemfit(list(fit.SUR.only.developing, fit.SUR.world)))
+  override.se = get.t.stats.systemfit(list(fit.SUR.only.developing, fit.SUR.world)),
+  stars = c(0.01, 0.05, 0.1))
 
 # Thar be dragons below...and hacks
 
@@ -104,7 +119,7 @@ fit.SUR.texreg[grepl( "Num. obs.", fit.SUR.texreg)] <- paste0("Num. obs. & ",
   paste0(c(first.model.nobs, second.model.nobs), collapse=" & "), "            \\\\" )
 
 
-cat(fit.SUR.texreg, file=paste0(work.dir, "table1.tex"),
+cat(fit.SUR.texreg, file=paste0(work.dir, "SUR-reg-parsimonious.tex"),
   sep="\n")
 
 ### TEST OF WEAK INSTRUMENT
@@ -127,10 +142,12 @@ fit.weak.instr.texreg <- texreg( list(test.weak.inst.developing, test.weak.inst.
     summary(test.weak.inst.developing)$coefficients[, "t value"], 
     summary(test.weak.inst.world)$coefficients[, "t value"]))
 
-cat(fit.weak.instr.texreg, file=paste0(work.dir, "table2.tex"),
-  sep="\n")
+#cat(fit.weak.instr.texreg, file=paste0(work.dir, "table2.tex"),
+#  sep="\n")
 
 ##### 3SLS with only cap X con interaction, comparing developing-only vs. full sample
+
+
 
 
 
@@ -163,15 +180,38 @@ fit.3sls.iv.world <- systemfit( eq.system, "3SLS",
   method3sls = "GMM" )
 
 
+tr1 <- extract(fit.3sls.iv.only.developing)
+tr1[[2]]@gof <- c(tr1[[2]]@gof, cov2cor(fit.3sls.iv.only.developing$residCov )[2,1])
+tr1[[2]]@gof.names <- c(tr1[[2]]@gof.names, "Residual $\\rho$ between equations")
+tr1[[2]]@gof.decimal <- c(tr1[[2]]@gof.decimal, TRUE)
 
-fit.3sls.iv.texreg <- texreg( list(fit.3sls.iv.only.developing, fit.3sls.iv.world),
+tr1[[1]]@gof <- c(tr1[[1]]@gof,summary(test.weak.inst.developing )$fstatistic["value"])
+tr1[[1]]@gof.names <- c(tr1[[1]]@gof.names, "F-stat on first stage")
+tr1[[1]]@gof.decimal <- c(tr1[[1]]@gof.decimal, TRUE)
+
+
+tr2 <- extract(fit.3sls.iv.world)
+tr2[[2]]@gof <- c(tr2[[2]]@gof, cov2cor(fit.3sls.iv.world$residCov )[2,1])
+tr2[[2]]@gof.names <- c(tr2[[2]]@gof.names, "Residual $\\rho$ between equations")
+tr2[[2]]@gof.decimal <- c(tr2[[2]]@gof.decimal, TRUE)
+
+tr2[[1]]@gof <- c(tr2[[1]]@gof,summary(test.weak.inst.world )$fstatistic["value"])
+tr2[[1]]@gof.names <- c(tr2[[1]]@gof.names, "F-stat on first stage")
+tr2[[1]]@gof.decimal <- c(tr2[[1]]@gof.decimal, TRUE)
+
+# trying something out in accordance with http://stackoverflow.com/questions/19888757/add-p-value-of-hausman-test-or-other-additional-gof-measure-to-texreg-table
+
+
+
+fit.3sls.iv.texreg <- texreg( list(tr1[[1]], tr1[[2]], tr2[[1]], tr2[[2]]),
   custom.model.names = c("$\\%\\Delta$ of per capita K", "$\\ln(w_{H}/w_{L})$", "$\\%\\Delta$ of per capita K", "$\\ln(w_{H}/w_{L})$"),
   digits=3,
   dcolumn=TRUE,
   use.packages=FALSE,
   caption = "First difference 3SLS with GATT membership $\\times$ 1985 average tariff as instrument on first equation \\newline (t-statistics in parentheses)", 
   caption.above = TRUE,
-  override.se = get.t.stats.systemfit(list(fit.3sls.iv.only.developing, fit.3sls.iv.world)))
+  override.se = get.t.stats.systemfit(list(fit.3sls.iv.only.developing, fit.3sls.iv.world)),
+  stars = c(0.01, 0.05, 0.1))
 
 # Thar be dragons below...and hacks
 
@@ -201,7 +241,7 @@ fit.3sls.iv.texreg[grepl( "Num. obs.", fit.3sls.iv.texreg)] <- paste0("Num. obs.
   paste0(c(first.model.nobs, second.model.nobs), collapse=" & "), "            \\\\" )
 
 
-cat(fit.3sls.iv.texreg, file=paste0(work.dir, "table3.tex"),
+cat(fit.3sls.iv.texreg, file=paste0(work.dir, "3sls-parsimonious.tex"),
   sep="\n")
 
 
@@ -244,14 +284,29 @@ fit.SUR.saturated.world <- systemfit( eq.system, "3SLS",
 
 
 
-fit.SUR.saturated.texreg <- texreg( list(fit.SUR.saturated.only.developing, fit.SUR.saturated.world),
+tr1 <- extract(fit.SUR.saturated.only.developing)
+tr1[[2]]@gof <- c(tr1[[2]]@gof, cov2cor(fit.SUR.saturated.only.developing$residCov )[2,1])
+tr1[[2]]@gof.names <- c(tr1[[2]]@gof.names, "Residual $\\rho$ between equations")
+tr1[[2]]@gof.decimal <- c(tr1[[2]]@gof.decimal, TRUE)
+
+tr2 <- extract(fit.SUR.saturated.world)
+tr2[[2]]@gof <- c(tr2[[2]]@gof, cov2cor(fit.SUR.saturated.world$residCov )[2,1])
+tr2[[2]]@gof.names <- c(tr2[[2]]@gof.names, "Residual $\\rho$ between equations")
+tr2[[2]]@gof.decimal <- c(tr2[[2]]@gof.decimal, TRUE)
+
+# trying something out in accordance with http://stackoverflow.com/questions/19888757/add-p-value-of-hausman-test-or-other-additional-gof-measure-to-texreg-table
+
+
+
+fit.SUR.saturated.texreg <- texreg( list(tr1[[1]], tr1[[2]], tr2[[1]], tr2[[2]]),,
   custom.model.names = c("$\\%\\Delta$ of per capita K", "$\\ln(w_{H}/w_{L})$", "$\\%\\Delta$ of per capita K", "$\\ln(w_{H}/w_{L})$"),
   digits=3,
   dcolumn=TRUE,
   use.packages=FALSE,
   caption = "First difference saturated SUR without instrument on first equation (t-statistics in parentheses)", 
   caption.above = TRUE,
-  override.se = get.t.stats.systemfit(list(fit.SUR.saturated.only.developing, fit.SUR.saturated.world)))
+  override.se = get.t.stats.systemfit(list(fit.SUR.saturated.only.developing, fit.SUR.saturated.world)), 
+  stars = c(0.01, 0.05, 0.1))
 
 # Thar be dragons below...and hacks
 
@@ -281,7 +336,7 @@ fit.SUR.saturated.texreg[grepl( "Num. obs.", fit.SUR.saturated.texreg)] <- paste
   paste0(c(first.model.nobs, second.model.nobs), collapse=" & "), "            \\\\" )
 
 
-cat(fit.SUR.saturated.texreg, file=paste0(work.dir, "table4.tex"),
+cat(fit.SUR.saturated.texreg, file=paste0(work.dir, "SUR-reg-saturated.tex"),
   sep="\n")
 
 
@@ -302,7 +357,7 @@ source(curl("https://raw.githubusercontent.com/tdmcarthur/misc/master/authored-f
 
 replace.vars(replacement.matrix=var.names, 
   directory=work.dir, 
-  file.pattern="table.*tex", table.only=TRUE)
+  file.pattern=".*tex", table.only=TRUE)
 
 
 

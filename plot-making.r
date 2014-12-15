@@ -1,5 +1,6 @@
 # NOTE: Below changes working directory to the presentation folder
 # You must first run the main code to create all the variables and such
+# Also must run table-making.r
 
 if (Sys.info()["user"]=="travismcarthur") {
   work.dir <- "/Users/travismcarthur/git/econ-718-paper/paper-building/"
@@ -10,31 +11,45 @@ if (Sys.info()["user"]=="Mint") {
 }
 
 
+pdf(file=paste0(work.dir, "wage-K-scatter.pdf"),
+  width=6,
+  height=6)
 
 
 with(final.wide.df[complete.cases(final.wide.df[, c("ln.wage.NP.over.wage.P.dif", "ln.capital.stock.p.c.dif")]) & final.wide.df$country!="KNA", ], {
   
   income.color <- ifelse(income.class.early=="developing", "red", "blue")
 
-  plot(ln.capital.stock.p.c.dif, ln.wage.NP.over.wage.P.dif, col="white")
+  plot(ln.capital.stock.p.c.dif, ln.wage.NP.over.wage.P.dif, col="white",
+    main="Figure 1: Capital accumulation raises wage \npremium for developing countries",
+    xlab=expression(Delta*log(K)), ylab=expression(Delta*log(w[H]/w[L])))
   text(ln.capital.stock.p.c.dif, ln.wage.NP.over.wage.P.dif , labels=country, col=income.color)
+  
+  legend("bottomright",  legend=c("Developing", "Developed"), col=c("red", "blue"), pch=15,
+    bty="n")
+  #, inset=c(-.3, 0))
+  # Something weird is happening with legend placement
+  
   
 }
 )
 
+# Very useful for plotmath to avoid a bunch of paste expressions:
+# http://stackoverflow.com/questions/13955200/subscripts-in-r-when-adding-other-text
 
 
-eq.system <- list(first = double.delta.capital.stock ~ d.ln.tau.capint.con*income.class.early ,
-  second= ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif*income.class.early)
 
-inst1 <- ~ d.ln.tau.capint.con*income.class.early 
-inst2 <- ~ ln.capital.stock.p.c.dif*income.class.early
-instlist <- list( inst1, inst2 )
+#eq.system <- list(first = double.delta.capital.stock ~ d.ln.tau.capint.con*income.class.early ,
+#  second= ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif*income.class.early)
 
-fit.SUR.world <- systemfit( eq.system, "3SLS", 
-  inst = instlist, 
-  data = final.wide.df[final.wide.df$country!="KNA", ],
-  method3sls = "GMM" )
+#inst1 <- ~ d.ln.tau.capint.con*income.class.early 
+#inst2 <- ~ ln.capital.stock.p.c.dif*income.class.early
+#instlist <- list( inst1, inst2 )
+
+#fit.SUR.world <- systemfit( eq.system, "3SLS", 
+#  inst = instlist, 
+#  data = final.wide.df[final.wide.df$country!="KNA", ],
+#  method3sls = "GMM" )
 
 
 # Thanks to http://stackoverflow.com/questions/14069629/plotting-confidence-intervals
@@ -80,74 +95,12 @@ lines(newx, preds.developing[ ,3], lty = 'dashed', col = 'red')
 # busy and there is no stat signif effect
 
 
+#
+
+dev.off()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Check without KNA:
-
-
-eq.system <- list(first = double.delta.capital.stock ~ d.ln.tau.capint.con*income.class.early ,
-  second= ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif*income.class.early)
-
-inst1 <- ~ d.ln.tau.capint.con*income.class.early 
-inst2 <- ~   ln.capital.stock.p.c.dif*income.class.early
-  # ln.i.price.integ.dif*income.class.early
-instlist <- list( inst1, inst2 )
-
-fit.SUR.world <- systemfit( eq.system, "3SLS", 
-  inst = instlist, 
-  data = final.wide.df[final.wide.df$country!="KNA", ],
-  method3sls = "GMM" )
-
-summary(fit.SUR.world, diagnostics=TRUE)
-# KNA has GDP per cap of $21,260 ( with 51,538 people)
-
-fit.SUR.world <- systemfit( eq.system, "3SLS", 
-  inst = instlist, 
-  data = final.wide.df,
-  method3sls = "GMM")
-
-summary(fit.SUR.world)
-
-final.wide.df[final.wide.df$country=="KNA","d.ln.tau.capint.con"]
-# just exclude KNA. It has missing val for 1st eqn.
-
-
-
-
-summary(first.stage.plm <- lm(ln.capital.stock.p.c.dif ~ ln.i.price.integ.dif ,
-      data=final.wide.df[!is.na(final.wide.df$ln.wage.NP.over.wage.P.dif ) & final.wide.df$country!="KNA",]))
-
-
-
-
-summary(first.stage.plm <- lm(ln.wage.NP.over.wage.P.dif ~ ln.i.price.integ.dif ,
-      data=final.wide.df[!is.na(final.wide.df$ln.wage.NP.over.wage.P.dif ) & final.wide.df$country!="KNA",]))
-
-
-summary(final.wide.df$ln.i.price.integ.dif )
-
+with(final.wide.df[final.wide.df$income.class.later=="developing" & final.wide.df$country!="KNA", ],
+  cor(d.ln.tau.capint , d.ln.tau.con, use="complete.obs")
+)
 

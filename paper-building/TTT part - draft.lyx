@@ -317,7 +317,112 @@ ___Results__
 \end_layout
 
 \begin_layout Standard
+<say that throughout, our precision is limited by sample size>
+\end_layout
+
+\begin_layout Standard
+Among developing countries, the correlation between changes in capital and
+ consumption tariffs is 0.89.
+ Thus, regressing capital accumulation against both variables (and their
+ product) would inflate the variance of the estimated coefficients.
+ Any effect may be masked by this variance inflation.
+ Therefore, we will start by presenting a parsimonous specification that
+ only includes the product of the two tariffs, which is our main coefficient
+ of interest.
+ Table 1 displays these results.
+\end_layout
+
+\begin_layout Standard
+Given that many coefficients are not different from zero, the table shows
+ t-statistics rather than standard errors so it is easier to assess the
+ distance from statistical significance.
+ Among developing countries, we detect no effect of the capital and consumption
+ tariff cross term on the rate of capital accumulation, although the sign
+ of the point estimate is consistent with the theory.
+ The level of capital stock, however, does have an effect on the wage premium
+ that is different from zero at the 5% level.
+ We have estimated that a one percent rise in the per capita capital stock
+ leads to a 0.3% rise in the ratio of high-skill wages to low-skill wages.
+ 
+\end_layout
+
+\begin_layout Standard
+We also include an estimation of the same model with both developed and
+ developing countries.
+ Interaction terms separate the effects on the two groups.
+ For the Atolia theory to be true, we need the effect to exist for developing
+ countries, but not for developed countries.
+ The results are consistent with the theory.
+ The effect of the product of capital and consumption tariffs for developing
+ countries is not statistically different from zero, but the estimated sign
+ is negative, consistent with theory.
+ Furthermore, the point estimate for developed countries is positive but
+ not statistically significant.
+ If these effects were statistically significant, we might conclude that
+ the Atolia mechanism holds for developing countries but not developed countries.
+ Finally, the results suggest that the positive effect of capital stock
+ on the wage premium holds only for developing countries.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{SUR-reg-parsimonious.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{3sls-parsimonious.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{SUR-reg-saturated.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename wage-K-scatter.pdf
+
 \end_inset
 
 
@@ -335,6 +440,10 @@ ___Results__
 \end_inset
 
 <TODO: Look at schooling - like the supply of high skilled labor>
+\end_layout
+
+\begin_layout Standard
+<in our data table, can say that a var coresponds to something in the PWT>
 \end_layout
 
 \begin_layout Standard
