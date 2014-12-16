@@ -88,6 +88,187 @@
 \end_layout
 
 \begin_layout Standard
+__Estimating equations___
+\end_layout
+
+\begin_layout Standard
+<Say cannot do sector-specific estimation>
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $K_{it}$
+\end_inset
+
+ is the capital stock per capita in country 
+\begin_inset Formula $i$
+\end_inset
+
+ in time 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tau_{it}^{K}$
+\end_inset
+
+is the tariff on capital goods, and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tau_{it}^{C}$
+\end_inset
+
+is the tariff on consumption goods.
+\end_layout
+
+\begin_layout Standard
+This capital-tariff equation captures Atolia's predictions of the effect
+ of trade liberalization on the rate of capital accumulation.
+ Since a cut only to tariffs on consumption goods will cause the capital-intensi
+ve import-competing sector to contract, with no corresponding rise in capital
+ in the export-oriented sector, we expect 
+\begin_inset Formula $\beta_{\tau C}>0$
+\end_inset
+
+.
+ When both capital and consumption tariffs are cut, the export-oriented
+ sector accumulates capital faster than the import-competing sector decumulates
+ it, so we expect 
+\begin_inset Formula $\tau_{it}^{K}\times\tau_{it}^{C}<0$
+\end_inset
+
+.
+ This cross term is interpreted as an interaction effect: the additional
+ effect when a country is liberalizer in both capital and consumption goods
+ trade.
+ Atolia is silent on what would happen if only capital tariffs were cut,
+ but the economy-wide lower price in capital should increase the incentive
+ to accumulate capital, so we predict that 
+\begin_inset Formula $\tau_{it}^{K}<0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The second equation that the Atolia model suggests is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\dfrac{w_{H\, it}}{w_{L\, it}}$
+\end_inset
+
+ is the ratio of high-skilled wage to low-skilled wage and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $K_{it}$
+\end_inset
+
+ is the capital stock per capita.
+\end_layout
+
+\begin_layout Standard
+Under the Atolia assumption of complementarity between high skill labor
+ and capital, a higher stock of capital should raise the wage premium for
+ high-skill workers.
+ Hence the prediction of the theory is 
+\begin_inset Formula $\beta_{K}>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Since capital appears on the left side of the first equation and the right
+ side of the second equation, the structure of the two equations above may
+ suggest a two-stage least squares approach.
+ However, proceeding in that way would require us to assume that trade liberaliz
+ation only affects the wage premium through its affect on capital accumulation,
+ which we are not prepared to claim.
+ Moreover, the capital-tariff equation deals with the 
+\shape italic
+growth
+\shape default
+ of capital, while the wage-capital equation involves the 
+\shape italic
+level
+\shape default
+ of capital, ruling out a two-stage least squares strategy.
+ 
+\end_layout
+
+\begin_layout Standard
+We will use first difference to condition on country-specific effects.
+ Our identification strategy is thus difference-in-differences, where the
+ treatment is continuous (tariff and capital stock levels) rather than discrete.
+ we need the parallel trend assumption for identification.
+ That is to say that countries with 
+\end_layout
+
+\begin_layout Standard
+, except with This creates a difference-in-differences.
+\end_layout
+
+\begin_layout Standard
+<Simply two reduced-form relationships.> , which will be augmented to 3sls
+ when try to deal with endogeneioty in each eqn separately>
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha+\beta_{K}K_{it}+v_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\vphantom{}$
 \end_inset
 
@@ -505,36 +686,44 @@ Estevadeordal & Taylor recorded three different tariff measures: consumption
  growth.
  Therefore, we will use this average and call it capital goods tariff for
  the remainder of this paper.
- 
+ The number of countries available in the tariff dataset is limited, but
+ there is no obvious reason that selection bias may be a factor in our analysis.
 \end_layout
 
 \begin_layout Standard
-Table first difference
+Summary statistics of the variables, after transformation and taking first
+ differences, are available in Tables #<> and #<>.
+ We use the World Bank's classification of developing country as of the
+ 1980's.
 \end_layout
 
 \begin_layout Standard
-We use the World Bank's classification of developing country as of the 1980's.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{developing-summary-stats.tex}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Henceforth..
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{developed-summary-stats.tex}
 \end_layout
 
-\begin_layout Standard
-<also, we dont know which tariff lines are included in which <although that
- could be attainable>
-\end_layout
-
-\begin_layout Standard
-No obvious reason that selection bias may be at play.
-\end_layout
-
-\begin_layout Standard
-Say WB definition of developing
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
 \end_inset
 
 
@@ -562,7 +751,18 @@ Say WB definition of developing
 \end_layout
 
 \begin_layout Standard
-___Endogeneity in the Wage-Capital equation____
+<____Endogeneity in the capital-tariff equation____>
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+___Endogeneity in the wage-capital equation____
 \end_layout
 
 \begin_layout Standard
@@ -763,38 +963,6 @@ n, then it seems no other variable would be powerful enough to act as a
  Hence, the problem of endogeneity that spurred this exercise may not be
  worrisome.
  In any case, the results
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-input{developing-summary-stats.tex}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-input{developed-summary-stats.tex}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
