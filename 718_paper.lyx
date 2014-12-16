@@ -151,25 +151,58 @@ This prediction of the HO theory applies the case of the East Asian tigers
  where trade liberalization was followed by decreasing inequality.
  During 1960s to 1970s, Hong Kong, South Korea, Singapore and Taiwan went
  through export-oriented industrialization.
- Wood (1994) finds that for these economies, wage premium went down at a
- faster rate after the liberalization comparing to other periods.
+ Wood (1994) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Wood94"
+
+\end_inset
+
+ finds that for these economies, wage premium went down at a faster rate
+ after the liberalization comparing to other periods.
  
 \end_layout
 
 \begin_layout Standard
 Nevertheless, these evidences are not consistent with the experiences of
  Latin America and some other Asian countries.
- Hanson and Harrison (1999) studies the effect of Mexico's trade reform
- in 1985 on wage inequality.
+ Hanson and Harrison (1999) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Hanson99"
+
+\end_inset
+
+ studies the effect of Mexico's trade reform in 1985 on wage inequality.
  They find that trade exposes low-skill intensive industry to competition
  from other countries with large supply of low-skilled labor.
  This drives down the relative price of low-skilled-intensive goods and
  hence reducing relative wage for low-skilled labor.
- Beyer, Rojas and Vergara (1999) studies the relationship using Chile data
- during the 1980-90s.
- The authors confirm the findings of Hanson and Harrison (1999).
- Hasan and Jandoc (2010) studies the relationship using data from the Philippine
-s during the second half of the 1990s.
+ Beyer, Rojas and Vergara (1999) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Beyer99"
+
+\end_inset
+
+studies the relationship using Chile data during the 1980-90s.
+ The authors confirm the findings of Hanson and Harrison (1999) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Hanson99"
+
+\end_inset
+
+.
+ Hasan and Jandoc (2010) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Hasan2010"
+
+\end_inset
+
+ studies the relationship using data from the Philippines during the second
+ half of the 1990s.
  They find that trade induces an employment shifts from exposed sectors
  to more protected sectors.
  In these latter sectors (especially service sector), wage premium tends
@@ -180,6 +213,13 @@ s during the second half of the 1990s.
 \begin_layout Standard
 Why would some countries experience reduction in wage premium following
  trade liberalization while others experience increasing gap? Wood (1997)
+ 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Wood97"
+
+\end_inset
+
  explains that the contrasting experience of East Asia (1960-70s) and Latin
  America (mid-1980s to 1990s) stems from differing world market environment
  in the two periods.
@@ -193,8 +233,14 @@ mentary technology.
 \end_layout
 
 \begin_layout Standard
-Dornbusch, Fisher and Samuelson (1980) provides a formalized model explaining
- how trade can widen wage inequality.
+Dornbusch, Fisher and Samuelson (1980) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Dornbusch80"
+
+\end_inset
+
+ provides a formalized model explaining how trade can widen wage inequality.
  This model is based on the HO trade model with two countries.
  There are no longer just two goods in this model.
  Assume there is a continuum of goods which are ranked by level of skill
@@ -258,8 +304,15 @@ ed-) intensive goods.
  point.
  This implies that wage of high-skilled labor (and thus wage inequality)
  will increase.
- Zhu and Trefler (2005) finds empirical evidence supporting how trade increases
- wage inequality through technological catch-up in the developing countries.
+ Zhu and Trefler (2005) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Zhu05"
+
+\end_inset
+
+ finds empirical evidence supporting how trade increases wage inequality
+ through this technological catch-up in the developing countries.
  
 \end_layout
 
@@ -272,7 +325,14 @@ Up to this point, it seems like Heckscher-Ohlin's prediction only held in
 \end_layout
 
 \begin_layout Standard
-Atolia (2007) constructed a model of trade for Latin American countries.
+Atolia (2007) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Atolia07"
+
+\end_inset
+
+ constructed a model of trade for Latin American countries.
  Assume there are three sectors in the economy: non-traded (e.g.
  construction), export and import-competing sectors.
  Export sector produces low-skilled-intensive goods while import-competing
@@ -372,12 +432,23 @@ If trade liberalization in intermediate goods (this refers to fixed inputs
 \emph on
 (Note: 
 \emph default
-Ultimately, we would like to test if there is an increases in capital accumulati
-on in export sector.
+Ideally, we would like to test if there is an increases in capital accumulation
+ in export sector.
  However, the data for capital stock by sectors are not available during
  the period of time we are interested in
 \emph on
-.)
+.
+ 
+\emph default
+We use the data of overall capital stock instead as an increase in capital
+ accumulation in any particular sector will lead to an increase in overall
+ capital
+\emph on
+ 
+\emph default
+accumulation.
+\emph on
+)
 \end_layout
 
 \begin_layout Enumerate
@@ -705,9 +776,13 @@ Final goods
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "718"
+options "IEEEtran"
 
-\begin_layout Standard
+\end_inset
+
 
 \end_layout
 
