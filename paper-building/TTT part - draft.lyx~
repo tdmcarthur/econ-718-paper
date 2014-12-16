@@ -227,8 +227,8 @@ level
 We will use first difference to condition on country-specific effects.
  Our identification strategy is thus difference-in-differences, where the
  treatment is continuous (tariff and capital stock levels) rather than discrete.
- we need the parallel trend assumption for identification.
- That is to say that countries with 
+ We need the parallel trend assumption for identification.
+ This assumption requires countries 
 \end_layout
 
 \begin_layout Standard

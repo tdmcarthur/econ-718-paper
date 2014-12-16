@@ -3,6 +3,16 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage{setspace}
+\usepackage{bbm}
+\doublespacing
+\usepackage{fullpage}
+\usepackage{dcolumn}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{rotating}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +35,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -789,8 +800,8 @@ TRAVIS PART
 
 \end_layout
 
-\begin_layout Standard
-__Estimating equations___
+\begin_layout Section
+Empirical model
 \end_layout
 
 \begin_layout Standard
@@ -930,11 +941,28 @@ We will use first difference to condition on country-specific effects.
  Our identification strategy is thus difference-in-differences, where the
  treatment is continuous (tariff and capital stock levels) rather than discrete.
  We need the parallel trend assumption for identification.
- This assumption requires countries 
+ On the capital-tariff relationship, this requires countries with a high
+ tariff would have had the same change in the rate of capital accumulation
+ as those with a low tariff, absent the actual change in trade policy.
+ Similarly, in the wage-capital relationship we need low-capital countries
+ to have had the same change in wage premium as the high-capital countries,
+ absent the actual rise in capital.
 \end_layout
 
 \begin_layout Standard
-, except with This creates a difference-in-differences.
+Our data on disaggregated tariffs limits us to estimating the above equations
+ with just two periods: roughly the late 1980's to the early 2000's.
+ This time frame is well within the 
+\begin_inset Quotes eld
+\end_inset
+
+short run
+\begin_inset Quotes erd
+\end_inset
+
+ period of Atolia, since his numerical simulations indicate worsening inequality
+ for thirty years or more.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -977,8 +1005,8 @@ We will use first difference to condition on country-specific effects.
 
 \end_layout
 
-\begin_layout Standard
-__Data__
+\begin_layout Section
+Data
 \end_layout
 
 \begin_layout Standard
@@ -1437,15 +1465,8 @@ input{developed-summary-stats.tex}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-<____Endogeneity in the capital-tariff equation____>
+\begin_layout Section
+Estimation
 \end_layout
 
 \begin_layout Standard
@@ -1455,8 +1476,19 @@ input{developed-summary-stats.tex}
 
 \end_layout
 
+\begin_layout Subsection
+Endogeneity in the capital-tariff equation
+\end_layout
+
 \begin_layout Standard
-___Endogeneity in the wage-capital equation____
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Endogeneity in the wage-capital equation
 \end_layout
 
 \begin_layout Standard
@@ -1659,8 +1691,8 @@ n, then it seems no other variable would be powerful enough to act as a
  In any case, the results
 \end_layout
 
-\begin_layout Standard
-___Results__
+\begin_layout Section*
+Results
 \end_layout
 
 \begin_layout Standard
@@ -1827,8 +1859,8 @@ input{SUR-reg-saturated.tex}
 ___ DRawbacks__
 \end_layout
 
-\begin_layout Standard
-___Conclusion/discussion___
+\begin_layout Section
+Conclusion/discussion
 \end_layout
 
 \begin_layout Standard

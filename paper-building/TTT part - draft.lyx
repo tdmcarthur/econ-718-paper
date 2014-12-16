@@ -228,16 +228,28 @@ We will use first difference to condition on country-specific effects.
  Our identification strategy is thus difference-in-differences, where the
  treatment is continuous (tariff and capital stock levels) rather than discrete.
  We need the parallel trend assumption for identification.
- This assumption requires countries 
+ On the capital-tariff relationship, this requires countries with a high
+ tariff would have had the same change in the rate of capital accumulation
+ as those with a low tariff, absent the actual change in trade policy.
+ Similarly, in the wage-capital relationship we need low-capital countries
+ to have had the same change in wage premium as the high-capital countries,
+ absent the actual rise in capital.
 \end_layout
 
 \begin_layout Standard
-, except with This creates a difference-in-differences.
-\end_layout
+Our data on disaggregated tariffs limits us to estimating the above equations
+ with just two periods: roughly the late 1980's to the early 2000's.
+ This time frame is well within the 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
-<Simply two reduced-form relationships.> , which will be augmented to 3sls
- when try to deal with endogeneioty in each eqn separately>
+short run
+\begin_inset Quotes erd
+\end_inset
+
+ period of Atolia, since his numerical simulations indicate worsening inequality
+ for thirty years or more.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -249,20 +261,6 @@ We will use first difference to condition on country-specific effects.
 
 \begin_layout Standard
 \begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha+\beta_{K}K_{it}+v_{it}$
 \end_inset
 
 
@@ -741,6 +739,10 @@ input{developed-summary-stats.tex}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+____Estimation>
 \end_layout
 
 \begin_layout Standard
