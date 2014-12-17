@@ -835,7 +835,11 @@ The Atolia model predicts sector-specific changes in capital accumulation.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}$
+\begin_inset Formula 
+\begin{equation}
+\ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}
+\end{equation}
+
 \end_inset
 
 
@@ -908,7 +912,11 @@ The second equation that the Atolia model suggests is:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}$
+\begin_inset Formula 
+\begin{equation}
+\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}
+\end{equation}
+
 \end_inset
 
 
@@ -1020,10 +1028,10 @@ Endogeneity in the capital-tariff equation
 \end_layout
 
 \begin_layout Standard
-We are worried about possible endogeneity in this equation since factors
- like institution may play a role affecting both trade openness and capital
+We are worried about possible endogeneity in equation 1 since factors like
+ institutions may play a role affecting both trade openness and capital
  accumulation.
- To deal with problem , we will follow the instrumental variable technique
+ To deal with this problem, we will follow the instrumental variable technique
  from Estevadeordal & Taylor (2013).
  The paper studies the effect of trade liberalization on economic growth
  using two different instruments: 
@@ -1098,7 +1106,7 @@ Endogeneity in the wage-capital equation
 \end_layout
 
 \begin_layout Standard
-We should be concerned about simultaneous causation in equation #<>.
+We should be concerned about simultaneous causation in equation 2.
  Modeling only one side of the supply-demand relationship is a well-known
  pitfall in econometrics.
  However, the relationship between capital stock and the wage premium is
@@ -1198,7 +1206,7 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_inset
 
 .
- Our RHS variable in equation #<> is in levels of 
+ Our RHS variable in equation 2 is in levels of 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1230,7 +1238,7 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vartriangle\ln K_{it}=\alpha''+\beta_{r}\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)+\vartriangle\xi_{it}$
+\begin_inset Formula $\ln K_{it}=\alpha''+\beta_{r}\ln\left(\sum_{t=a}^{b}r_{t}\right)+\xi_{it}$
 \end_inset
 
 
@@ -1241,7 +1249,7 @@ and the second stage is just the original equation that we wanted to estimate:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vartriangle\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\vartriangle\ln K_{it}+\vartriangle v_{it}$
+\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}$
 \end_inset
 
 
@@ -1269,12 +1277,12 @@ The fatal flaw in the approach outlined above is that
 \end_inset
 
  turns out to be an extremely weak instrument for capital accumulation.
- The F-statistic for a regression of 
-\begin_inset Formula $\vartriangle\ln K_{it}$
+ The F-statistic for a first differences regression of 
+\begin_inset Formula $\ln K_{it}$
 \end_inset
 
  on 
-\begin_inset Formula $\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)$
+\begin_inset Formula $\ln\left(\sum_{t=a}^{b}r_{t}\right)$
 \end_inset
 
  is 0.20.
@@ -1304,7 +1312,7 @@ n, then it seems no other variable would be powerful enough to act as a
  probably does not affect it either.
  Hence, the problem of endogeneity that spurred this exercise may not be
  worrisome.
- In any case, the results
+ In any case, the results<><>
 \end_layout
 
 \begin_layout Section
@@ -1312,9 +1320,22 @@ Data
 \end_layout
 
 \begin_layout Standard
-We used data from three sources: the Penn World Table, Estevadeordal & Taylor
- (2013), and Occupational Wages of the World.
- Table #<> summarizes the variables and their sources.
+We used data from three sources: the Penn World Table
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "pwt"
+
+\end_inset
+
+, Estevadeordal & Taylor (2013), and Occupational Wages of the World
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "oww"
+
+\end_inset
+
+.
+ Table 2 summarizes the variables and their sources.
  Our sample size is limited by the coverage of the tariff data in Estevadeordal
  & Taylor and the wage data in Occupational Wages of the World.
  
@@ -1340,7 +1361,7 @@ Data sources
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="4">
+<lyxtabular version="3" rows="7" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1492,7 +1513,7 @@ Disaggregated tariffs
 \begin_inset Text
 
 \begin_layout Plain Layout
-Estevadeordal and Taylor 
+Estevadeordal & Taylor (2013)
 \end_layout
 
 \end_inset
@@ -1568,45 +1589,7 @@ Aggregated 1985 tariffs
 \begin_inset Text
 
 \begin_layout Plain Layout
-Estevadeordal and Taylor 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Great Depression depth
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Estevadeordal and Taylor 
+Estevadeordal & Taylor (2013)
 \end_layout
 
 \end_inset
@@ -1617,7 +1600,7 @@ Estevadeordal and Taylor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Great Depression depth
 \end_layout
 
 \end_inset
@@ -1644,7 +1627,7 @@ Estevadeordal and Taylor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Estevadeordal & Taylor (2013)
 \end_layout
 
 \end_inset
@@ -1716,7 +1699,7 @@ Estevadeordal & Taylor recorded three different tariff measures: consumption
 
 \begin_layout Standard
 Summary statistics of the variables, after transformation and taking first
- differences, are available in Tables #<> and #<>.
+ differences, are available in Tables 3 and 4.
  We use the World Bank's classification of developing country as of the
  1980's.
 \end_layout
@@ -1758,13 +1741,6 @@ Results and discussion
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Among developing countries, the correlation between changes in capital and
  consumption tariffs is 0.89.
  Thus, regressing capital accumulation against both variables (and their
@@ -1773,7 +1749,7 @@ Among developing countries, the correlation between changes in capital and
  Therefore, we will start by presenting a parsimonious specification that
  only includes the product of the two tariffs, which is our main coefficient
  of interest.
- Table 1 displays these results.
+ Table 5 displays these results.
 \end_layout
 
 \begin_layout Standard
@@ -1840,7 +1816,7 @@ When the tariff level is instrumented by GATT membership
 \end_inset
 
  1985 average tariff, the results for the developing country sample, shown
- in Table <>, are basically unchanged.
+ in Table 6, are basically unchanged.
  On the other hand, the signs of the coefficients on the capital-tariff
  equation for the world sample are the opposite of what they were in the
  uninstrumented regression.
@@ -1872,32 +1848,6 @@ input{3sls-parsimonious.tex}
 \end_layout
 
 \begin_layout Standard
-For completeness, we also present the results with the 
-\begin_inset Quotes eld
-\end_inset
-
-saturated
-\begin_inset Quotes erd
-\end_inset
-
- model of capital tariffs, consumption tariffs, and their product in Table
- #<>.
- As expected, the high correlation between the two tariffs greatly inflates
- the variance of the coefficients.
- The point estimates are consistent with the Atolia theory, however, since
- the sign of the capital tariff coefficient is negative while the sign of
- the consumption tariff is positive.
- We also estimated a three-stage least squares model.
- To instrument for the consumption tariff, we used the severity of the Great
- Depression 
-\begin_inset Formula $\times$
-\end_inset
-
- 1985 average tariff as Estevadoreal & Taylor did, but the variance of the
- coefficients is so large that the results are not worth presenting.
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1911,6 +1861,32 @@ input{SUR-reg-saturated.tex}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+For completeness, we also present the results with the 
+\begin_inset Quotes eld
+\end_inset
+
+saturated
+\begin_inset Quotes erd
+\end_inset
+
+ model of capital tariffs, consumption tariffs, and their product in Table
+ 7.
+ As expected, the high correlation between the two tariffs greatly inflates
+ the variance of the coefficients.
+ The point estimates are consistent with the Atolia theory, however, since
+ the sign of the capital tariff coefficient is negative while the sign of
+ the consumption tariff is positive.
+ We also estimated a three-stage least squares model.
+ To instrument for the consumption tariff, we used the severity of the Great
+ Depression 
+\begin_inset Formula $\times$
+\end_inset
+
+ 1985 average tariff as Estevadoreal & Taylor did, but the variance of the
+ coefficients is so large that the results are not worth presenting.
 \end_layout
 
 \begin_layout Section
@@ -1936,8 +1912,8 @@ Our estimation strategy suffers from a few weaknesses.
  softens confidence in our results somewhat.
  We were not able to obtain sector-specific estimates of capital stock,
  which prevents us from having a sharp identification of the Atolia model.
- Finally, in recent years economists have challenged the robustness of cross-cou
-ntry regressions (Durlauf 2009
+ Finally, in recent years some economists have challenged the robustness
+ of cross-country regressions (Durlauf 2009
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Durlauf09"

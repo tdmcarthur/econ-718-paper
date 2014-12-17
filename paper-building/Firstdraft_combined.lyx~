@@ -107,12 +107,8 @@ The Heckscher-Ohlin model predicts lower wage inequality under trade in
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
-MENTION GATT, EAST ASIA, URUGUAY ROUND, LATIN AMERICA AND OTHER COUNTRIES.
-=======
 This section investigates the effect of trade on wage inequality by exploration
  of theoretical models, as well as empirical evidence.
->>>>>>> FETCH_HEAD
  
 \end_layout
 
@@ -192,13 +188,9 @@ key "Wood94"
 \begin_layout Standard
 Nevertheless, this evidence are not consistent with the experiences of Latin
  America and some other Asian countries.
-<<<<<<< HEAD
- Hanson and Harrison (1999) 
-=======
  Some studies find that trade reform in Latin American countries during
  the mid 1980s has resulted in higher wage premium (Hanson and Harrison
  (1999) 
->>>>>>> FETCH_HEAD
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Hanson99"
@@ -361,43 +353,35 @@ key "Atolia07"
  construction), export and import-competing sectors.
  Export sector produces low-skilled-intensive goods while import-competing
  sector produces high-skilled-intensive goods.
- Inputs in this model are composed of capital, imported intermediate goods
+ Inputs in this model are composed of capital stock, imported capital goods
  (i.e.
  machinery) and labor (low-skilled and high-skilled).
- Capital is produced using imported machineries and non-traded goods.
+ Capital stock is produced using imported capital goods and non-traded goods
+ (e.g.
+ construction).
  It is mobile but subjected to adjustment costs.
  Labor is freely mobile across sectors.
  
 \end_layout
 
 \begin_layout Standard
-Under free trade in the Atolia model, lowered tariffs on intermediate goods
- reduce the cost of capital accumulation while the reduction in tariffs
- on final goods expose the import-competing sector to foreign competition.
- This implies that the export sector will suddenly increase the rate of
- capital accumulation due to the cheaper price of capital.
- On the other hand, facing competition from abroad, the import-competing
- sector will have to shrink--some firms will shift to other sector or go
- out of business.
- This transition will be slow as there is rigidity (costs of adjustment)
- in mobility of capital goods.
- In the economy following trade, there will be 
+Under free trade in the Atolia model, lowered tariffs on intermediate good
+ reduces the cost of capital accumulation, while tariff reduction in final
+ goods expose import-competing sector to foreign competition.
+ This implies that export sector will suddenly increase rate of capital
+ accumulation due to cheaper price of capital.
+ On the other hand, import-competing sector will contract and it will have
+ to decumulate its capital stock.
+ This transition will be slow as capital stock are not freely mobile across
+ sectors.
+ Trade liberalization will lead to 
 \emph on
-
-\begin_inset Quotes eld
-\end_inset
-
-asymmetric capital accumulation
+asymmetric capital accumulation;
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- in the economy as export sector suddenly increases its speed of capital
- accumulation while import-competing sector gradually decumulate its capital
- stock.
+ Export sector suddenly increases its capital accumulation while import-competin
+g sector gradually decumulate its capital stock.
  Now let's assume that high-skilled labor is complementary to capital goods.
- The export sector will now need to hire more high-skilled labor to match
+ The export sector will need to hire more high-skilled workers to match
  the new level of capital goods.
  This will increase the demand for high-skilled labor and thus their relative
  wage.
@@ -408,17 +392,56 @@ asymmetric capital accumulation
 \emph default
 .
  In the long run, however, the economy will reach the new steady state.
- Therefore, in this model, the adverse effect of trade liberalization on
- wage inequality is temporary.
+ In this model, there is a dynamic on how inequality change with trade.
+ The adverse effect of trade liberalization on wage inequality is only temporary.
  
 \end_layout
 
 \begin_layout Standard
-The main objective of our paper is to test the short-run prediction of Atolia
- (2007) model using the data from developing countries.
- If there is empirical evidence that supports Atolia's theory, then Heckscher-Oh
-lin's prediction that wage inequality would go down with trade might hold
- in the long run after all.
+An important caveat in this model lie in the assumption that developing
+ countries acquire all its intermediate goods from abroad.
+ Even though this is a strong assumption, there are some supporting evidences.
+ Alfaro and Ahmed (2009)
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Alfaro09"
+
+\end_inset
+
+ take a look into disaggreated trade data and find that most developing
+ countries import their intermediate goods
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This is called 
+\begin_inset Quotes eld
+\end_inset
+
+capital goods
+\begin_inset Quotes erd
+\end_inset
+
+ in Alfaro and Ahmed (2009), but they are intermediate goods by definition
+ in Atolia (2007).
+ 
+\end_layout
+
+\end_inset
+
+ from a small set of developed countries.
+ 
+\end_layout
+
+\begin_layout Standard
+To our knowledge, there has not been any empirical work studying the effect
+ of trade on wage inequality via 
+\emph on
+capital accumulation
+\emph default
+.
+ Therefore, we would like to test this relationship based on Atolia's model
+ using data from developing countries.
  
 \end_layout
 
@@ -459,38 +482,6 @@ Specifically, we would like to test:
 Whether trade liberalization in intermediate goods (this refers to fixed
  inputs of production) increases overall capital accumulation.
  
-\emph on
-(Note: 
-\emph default
-Ideally, we would like to test if there is an increases in capital accumulation
- in export sector.
- However, the data for capital stock by sectors are not available during
- the period of time we are interested in
-\emph on
-.
- 
-\emph default
-We use the data of overall capital stock instead as an increase in capital
- accumulation in any particular sector will lead to an increase in overall
- capital
-\emph on
- 
-\emph default
-accumulation.
-\emph on
-)
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-
-\emph on
-I think I repeat this below --TTT
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -844,7 +835,11 @@ The Atolia model predicts sector-specific changes in capital accumulation.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}$
+\begin_inset Formula 
+\begin{equation}
+\ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}
+\end{equation}
+
 \end_inset
 
 
@@ -917,7 +912,11 @@ The second equation that the Atolia model suggests is:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}$
+\begin_inset Formula 
+\begin{equation}
+\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}
+\end{equation}
+
 \end_inset
 
 
@@ -1029,10 +1028,10 @@ Endogeneity in the capital-tariff equation
 \end_layout
 
 \begin_layout Standard
-We are worried about possible endogeneity in this equation since factors
- like institution may play a role affecting both trade openness and capital
+We are worried about possible endogeneity in equation 1 since factors like
+ institutions may play a role affecting both trade openness and capital
  accumulation.
- To deal with problem , we will follow the instrumental variable technique
+ To deal with this problem, we will follow the instrumental variable technique
  from Estevadeordal & Taylor (2013).
  The paper studies the effect of trade liberalization on economic growth
  using two different instruments: 
@@ -1107,7 +1106,7 @@ Endogeneity in the wage-capital equation
 \end_layout
 
 \begin_layout Standard
-We should be concerned about simultaneous causation in equation #<>.
+We should be concerned about simultaneous causation in equation 2.
  Modeling only one side of the supply-demand relationship is a well-known
  pitfall in econometrics.
  However, the relationship between capital stock and the wage premium is
@@ -1153,7 +1152,14 @@ We will still take an instrumental variable approach.
 \begin_inset Formula $r$
 \end_inset
 
- (Barro, Mankiw, & Sala-I-Martin 1995).
+ (Barro, Mankiw, & Sala-I-Martin 1995) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Barro95"
+
+\end_inset
+
+.
  Thus, 
 \begin_inset Formula $r$
 \end_inset
@@ -1200,7 +1206,7 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_inset
 
 .
- Our RHS variable in equation #<> is in levels of 
+ Our RHS variable in equation 2 is in levels of 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1232,7 +1238,7 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vartriangle\ln K_{it}=\alpha''+\beta_{r}\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)+\vartriangle\xi_{it}$
+\begin_inset Formula $\ln K_{it}=\alpha''+\beta_{r}\ln\left(\sum_{t=a}^{b}r_{t}\right)+\xi_{it}$
 \end_inset
 
 
@@ -1243,7 +1249,7 @@ and the second stage is just the original equation that we wanted to estimate:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vartriangle\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\vartriangle\ln K_{it}+\vartriangle v_{it}$
+\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}$
 \end_inset
 
 
@@ -1271,19 +1277,26 @@ The fatal flaw in the approach outlined above is that
 \end_inset
 
  turns out to be an extremely weak instrument for capital accumulation.
- The F-statistic for a regression of 
-\begin_inset Formula $\vartriangle\ln K_{it}$
+ The F-statistic for a first differences regression of 
+\begin_inset Formula $\ln K_{it}$
 \end_inset
 
  on 
-\begin_inset Formula $\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)$
+\begin_inset Formula $\ln\left(\sum_{t=a}^{b}r_{t}\right)$
 \end_inset
 
  is 0.20.
  In light of the rule of thumb that an instrument is weak if the F-stat
- is less than ten, this instrument appears to be useless.
- <Staiger and Stock (1997) http://www.econ.brown.edu/fac/Frank_Kleibergen/ec266/sta
-igerstock1997.pdf> Therefore, we have to discard this approach.
+ is less than ten, this instrument appears to be useless (Staiger & Stock
+ 1997)
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Staiger97"
+
+\end_inset
+
+.
+ Therefore, we have to discard this approach.
  If we cannot detect an effect of the price of investment on capital accumulatio
 n, then it seems no other variable would be powerful enough to act as a
  strong instrument, so here we abandon our efforts to handle endogeneity
@@ -1299,7 +1312,7 @@ n, then it seems no other variable would be powerful enough to act as a
  probably does not affect it either.
  Hence, the problem of endogeneity that spurred this exercise may not be
  worrisome.
- In any case, the results
+ In any case, the results<><>
 \end_layout
 
 \begin_layout Section
@@ -1307,9 +1320,22 @@ Data
 \end_layout
 
 \begin_layout Standard
-We used data from three sources: the Penn World Table, Estevadeordal & Taylor
- (2013), and Occupational Wages of the World.
- Table #<> summarizes the variables and their sources.
+We used data from three sources: the Penn World Table
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "pwt"
+
+\end_inset
+
+, Estevadeordal & Taylor (2013), and Occupational Wages of the World
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "oww"
+
+\end_inset
+
+.
+ Table 2 summarizes the variables and their sources.
  Our sample size is limited by the coverage of the tariff data in Estevadeordal
  & Taylor and the wage data in Occupational Wages of the World.
  
@@ -1335,7 +1361,7 @@ Data sources
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="4">
+<lyxtabular version="3" rows="7" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1487,7 +1513,7 @@ Disaggregated tariffs
 \begin_inset Text
 
 \begin_layout Plain Layout
-Estevadeordal and Taylor 
+Estevadeordal & Taylor (2013)
 \end_layout
 
 \end_inset
@@ -1563,45 +1589,7 @@ Aggregated 1985 tariffs
 \begin_inset Text
 
 \begin_layout Plain Layout
-Estevadeordal and Taylor 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Great Depression depth
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Estevadeordal and Taylor 
+Estevadeordal & Taylor (2013)
 \end_layout
 
 \end_inset
@@ -1612,7 +1600,7 @@ Estevadeordal and Taylor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Great Depression depth
 \end_layout
 
 \end_inset
@@ -1639,7 +1627,7 @@ Estevadeordal and Taylor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Estevadeordal & Taylor (2013)
 \end_layout
 
 \end_inset
@@ -1711,7 +1699,7 @@ Estevadeordal & Taylor recorded three different tariff measures: consumption
 
 \begin_layout Standard
 Summary statistics of the variables, after transformation and taking first
- differences, are available in Tables #<> and #<>.
+ differences, are available in Tables 3 and 4.
  We use the World Bank's classification of developing country as of the
  1980's.
 \end_layout
@@ -1753,13 +1741,6 @@ Results and discussion
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Among developing countries, the correlation between changes in capital and
  consumption tariffs is 0.89.
  Thus, regressing capital accumulation against both variables (and their
@@ -1768,7 +1749,7 @@ Among developing countries, the correlation between changes in capital and
  Therefore, we will start by presenting a parsimonious specification that
  only includes the product of the two tariffs, which is our main coefficient
  of interest.
- Table 1 displays these results.
+ Table 5 displays these results.
 \end_layout
 
 \begin_layout Standard
@@ -1835,7 +1816,7 @@ When the tariff level is instrumented by GATT membership
 \end_inset
 
  1985 average tariff, the results for the developing country sample, shown
- in Table <>, are basically unchanged.
+ in Table 6, are basically unchanged.
  On the other hand, the signs of the coefficients on the capital-tariff
  equation for the world sample are the opposite of what they were in the
  uninstrumented regression.
@@ -1876,7 +1857,7 @@ saturated
 \end_inset
 
  model of capital tariffs, consumption tariffs, and their product in Table
- #<>.
+ 7.
  As expected, the high correlation between the two tariffs greatly inflates
  the variance of the coefficients.
  The point estimates are consistent with the Atolia theory, however, since
@@ -1931,9 +1912,15 @@ Our estimation strategy suffers from a few weaknesses.
  softens confidence in our results somewhat.
  We were not able to obtain sector-specific estimates of capital stock,
  which prevents us from having a sharp identification of the Atolia model.
- Finally, in recent years economists have challenged the robustness of cross-cou
-ntry regressions (Durlauf 2009 <http://hope.dukejournals.org/content/41/Suppl_1/31
-5.abstract>).
+ Finally, in recent years some economists have challenged the robustness
+ of cross-country regressions (Durlauf 2009
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Durlauf09"
+
+\end_inset
+
+).
  Nevertheless, <our analaysis is a good attempt to bring the theory to data>
 \end_layout
 
