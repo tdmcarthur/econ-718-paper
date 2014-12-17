@@ -805,7 +805,14 @@ Empirical model
 \end_layout
 
 \begin_layout Standard
-<Say cannot do sector-specific estimation>
+The Atolia model predicts sector-specific changes in capital accumulation.
+ Ideally, we would like to directly measure these effects.
+ However, there is no extant cross-country data on capital stock by sectors.
+ Atolia nevertheless predicts an overall change in the aggregate capital
+ stock of the country, so we can still hope to test the model with aggregate
+ capital data.
+ The theoretical model suggests two relationships, the first of which can
+ be modeled by the following equation: 
 \end_layout
 
 \begin_layout Standard
@@ -1845,11 +1852,18 @@ Conclusion/discussion
 
 \begin_layout Standard
 In light of our empirical test, we cannot reject the Atolia theory.
- The positive effect of capital accumulation on the wage premium among developin
-g countries offers limited support for the theory.
+ The precision of our estimates suffers badly from a small sample size.
+ As a result, we cannot be sure of the sign of the effect of tariff levels
+ on capital accumulation, or even if it is nonzero.
+ On the other hand, the positive effect of capital accumulation on the wage
+ premium among developing countries offers limited support for the theory.
  In some sense, this effect is the less important part of the theory since
  it could, arguably, be unrelated to trade.
- Throughout, our analysis suffers from low statistical power <><> <elasicity>
+ The estimated elasicity of .
+\end_layout
+
+\begin_layout Standard
+<drawbacks> passe, but difficult since trade policy is carried out 
 \end_layout
 
 \begin_layout Standard
