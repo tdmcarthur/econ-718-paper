@@ -97,14 +97,14 @@ Motivation and Literature review
 
 \begin_layout Standard
 This section investigates the effect of trade on wage inequality by exploration
- of theoretical models, as well as empirical evidences.
+ of theoretical models, as well as empirical evidence.
  
 \end_layout
 
 \begin_layout Standard
-Let's first go back to the basic Heckscher-Ohlin (HO) trade model with two
- countries (the North and the South) and two goods (high-skilled and low-skilled
--intensive goods).
+Let us first go back to the basic Heckscher-Ohlin (HO) trade model with
+ two countries (the North and the South) and two goods (high-skilled and
+ low-skilled-intensive goods).
  The North (
 \emph on
 the South
@@ -113,7 +113,7 @@ the South
 \emph on
 low-skilled labor
 \emph default
-) and thus has comparative advantage in high-skilled- (
+) and thus has a comparative advantage in high-skilled- (
 \emph on
 low-skill
 \emph default
@@ -123,8 +123,8 @@ ed-) intensive goods.
  When trade opens, we assume that cost of producing each good become the
  same across countries.
  Assuming zero trade costs (transportation, tariffs, etc.--also known as
- ice-berg costs), price of goods also become the same across countries.
- Under comparative advantage framework, the North (
+ iceberg costs), the price of goods also become the same across countries.
+ Under comparative a advantage framework, the North (
 \emph on
 the South
 \emph default
@@ -133,7 +133,7 @@ the South
 low-skill
 \emph default
 ed-) intensive goods.
- Relative price of low-skilled intensive good will increase in the South.
+ The Relative price of low-skilled intensive good will increase in the South.
  By Stolper-Samuelson theorem
 \begin_inset Foot
 status collapsed
@@ -148,8 +148,8 @@ Stolper and Samuelson theorem describes that the return to the intensively-used
 
 , this will raise the South's demand for low-skilled labor and their relative
  wage.
- Therefore, HO model implies that in the developing countries, trade should
- lead to lower 
+ Therefore, the HO model implies that in the developing countries, trade
+ should lead to a lower 
 \emph on
 wage premium
 \emph default
@@ -169,14 +169,14 @@ key "Wood94"
 
 \end_inset
 
- finds that for these economies, wage premium went down at a faster rate
- after the liberalization comparing to other periods.
+ finds that for these economies, the wage premium went down at a faster
+ rate after the liberalization comparing to other periods.
  
 \end_layout
 
 \begin_layout Standard
-Nevertheless, these evidences are not consistent with the experiences of
- Latin America and some other Asian countries.
+Nevertheless, this evidence are not consistent with the experiences of Latin
+ America and some other Asian countries.
  Hanson and Harrison (1999) 
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -186,7 +186,7 @@ key "Hanson99"
 
  studies the effect of Mexico's trade reform in 1985 on wage inequality.
  They find that trade exposes low-skill intensive industry to competition
- from other countries with large supply of low-skilled labor.
+ from other countries with a large supply of low-skilled labor.
  This drives down the relative price of low-skilled-intensive goods and
  hence reducing relative wage for low-skilled labor.
  Beyer, Rojas and Vergara (1999) 
@@ -214,16 +214,16 @@ key "Hasan2010"
 
  studies the relationship using data from the Philippines during the second
  half of the 1990s.
- They find that trade induces an employment shifts from exposed sectors
- to more protected sectors.
- In these latter sectors (especially service sector), wage premium tends
+ They find that trade induces an employment shift from exposed sectors to
+ more protected sectors.
+ In these latter sectors (especially service sector), the wage premium tends
  to be higher, resulting in higher overall wage premium.
  
 \end_layout
 
 \begin_layout Standard
 Why would some countries experience reduction in wage premium following
- trade liberalization while others experience increasing gap? Wood (1997)
+ trade liberalization while others experience an increasing gap? Wood (1997)
  
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -234,8 +234,8 @@ key "Wood97"
  explains that the contrasting experience of East Asia (1960-70s) and Latin
  America (mid-1980s to 1990s) stems from differing world market environment
  in the two periods.
- He argues that by mid-1980s, China has emerged as an important player in
- the world economy.
+ He argues that by the mid-1980s, China had emerged as an important player
+ in the world economy.
  Moreover, in the latter period, the world has shifted toward using skill-comple
 mentary technology.
  Wood argues that these two factors are significant cause affecting the
@@ -292,14 +292,15 @@ net
 low-skill
 \emph default
 ed-) intensive goods.
- Let's now consider some comparative statics to see how can trade increase
+ Let us now consider some comparative statics to see how can trade increase
  wage inequality the South (as well as the North since we assume factor-price
  equalization).
  First, consider a positive shock in the world demand for high-skilled-intensive
  goods.
  This decreases relative wage of low-skilled labor, leading to an increase
- in wage gap.
- Second, consider a positive shock the South's supply of low-skilled labor.
+ in the wage gap.
+ Second, consider a positive shock to the South's supply of low-skilled
+ labor.
  This decreases relative price of low-skilled labor, and thus widens the
  wage inequality.
  If the two countries differ significantly, we can also have the case of
@@ -330,8 +331,8 @@ key "Zhu05"
 \begin_layout Standard
 Up to this point, it seems like Heckscher-Ohlin's prediction only held in
  the earlier wave of trade liberalization in East Asia and not after that.
- So, trade is bad for wage equality after all? The answer might be no, at
- least for the long run according to Atolia (2007).
+ So, is trade liberalization is bad for wage equality after all? The answer
+ might be no, at least for the long run according to Atolia (2007).
  
 \end_layout
 
@@ -348,19 +349,24 @@ key "Atolia07"
  construction), export and import-competing sectors.
  Export sector produces low-skilled-intensive goods while import-competing
  sector produces high-skilled-intensive goods.
- Inputs in this model compose of capital, imported intermediate goods (i.e.
- machineries) and labor (low-skilled and high-skilled).
+ Inputs in this model are composed of capital, imported intermediate goods
+ (i.e.
+ machinery) and labor (low-skilled and high-skilled).
  Capital is produced using imported machineries and non-traded goods.
  It is mobile but subjected to adjustment costs.
  Labor is freely mobile across sectors.
- Under free trade, lowered tariffs on intermediate goods reduce costs of
- capital accumulation while tariff reduction in final goods expose import-compet
-ing sector to foreign competition.
- This implies that export sector will suddenly increase rate of capital
- accumulation due to cheaper price of capital.
- On the other hand, facing competition from abroad, import-competing sector
- will have to shrink--some firms will shift to other sector or go out of
- business.
+ 
+\end_layout
+
+\begin_layout Standard
+Under free trade in the Atolia model, lowered tariffs on intermediate goods
+ reduce the cost of capital accumulation while the reduction in tariffs
+ on final goods expose the import-competing sector to foreign competition.
+ This implies that the export sector will suddenly increase the rate of
+ capital accumulation due to the cheaper price of capital.
+ On the other hand, facing competition from abroad, the import-competing
+ sector will have to shrink--some firms will shift to other sector or go
+ out of business.
  This transition will be slow as there is rigidity (costs of adjustment)
  in mobility of capital goods.
  In the economy following trade, there will be 
@@ -379,8 +385,8 @@ asymmetric capital accumulation
  accumulation while import-competing sector gradually decumulate its capital
  stock.
  Now let's assume that high-skilled labor is complementary to capital goods.
- Export sector will now need to hire more high-skilled labor to match the
- new level of capital goods.
+ The export sector will now need to hire more high-skilled labor to match
+ the new level of capital goods.
  This will increase the demand for high-skilled labor and thus their relative
  wage.
  For the short-run, trade will therefore increase wage inequality through
@@ -390,16 +396,16 @@ asymmetric capital accumulation
 \emph default
 .
  In the long run, however, the economy will reach the new steady state.
- Therefore, in this model, the adverse effect of trade on wage inequality
- is temporary.
+ Therefore, in this model, the adverse effect of trade liberalization on
+ wage inequality is temporary.
  
 \end_layout
 
 \begin_layout Standard
 The main objective of our paper is to test the short-run prediction of Atolia
  (2007) model using the data from developing countries.
- If there is an empirical evidence that support Atolia's theory, then Heckscher-
-Ohlin's prediction that wage inequality would go down with trade might hold
+ If there is empirical evidence that supports Atolia's theory, then Heckscher-Oh
+lin's prediction that wage inequality would go down with trade might hold
  in the long run after all.
  
 \end_layout
@@ -438,8 +444,9 @@ Specifically, we would like to test:
 \end_layout
 
 \begin_layout Enumerate
-If trade liberalization in intermediate goods (this refers to fixed inputs
- of production) increases overall capital accumulation? 
+Whether trade liberalization in intermediate goods (this refers to fixed
+ inputs of production) increases overall capital accumulation.
+ 
 \emph on
 (Note: 
 \emph default
@@ -460,23 +467,36 @@ We use the data of overall capital stock instead as an increase in capital
 accumulation.
 \emph on
 )
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+I think I repeat this below --TTT
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-If trade liberalization in final goods decreases overall capital accumulation?
+Whether trade liberalization in final goods decreases overall capital accumulati
+on.
 \end_layout
 
 \begin_layout Enumerate
-If the interaction between trade liberalizations in intermediate and final
- goods increases overall capital accumulation? 
+Whether the interaction between trade liberalizations in intermediate and
+ final goods increases overall capital accumulation.
 \end_layout
 
 \begin_layout Enumerate
-If capital accumulation increases 
+Whether capital accumulation increases 
 \emph on
 wage premium
 \emph default
- (the ratio of wage between high-skilled and low-skilled labors) 
+ (the ratio of wage between high-skilled and low-skilled occupations) 
 \begin_inset Formula 
 \[
 \]
@@ -789,17 +809,6 @@ Final goods
 
 \end_layout
 
-\begin_layout Standard
-TRAVIS PART
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Empirical model
 \end_layout
@@ -1078,7 +1087,8 @@ We will still take an instrumental variable approach.
 \begin_inset Formula $r$
 \end_inset
 
-<citation?>.
+ (Barro, Mankiw, & Sala-I-Martin 1995 <http://www.jstor.org.ezproxy.library.wisc.edu/s
+table/2117998>).
  Thus, 
 \begin_inset Formula $r$
 \end_inset
@@ -1093,10 +1103,7 @@ We will still take an instrumental variable approach.
 \begin_inset Formula $r$
 \end_inset
 
- is not equalized across countries, though, so we can proceed <make citation
- of a paper dealing with this.
- Also, this challenges a bit our assertion that r is exogenously determined>.
- 
+ is not equalized across countries, though, so we can proceed.
 \end_layout
 
 \begin_layout Standard
@@ -1156,7 +1163,6 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_inset
 
  affects the wage premium only through its effect on capital accumulation.
- <TODO: justify a little>.
  The first stage of the model can then be expressed as
 \end_layout
 
@@ -1614,7 +1620,7 @@ low skill
 \end_inset
 
 .
- This is in accordance with Zhu & Trefler <year>.
+ This is in accordance with Zhu & Trefler (2005).
  Only workers in the manufacturing sector were included.
  Since we did not have measurements of the number of workers in each occupation,
  we computed the simple average of all occupations in each skill category.
@@ -1686,10 +1692,6 @@ Results
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-<say that throughout, our precision is limited by sample size>
 \end_layout
 
 \begin_layout Standard
@@ -1863,36 +1865,15 @@ In light of our empirical test, we cannot reject the Atolia theory.
 \end_layout
 
 \begin_layout Standard
-Our inability to eliminate possible endogeneity in the wage-capital equation
- weakens our results somewhat.
- 
-\end_layout
-
-\begin_layout Standard
-<drawbacks> passe, but difficult since trade policy is carried out 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-<TODO: Look at schooling - like the supply of high skilled labor>
-\end_layout
-
-\begin_layout Standard
-<in our data table, can say that a var coresponds to something in the PWT>
-\end_layout
-
-\begin_layout Standard
-<Should say something about having dif #'s of obseravtions in the two SUR
- equations>
+Our estimation strategy suffers from a few weaknesses.
+ Our inability to eliminate possible endogeneity in the wage-capital equation
+ softens confidence in our results somewhat.
+ We were not able to obtain sector-specific estimates of capital stock,
+ which prevents us from having a sharp identification of the Atolia model.
+ Finally, in recent years economists have challenged the robustness of cross-cou
+ntry regressions (Durlauf 2009 <http://hope.dukejournals.org/content/41/Suppl_1/31
+5.abstract>).
+ Nevertheless, <our analaysis is a good attempt to bring the theory to data>
 \end_layout
 
 \begin_layout Standard
