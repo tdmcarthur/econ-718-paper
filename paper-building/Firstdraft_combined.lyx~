@@ -966,33 +966,7 @@ short run
 \end_layout
 
 \begin_layout Standard
-<Simply two reduced-form relationships.> , which will be augmented to 3sls
- when try to deal with endogeneioty in each eqn separately>
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha+\beta_{K}K_{it}+v_{it}$
 \end_inset
 
 
@@ -1451,20 +1425,6 @@ input{developed-summary-stats.tex}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Estimation
 \end_layout
@@ -1474,6 +1434,26 @@ Estimation
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Since we are estimating two equations with the same sample, a seemingly
+ unrelated regressions approach permits us to obtain more efficient estimates
+ of the parameters.
+ We have a small number of observations, so any increase in statistical
+ power is welcome.
+ In practice, the residuals of the two regressions are nearly uncorrelated,
+ so there is little advantage to using seemingly unrelated regressions compared
+ with estimating each equation individually.
+ 
+\end_layout
+
+\begin_layout Standard
+Endogeneity is a concern in the two equations.
+ To handle this problem, we can use three-stage least squares.
+ This involves simply instrumenting for endogenous variable sin each equation
+ individually and then using the seemingly unrelated regressions technique
+ to make use of the correlated residuals of the two equations.
 \end_layout
 
 \begin_layout Subsection
