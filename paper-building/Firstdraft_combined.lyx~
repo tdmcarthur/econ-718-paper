@@ -96,13 +96,23 @@ Motivation and Literature review
 \end_layout
 
 \begin_layout Standard
-This section investigates the effect of trade on wage inequality by exploration
- of theoretical models, as well as empirical evidence.
+The Heckscher-Ohlin model predicts lower wage inequality under trade in
+ developing countries.
+ Instead, lower tariffs have been associated with higher inequality in the
+ developing world.
+ Atolia (2007) provides a reconciliation to the Hechscher-Ohlin prediction,
+ arguing that the adverse effect of trade on wage inequality is only temporary.
+ We wish to empirically test this theory.
  
 \end_layout
 
 \begin_layout Standard
+<<<<<<< HEAD
 MENTION GATT, EAST ASIA, URUGUAY ROUND, LATIN AMERICA AND OTHER COUNTRIES.
+=======
+This section investigates the effect of trade on wage inequality by exploration
+ of theoretical models, as well as empirical evidence.
+>>>>>>> FETCH_HEAD
  
 \end_layout
 
@@ -182,34 +192,31 @@ key "Wood94"
 \begin_layout Standard
 Nevertheless, this evidence are not consistent with the experiences of Latin
  America and some other Asian countries.
+<<<<<<< HEAD
  Hanson and Harrison (1999) 
+=======
+ Some studies find that trade reform in Latin American countries during
+ the mid 1980s has resulted in higher wage premium (Hanson and Harrison
+ (1999) 
+>>>>>>> FETCH_HEAD
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Hanson99"
 
 \end_inset
 
- studies the effect of Mexico's trade reform in 1985 on wage inequality.
- They find that trade exposes low-skill intensive industry to competition
- from other countries with a large supply of low-skilled labor.
- This drives down the relative price of low-skilled-intensive goods and
- hence reducing relative wage for low-skilled labor.
- Beyer, Rojas and Vergara (1999) 
+, Beyer, Rojas and Vergara (1999) 
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Beyer99"
 
 \end_inset
 
-studies the relationship using Chile data during the 1980-90s.
- The authors confirm the findings of Hanson and Harrison (1999) 
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "Hanson99"
-
-\end_inset
-
-.
+).
+ They find that trade exposes low-skill intensive industry to competition
+ from other countries with large supply of low-skilled labor.
+ This drives down the relative price of low-skilled-intensive goods and
+ hence reducing relative wage for low-skilled labor.
  Hasan and Jandoc (2010) 
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -1022,9 +1029,12 @@ Endogeneity in the capital-tariff equation
 \end_layout
 
 \begin_layout Standard
-To deal with possible endogeneity problem in this equation, we will follow
- the instrumental variable technique done in Estavadeordal & Taylor (2013).
- The author study the effect of trade liberalization on economic growth
+We are worried about possible endogeneity in this equation since factors
+ like institution may play a role affecting both trade openness and capital
+ accumulation.
+ To deal with problem , we will follow the instrumental variable technique
+ from Estevadeordal & Taylor (2013).
+ The paper studies the effect of trade liberalization on economic growth
  using two different instruments: 
 \begin_inset Formula 
 \[
@@ -1053,21 +1063,24 @@ where
 \end_inset
 
  They believe that these instruments indicate both ability and willingness
- of countries to engage in trade liberalization movement in the mid 1980s
- to 1990s.
- First part of both instruments is average tariffs in 1985.
- They argue that if a country has high tariff in 1985, it would have ability
- to have a big tariff cut in the following period.
+ of countries to engage in trade liberalization movement in the 1980-90s.
+ First part of both instruments is 
+\emph on
+average tariffs in 1985
+\emph default
+.
+ Estevadeordal and Taylor (ET) argue that if a country has high tariff in
+ 1985, it would have ability to have a big tariff cut in the following period.
  The second component of the first instrument is a binary variable indicating
  GATT membership in 1975.
  If a country was a member of GATT, then it would be more likely to later
  join trade liberalization movement.
  For the second instrument, the second component is how much a country suffered
  from the Great Depression.
- The authors argue that this determines policy makers' openness to trade.
+ The authors believe that this determines policy makers' openness to trade.
  They find that these provide strong instruments for tariffs variables.
  To be able to use these instruments we have to make sure exclusion restrictions
- is valid.
+ hold.
  In other words, there is no direct relationship between the two instruments
  and our dependent variable 
 \emph on
