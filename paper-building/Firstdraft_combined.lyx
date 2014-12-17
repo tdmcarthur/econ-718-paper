@@ -987,6 +987,251 @@ short run
 \end_layout
 
 \begin_layout Section
+Estimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since we are estimating two equations with the same sample, a seemingly
+ unrelated regressions approach permits us to obtain more efficient estimates
+ of the parameters.
+ We have a small number of observations, so any increase in statistical
+ power is welcome.
+ In practice, the residuals of the two regressions are nearly uncorrelated,
+ so there is little advantage to using seemingly unrelated regressions compared
+ with estimating each equation individually.
+ 
+\end_layout
+
+\begin_layout Standard
+Endogeneity is a concern in the two equations.
+ To handle this problem, we can use three-stage least squares.
+ This involves simply instrumenting for endogenous variables in each equation
+ individually and then using the seemingly unrelated regressions technique
+ to make use of the correlated residuals of the two equations.
+\end_layout
+
+\begin_layout Subsection
+Endogeneity in the capital-tariff equation
+\end_layout
+
+\begin_layout Standard
+To deal with possible endogeneity problem in this equation, we will follow
+ the instrumental variable approach done in Estavadeordal & Taylor (2013).
+ The author study the effect of trade liberalization 
+\end_layout
+
+\begin_layout Subsection
+Endogeneity in the wage-capital equation
+\end_layout
+
+\begin_layout Standard
+We should be concerned about simultaneous causation in equation #<>.
+ Modeling only one side of the supply-demand relationship is a well-known
+ pitfall in econometrics.
+ However, the relationship between capital stock and the wage premium is
+ indirect: it operates through the complementarity of capital and high-skilled
+ labor.
+ Therefore, it is not appropriate to model the relationship as a full supply-dem
+and simultaneous equation system.
+ 
+\end_layout
+
+\begin_layout Standard
+We will still take an instrumental variable approach.
+ A straightforward instrument for the level of capital stock is 
+\begin_inset Formula $r$
+\end_inset
+
+, the price of capital accumulation.
+ In a closed economy, 
+\begin_inset Formula $r$
+\end_inset
+
+ is determined endogenously; firms' solutions to their profit maximization
+ problems should ensure that 
+\begin_inset Formula $r=\nicefrac{\partial F}{\partial K}$
+\end_inset
+
+, where 
+\begin_inset Formula $F\left(\cdot\right)$
+\end_inset
+
+ represents the aggregate production function.
+ In an open economy, 
+\begin_inset Formula $r$
+\end_inset
+
+ can be determined exogenously.
+ The import price of capital goods determines the domestic capital price
+ in the Atolia model.
+ Clearly we want to avoid assuming aspects to the Atolia model while we
+ test it, however.
+ We can rely on other models in which international financial markets can
+ exogenously determine 
+\begin_inset Formula $r$
+\end_inset
+
+<citation?>.
+ Thus, 
+\begin_inset Formula $r$
+\end_inset
+
+ is determined in other countries rather than endogenously.
+ In principle, this could lead to all countries facing the same 
+\begin_inset Formula $r$
+\end_inset
+
+, which would present a statistical identification problem.
+ We observe that 
+\begin_inset Formula $r$
+\end_inset
+
+ is not equalized across countries, though, so we can proceed <make citation
+ of a paper dealing with this.
+ Also, this challenges a bit our assertion that r is exogenously determined>.
+ 
+\end_layout
+
+\begin_layout Standard
+According to the firm's optimization problem, if an exogenous shock to 
+\begin_inset Formula $r$
+\end_inset
+
+ leads to 
+\begin_inset Formula $\nicefrac{\partial F}{\partial K}<r$
+\end_inset
+
+, then capital should be accumulated faster.
+ If 
+\begin_inset Formula $\nicefrac{\partial F}{\partial K}>r$
+\end_inset
+
+, then the capital stock should shrink.
+ This leads to the following functional relationship: 
+\begin_inset Formula $\nicefrac{\partial K}{\partial t}=G\left(r\right)$
+\end_inset
+
+, i.e.
+ the change of 
+\begin_inset Formula $K$
+\end_inset
+
+ over time is a function of 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Our RHS variable in equation #<> is in levels of 
+\begin_inset Formula $K$
+\end_inset
+
+, not change, so we must integrate both sides with respect to time: 
+\begin_inset Formula $K=\intop_{a}^{b}G\left(r\right)dt$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $G\left(r\right)$
+\end_inset
+
+ is simply linear, then we can approximate this relationship by simply summing
+ over the value of 
+\begin_inset Formula $r$
+\end_inset
+
+ in each time period: 
+\begin_inset Formula $K=\sum_{t=a}^{b}r_{t}+\epsilon$
+\end_inset
+
+.
+ For an IV strategy, we need the assumption that 
+\begin_inset Formula $r$
+\end_inset
+
+ affects the wage premium only through its effect on capital accumulation.
+ <TODO: justify a little>.
+ The first stage of the model can then be expressed as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vartriangle\ln K_{it}=\alpha''+\beta_{r}\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)+\vartriangle\xi_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the second stage is just the original equation that we wanted to estimate:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\vartriangle\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\vartriangle\ln K_{it}+\vartriangle v_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An estimate of 
+\begin_inset Formula $r$
+\end_inset
+
+ for each country and year is available from the Penn World Table.
+ We will divide the price of investment by the price of consumption to obtain
+ the real investment price.
+ We choose the years 1975-1990 for the first period measurement of 
+\begin_inset Formula $\sum_{t=a}^{b}r_{t}$
+\end_inset
+
+ and 1991-2004 for the second period, which matches the periods of measurement
+ for capital stock growth in the tariff-capital equation.
+\end_layout
+
+\begin_layout Standard
+The fatal flaw in the approach outlined above is that 
+\begin_inset Formula $r$
+\end_inset
+
+ turns out to be an extremely weak instrument for capital accumulation.
+ The F-statistic for a regression of 
+\begin_inset Formula $\vartriangle\ln K_{it}$
+\end_inset
+
+ on 
+\begin_inset Formula $\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)$
+\end_inset
+
+ is 0.20.
+ In light of the rule of thumb that an instrument is weak if the F-stat
+ is less than ten, this instrument appears to be useless.
+ <Staiger and Stock (1997) http://www.econ.brown.edu/fac/Frank_Kleibergen/ec266/sta
+igerstock1997.pdf> Therefore, we have to discard this approach.
+ If we cannot detect an effect of the price of investment on capital accumulatio
+n, then it seems no other variable would be powerful enough to act as a
+ strong instrument, so here we abandon our efforts to handle endogeneity
+ in the wage-capital equation.
+ As consolation, the weakness of 
+\begin_inset Formula $r$
+\end_inset
+
+ as an instrument for capital accumulation provides indirect evidence that
+ the effect of the wage premium upon capital accumulation may be weak.
+ That is to say, if the price of capital accumulation itself does not detectably
+ affect capital accumulation, the price of another factor of production
+ probably does not affect it either.
+ Hence, the problem of endogeneity that spurred this exercise may not be
+ worrisome.
+ In any case, the results
+\end_layout
+
+\begin_layout Section
 Data
 \end_layout
 
@@ -1430,255 +1675,6 @@ input{developed-summary-stats.tex}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Estimation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Since we are estimating two equations with the same sample, a seemingly
- unrelated regressions approach permits us to obtain more efficient estimates
- of the parameters.
- We have a small number of observations, so any increase in statistical
- power is welcome.
- In practice, the residuals of the two regressions are nearly uncorrelated,
- so there is little advantage to using seemingly unrelated regressions compared
- with estimating each equation individually.
- 
-\end_layout
-
-\begin_layout Standard
-Endogeneity is a concern in the two equations.
- To handle this problem, we can use three-stage least squares.
- This involves simply instrumenting for endogenous variable sin each equation
- individually and then using the seemingly unrelated regressions technique
- to make use of the correlated residuals of the two equations.
-\end_layout
-
-\begin_layout Subsection
-Endogeneity in the capital-tariff equation
-\end_layout
-
-\begin_layout Standard
-To deal with possible endogeneity problem in this equation, we will follow
- the instrumental variable approach done in Estavadeordal & Taylor (2013).
- The author study the effect of trade liberalization 
-\end_layout
-
-\begin_layout Standard
-Endogeneity in the wage-capital equation
-\end_layout
-
-\begin_layout Subsection
-Endogeneity in the wage-capital equation
-\end_layout
-
-\begin_layout Standard
-We should be concerned about simultaneous causation in equation #<>.
- Modeling only one side of the supply-demand relationship is a well-known
- pitfall in econometrics.
- However, the relationship between capital stock and the wage premium is
- indirect: it operates through the complementarity of capital and high-skilled
- labor.
- Therefore, it is not appropriate to model the relationship as a full supply-dem
-and simultaneous equation system.
- 
-\end_layout
-
-\begin_layout Standard
-We will still take an instrumental variable approach.
- A straightforward instrument for the level of capital stock is 
-\begin_inset Formula $r$
-\end_inset
-
-, the price of capital accumulation.
- In a closed economy, 
-\begin_inset Formula $r$
-\end_inset
-
- is determined endogenously; firms' solutions to their profit maximization
- problems should ensure that 
-\begin_inset Formula $r=\nicefrac{\partial F}{\partial K}$
-\end_inset
-
-, where 
-\begin_inset Formula $F\left(\cdot\right)$
-\end_inset
-
- represents the aggregate production function.
- In an open economy, 
-\begin_inset Formula $r$
-\end_inset
-
- can be determined exogenously.
- The import price of capital goods determines the domestic capital price
- in the Atolia model.
- Clearly we want to avoid assuming aspects to the Atolia model while we
- test it, however.
- We can rely on other models in which international financial markets can
- exogenously determine 
-\begin_inset Formula $r$
-\end_inset
-
-<citation?>.
- Thus, 
-\begin_inset Formula $r$
-\end_inset
-
- is determined in other countries rather than endogenously.
- In principle, this could lead to all countries facing the same 
-\begin_inset Formula $r$
-\end_inset
-
-, which would present a statistical identification problem.
- We observe that 
-\begin_inset Formula $r$
-\end_inset
-
- is not equalized across countries, though, so we can proceed <make citation
- of a paper dealing with this.
- Also, this challenges a bit our assertion that r is exogenously determined>.
- 
-\end_layout
-
-\begin_layout Standard
-According to the firm's optimization problem, if an exogenous shock to 
-\begin_inset Formula $r$
-\end_inset
-
- leads to 
-\begin_inset Formula $\nicefrac{\partial F}{\partial K}<r$
-\end_inset
-
-, then capital should be accumulated faster.
- If 
-\begin_inset Formula $\nicefrac{\partial F}{\partial K}>r$
-\end_inset
-
-, then the capital stock should shrink.
- This leads to the following functional relationship: 
-\begin_inset Formula $\nicefrac{\partial K}{\partial t}=G\left(r\right)$
-\end_inset
-
-, i.e.
- the change of 
-\begin_inset Formula $K$
-\end_inset
-
- over time is a function of 
-\begin_inset Formula $r$
-\end_inset
-
-.
- Our RHS variable in equation #<> is in levels of 
-\begin_inset Formula $K$
-\end_inset
-
-, not change, so we must integrate both sides with respect to time: 
-\begin_inset Formula $K=\intop_{a}^{b}G\left(r\right)dt$
-\end_inset
-
-.
- If 
-\begin_inset Formula $G\left(r\right)$
-\end_inset
-
- is simply linear, then we can approximate this relationship by simply summing
- over the value of 
-\begin_inset Formula $r$
-\end_inset
-
- in each time period: 
-\begin_inset Formula $K=\sum_{t=a}^{b}r_{t}+\epsilon$
-\end_inset
-
-.
- For an IV strategy, we need the assumption that 
-\begin_inset Formula $r$
-\end_inset
-
- affects the wage premium only through its effect on capital accumulation.
- <TODO: justify a little>.
- The first stage of the model can then be expressed as
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vartriangle\ln K_{it}=\alpha''+\beta_{r}\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)+\vartriangle\xi_{it}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-and the second stage is just the original equation that we wanted to estimate:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vartriangle\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\vartriangle\ln K_{it}+\vartriangle v_{it}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-An estimate of 
-\begin_inset Formula $r$
-\end_inset
-
- for each country and year is available from the Penn World Table.
- We will divide the price of investment by the price of consumption to obtain
- the real investment price.
- We choose the years 1975-1990 for the first period measurement of 
-\begin_inset Formula $\sum_{t=a}^{b}r_{t}$
-\end_inset
-
- and 1991-2004 for the second period, which matches the periods of measurement
- for capital stock growth in the tariff-capital equation.
-\end_layout
-
-\begin_layout Standard
-The fatal flaw in the approach outlined above is that 
-\begin_inset Formula $r$
-\end_inset
-
- turns out to be an extremely weak instrument for capital accumulation.
- The F-statistic for a regression of 
-\begin_inset Formula $\vartriangle\ln K_{it}$
-\end_inset
-
- on 
-\begin_inset Formula $\vartriangle\ln\left(\sum_{t=a}^{b}r_{t}\right)$
-\end_inset
-
- is 0.20.
- In light of the rule of thumb that an instrument is weak if the F-stat
- is less than ten, this instrument appears to be useless.
- <Staiger and Stock (1997) http://www.econ.brown.edu/fac/Frank_Kleibergen/ec266/sta
-igerstock1997.pdf> Therefore, we have to discard this approach.
- If we cannot detect an effect of the price of investment on capital accumulatio
-n, then it seems no other variable would be powerful enough to act as a
- strong instrument, so here we abandon our efforts to handle endogeneity
- in the wage-capital equation.
- As consolation, the weakness of 
-\begin_inset Formula $r$
-\end_inset
-
- as an instrument for capital accumulation provides indirect evidence that
- the effect of the wage premium upon capital accumulation may be weak.
- That is to say, if the price of capital accumulation itself does not detectably
- affect capital accumulation, the price of another factor of production
- probably does not affect it either.
- Hence, the problem of endogeneity that spurred this exercise may not be
- worrisome.
- In any case, the results
 \end_layout
 
 \begin_layout Section*
