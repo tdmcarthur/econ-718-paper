@@ -452,38 +452,6 @@ Specifically, we would like to test:
 Whether trade liberalization in intermediate goods (this refers to fixed
  inputs of production) increases overall capital accumulation.
  
-\emph on
-(Note: 
-\emph default
-Ideally, we would like to test if there is an increases in capital accumulation
- in export sector.
- However, the data for capital stock by sectors are not available during
- the period of time we are interested in
-\emph on
-.
- 
-\emph default
-We use the data of overall capital stock instead as an increase in capital
- accumulation in any particular sector will lead to an increase in overall
- capital
-\emph on
- 
-\emph default
-accumulation.
-\emph on
-)
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-
-\emph on
-I think I repeat this below --TTT
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -889,17 +857,17 @@ ve import-competing sector to contract, with no corresponding rise in capital
  When both capital and consumption tariffs are cut, the export-oriented
  sector accumulates capital faster than the import-competing sector decumulates
  it, so we expect 
-\begin_inset Formula $\tau_{it}^{K}\times\tau_{it}^{C}<0$
+\begin_inset Formula $\beta_{\tau K\times C}<0$
 \end_inset
 
 .
  This cross term is interpreted as an interaction effect: the additional
- effect when a country is liberalizer in both capital and consumption goods
- trade.
+ effect when a country is a liberalizer in both capital and consumption
+ goods trade.
  Atolia is silent on what would happen if only capital tariffs were cut,
  but the economy-wide lower price in capital should increase the incentive
  to accumulate capital, so we predict that 
-\begin_inset Formula $\tau_{it}^{K}<0$
+\begin_inset Formula $\beta_{\tau K}<0$
 \end_inset
 
 .
@@ -993,29 +961,8 @@ short run
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Estimation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1161,8 +1108,14 @@ We will still take an instrumental variable approach.
 \begin_inset Formula $r$
 \end_inset
 
- (Barro, Mankiw, & Sala-I-Martin 1995 <http://www.jstor.org.ezproxy.library.wisc.edu/s
-table/2117998>).
+ (Barro, Mankiw, & Sala-I-Martin 1995) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Barro95"
+
+\end_inset
+
+.
  Thus, 
 \begin_inset Formula $r$
 \end_inset
@@ -1290,9 +1243,16 @@ The fatal flaw in the approach outlined above is that
 
  is 0.20.
  In light of the rule of thumb that an instrument is weak if the F-stat
- is less than ten, this instrument appears to be useless.
- <Staiger and Stock (1997) http://www.econ.brown.edu/fac/Frank_Kleibergen/ec266/sta
-igerstock1997.pdf> Therefore, we have to discard this approach.
+ is less than ten, this instrument appears to be useless (Staiger & Stock
+ 1997)
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Staiger97"
+
+\end_inset
+
+.
+ Therefore, we have to discard this approach.
  If we cannot detect an effect of the price of investment on capital accumulatio
 n, then it seems no other variable would be powerful enough to act as a
  strong instrument, so here we abandon our efforts to handle endogeneity
@@ -1757,8 +1717,8 @@ input{developed-summary-stats.tex}
 
 \end_layout
 
-\begin_layout Section*
-Results
+\begin_layout Section
+Results and discussion
 \end_layout
 
 \begin_layout Standard
@@ -1917,12 +1877,8 @@ input{SUR-reg-saturated.tex}
 
 \end_layout
 
-\begin_layout Standard
-___ DRawbacks__
-\end_layout
-
 \begin_layout Section
-Conclusion/discussion
+Conclusion
 \end_layout
 
 \begin_layout Standard
@@ -1945,8 +1901,14 @@ Our estimation strategy suffers from a few weaknesses.
  We were not able to obtain sector-specific estimates of capital stock,
  which prevents us from having a sharp identification of the Atolia model.
  Finally, in recent years economists have challenged the robustness of cross-cou
-ntry regressions (Durlauf 2009 <http://hope.dukejournals.org/content/41/Suppl_1/31
-5.abstract>).
+ntry regressions (Durlauf 2009
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Durlauf09"
+
+\end_inset
+
+).
  Nevertheless, <our analaysis is a good attempt to bring the theory to data>
 \end_layout
 
@@ -1968,7 +1930,7 @@ ntry regressions (Durlauf 2009 <http://hope.dukejournals.org/content/41/Suppl_1/
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "718"
-options "IEEEtran"
+options "plain"
 
 \end_inset
 

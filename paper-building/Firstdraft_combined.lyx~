@@ -102,20 +102,14 @@ This section investigates the effect of trade on wage inequality by exploration
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
 MENTION GATT, EAST ASIA, URUGUAY ROUND, LATIN AMERICA AND OTHER COUNTRIES.
  
 \end_layout
 
 \begin_layout Standard
-Let's first go back to the basic Heckscher-Ohlin (HO) trade model with two
- countries (the North and the South) and two goods (high-skilled and low-skilled
--intensive goods).
-=======
 Let us first go back to the basic Heckscher-Ohlin (HO) trade model with
  two countries (the North and the South) and two goods (high-skilled and
  low-skilled-intensive goods).
->>>>>>> FETCH_HEAD
  The North (
 \emph on
 the South
@@ -186,13 +180,8 @@ key "Wood94"
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
-Nevertheless, these evidences are not consistent with the later experiences
- of Latin America and some other Asian countries.
-=======
 Nevertheless, this evidence are not consistent with the experiences of Latin
  America and some other Asian countries.
->>>>>>> FETCH_HEAD
  Hanson and Harrison (1999) 
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -825,7 +814,6 @@ Final goods
 
 \end_layout
 
-<<<<<<< HEAD
 \begin_layout Standard
 \begin_inset Formula $\vphantom{}$
 \end_inset
@@ -833,8 +821,6 @@ Final goods
 
 \end_layout
 
-=======
->>>>>>> FETCH_HEAD
 \begin_layout Section
 Empirical model
 \end_layout
@@ -903,17 +889,17 @@ ve import-competing sector to contract, with no corresponding rise in capital
  When both capital and consumption tariffs are cut, the export-oriented
  sector accumulates capital faster than the import-competing sector decumulates
  it, so we expect 
-\begin_inset Formula $\tau_{it}^{K}\times\tau_{it}^{C}<0$
+\begin_inset Formula $\beta_{\tau K\times C}<0$
 \end_inset
 
 .
  This cross term is interpreted as an interaction effect: the additional
- effect when a country is liberalizer in both capital and consumption goods
- trade.
+ effect when a country is a liberalizer in both capital and consumption
+ goods trade.
  Atolia is silent on what would happen if only capital tariffs were cut,
  but the economy-wide lower price in capital should increase the incentive
  to accumulate capital, so we predict that 
-\begin_inset Formula $\tau_{it}^{K}<0$
+\begin_inset Formula $\beta_{\tau K}<0$
 \end_inset
 
 .
@@ -1007,29 +993,8 @@ short run
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Estimation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1175,8 +1140,7 @@ We will still take an instrumental variable approach.
 \begin_inset Formula $r$
 \end_inset
 
- (Barro, Mankiw, & Sala-I-Martin 1995 <http://www.jstor.org.ezproxy.library.wisc.edu/s
-table/2117998>).
+ (Barro, Mankiw, & Sala-I-Martin 1995).
  Thus, 
 \begin_inset Formula $r$
 \end_inset
@@ -1771,8 +1735,8 @@ input{developed-summary-stats.tex}
 
 \end_layout
 
-\begin_layout Section*
-Results
+\begin_layout Section
+Results and discussion
 \end_layout
 
 \begin_layout Standard
@@ -1931,12 +1895,8 @@ input{SUR-reg-saturated.tex}
 
 \end_layout
 
-\begin_layout Standard
-___ DRawbacks__
-\end_layout
-
 \begin_layout Section
-Conclusion/discussion
+Conclusion
 \end_layout
 
 \begin_layout Standard
@@ -1982,7 +1942,7 @@ ntry regressions (Durlauf 2009 <http://hope.dukejournals.org/content/41/Suppl_1/
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "718"
-options "IEEEtran"
+options "plain"
 
 \end_inset
 
