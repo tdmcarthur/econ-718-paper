@@ -4,7 +4,6 @@
 \begin_header
 \textclass article
 \begin_preamble
-%\linespread{1.6}
 \usepackage{setspace}
 \usepackage{bbm}
 \doublespacing
@@ -58,7 +57,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \index Index
 \shortcut idx
 \color #008000
@@ -80,6 +79,720 @@
 
 \begin_body
 
+\begin_layout Title
+Inequality dynamics under trade in developing countries
+\end_layout
+
+\begin_layout Author
+Travis McArthur and Patcha Chaikitmongkol
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
+\begin_layout Subsection
+Motivation and Literature review 
+\end_layout
+
+\begin_layout Standard
+This section investigates the effect of trade on wage inequality by exploration
+ of theoretical models, as well as empirical evidences.
+ 
+\end_layout
+
+\begin_layout Standard
+Let's first go back to the basic Heckscher-Ohlin (HO) trade model with two
+ countries (the North and the South) and two goods (high-skilled and low-skilled
+-intensive goods).
+ The North (
+\emph on
+the South
+\emph default
+) has relatively large supply of high-skill labor (
+\emph on
+low-skilled labor
+\emph default
+) and thus has comparative advantage in high-skilled- (
+\emph on
+low-skill
+\emph default
+ed-) intensive goods.
+ We can think of the North as developed countries and the South as developing
+ counterparts.
+ When trade opens, we assume that cost of producing each good become the
+ same across countries.
+ Assuming zero trade costs (transportation, tariffs, etc.--also known as
+ ice-berg costs), price of goods also become the same across countries.
+ Under comparative advantage framework, the North (
+\emph on
+the South
+\emph default
+) will export high-skilled- (
+\emph on
+low-skill
+\emph default
+ed-) intensive goods.
+ Relative price of low-skilled intensive good will increase in the South.
+ By Stolper-Samuelson theorem
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Stolper and Samuelson theorem describes that the return to the intensively-used
+ factor will increase if the relative price of the good increases.
+ 
+\end_layout
+
+\end_inset
+
+, this will raise the South's demand for low-skilled labor and their relative
+ wage.
+ Therefore, HO model implies that in the developing countries, trade should
+ lead to lower 
+\emph on
+wage premium
+\emph default
+ (the ratio of wage between high-skilled and low-skilled labors).
+ 
+\end_layout
+
+\begin_layout Standard
+This prediction of the HO theory applies the case of the East Asian tigers
+ where trade liberalization was followed by decreasing inequality.
+ During 1960s to 1970s, Hong Kong, South Korea, Singapore and Taiwan went
+ through export-oriented industrialization.
+ Wood (1994) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Wood94"
+
+\end_inset
+
+ finds that for these economies, wage premium went down at a faster rate
+ after the liberalization comparing to other periods.
+ 
+\end_layout
+
+\begin_layout Standard
+Nevertheless, these evidences are not consistent with the experiences of
+ Latin America and some other Asian countries.
+ Hanson and Harrison (1999) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Hanson99"
+
+\end_inset
+
+ studies the effect of Mexico's trade reform in 1985 on wage inequality.
+ They find that trade exposes low-skill intensive industry to competition
+ from other countries with large supply of low-skilled labor.
+ This drives down the relative price of low-skilled-intensive goods and
+ hence reducing relative wage for low-skilled labor.
+ Beyer, Rojas and Vergara (1999) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Beyer99"
+
+\end_inset
+
+studies the relationship using Chile data during the 1980-90s.
+ The authors confirm the findings of Hanson and Harrison (1999) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Hanson99"
+
+\end_inset
+
+.
+ Hasan and Jandoc (2010) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Hasan2010"
+
+\end_inset
+
+ studies the relationship using data from the Philippines during the second
+ half of the 1990s.
+ They find that trade induces an employment shifts from exposed sectors
+ to more protected sectors.
+ In these latter sectors (especially service sector), wage premium tends
+ to be higher, resulting in higher overall wage premium.
+ 
+\end_layout
+
+\begin_layout Standard
+Why would some countries experience reduction in wage premium following
+ trade liberalization while others experience increasing gap? Wood (1997)
+ 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Wood97"
+
+\end_inset
+
+ explains that the contrasting experience of East Asia (1960-70s) and Latin
+ America (mid-1980s to 1990s) stems from differing world market environment
+ in the two periods.
+ He argues that by mid-1980s, China has emerged as an important player in
+ the world economy.
+ Moreover, in the latter period, the world has shifted toward using skill-comple
+mentary technology.
+ Wood argues that these two factors are significant cause affecting the
+ role of trade liberalization on wage inequality in Latin America.
+ 
+\end_layout
+
+\begin_layout Standard
+Dornbusch, Fisher and Samuelson (1980) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Dornbusch80"
+
+\end_inset
+
+ provides a formalized model explaining how trade can widen wage inequality.
+ This model is based on the HO trade model with two countries.
+ There are no longer just two goods in this model.
+ Assume there is a continuum of goods which are ranked by level of skill
+ needed in the production technology.
+ After trade opens, prices of goods and wages equalize across countries.
+ We cannot say for sure if a country will export a specific good.
+ However, 
+\emph on
+on average
+\emph default
+, the North (
+\emph on
+the South
+\emph default
+) will export high-skilled- (
+\emph on
+low-skill
+\emph default
+ed-) intensive goods.
+ In other words, the North (
+\emph on
+the South
+\emph default
+) is the 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+net
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ exporter of high-skilled- (
+\emph on
+low-skill
+\emph default
+ed-) intensive goods.
+ Let's now consider some comparative statics to see how can trade increase
+ wage inequality the South (as well as the North since we assume factor-price
+ equalization).
+ First, consider a positive shock in the world demand for high-skilled-intensive
+ goods.
+ This decreases relative wage of low-skilled labor, leading to an increase
+ in wage gap.
+ Second, consider a positive shock the South's supply of low-skilled labor.
+ This decreases relative price of low-skilled labor, and thus widens the
+ wage inequality.
+ If the two countries differ significantly, we can also have the case of
+ complete specialization.
+ In this case, the South exports goods ranged from the lower end of the
+ skill-intensity rank up to a cutoff point.
+ The North exports goods starting from the cutoff point up to the higher
+ end of the skill-intensity rank.
+ This allows us to consider the case of technological catch-up of developing
+ countries.
+ With an improvement of production technology in the South, the country
+ can export goods in the higher skill-intensity range, raising the cutoff
+ point.
+ This implies that wage of high-skilled labor (and thus wage inequality)
+ will increase.
+ Zhu and Trefler (2005) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Zhu05"
+
+\end_inset
+
+ finds empirical evidence supporting how trade increases wage inequality
+ through this technological catch-up in the developing countries.
+ 
+\end_layout
+
+\begin_layout Standard
+Up to this point, it seems like Heckscher-Ohlin's prediction only held in
+ the earlier wave of trade liberalization in East Asia and not after that.
+ So, trade is bad for wage equality after all? The answer might be no, at
+ least for the long run according to Atolia (2007).
+ 
+\end_layout
+
+\begin_layout Standard
+Atolia (2007) 
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Atolia07"
+
+\end_inset
+
+ constructed a model of trade for Latin American countries.
+ Assume there are three sectors in the economy: non-traded (e.g.
+ construction), export and import-competing sectors.
+ Export sector produces low-skilled-intensive goods while import-competing
+ sector produces high-skilled-intensive goods.
+ Inputs in this model compose of capital, imported intermediate goods (i.e.
+ machineries) and labor (low-skilled and high-skilled).
+ Capital is produced using imported machineries and non-traded goods.
+ It is mobile but subjected to adjustment costs.
+ Labor is freely mobile across sectors.
+ Under free trade, lowered tariffs on intermediate goods reduce costs of
+ capital accumulation while tariff reduction in final goods expose import-compet
+ing sector to foreign competition.
+ This implies that export sector will suddenly increase rate of capital
+ accumulation due to cheaper price of capital.
+ On the other hand, facing competition from abroad, import-competing sector
+ will have to shrink--some firms will shift to other sector or go out of
+ business.
+ This transition will be slow as there is rigidity (costs of adjustment)
+ in mobility of capital goods.
+ In the economy following trade, there will be 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+asymmetric capital accumulation
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the economy as export sector suddenly increases its speed of capital
+ accumulation while import-competing sector gradually decumulate its capital
+ stock.
+ Now let's assume that high-skilled labor is complementary to capital goods.
+ Export sector will now need to hire more high-skilled labor to match the
+ new level of capital goods.
+ This will increase the demand for high-skilled labor and thus their relative
+ wage.
+ For the short-run, trade will therefore increase wage inequality through
+ the process of 
+\emph on
+asymmetric capital accumulation
+\emph default
+.
+ In the long run, however, the economy will reach the new steady state.
+ Therefore, in this model, the adverse effect of trade on wage inequality
+ is temporary.
+ 
+\end_layout
+
+\begin_layout Standard
+The main objective of our paper is to test the short-run prediction of Atolia
+ (2007) model using the data from developing countries.
+ If there is an empirical evidence that support Atolia's theory, then Heckscher-
+Ohlin's prediction that wage inequality would go down with trade might hold
+ in the long run after all.
+ 
+\end_layout
+
+\begin_layout Subsection
+Research question and hypothesis
+\end_layout
+
+\begin_layout Standard
+Main research question: Does trade liberalization increase wage inequality
+ in the short run through 
+\emph on
+asymmetric capital accumulation
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+As explained in the above section, 
+\emph on
+asymmetric capital accumulation 
+\emph default
+is Atolia's term used to explain a sudden increase in rate of capital accumulati
+on in export sector versus the gradual capital decumulation in import-competing
+ sector.
+\end_layout
+
+\end_inset
+
+
+\emph default
+?
+\end_layout
+
+\begin_layout Standard
+Specifically, we would like to test:
+\end_layout
+
+\begin_layout Enumerate
+If trade liberalization in intermediate goods (this refers to fixed inputs
+ of production) increases overall capital accumulation? 
+\emph on
+(Note: 
+\emph default
+Ideally, we would like to test if there is an increases in capital accumulation
+ in export sector.
+ However, the data for capital stock by sectors are not available during
+ the period of time we are interested in
+\emph on
+.
+ 
+\emph default
+We use the data of overall capital stock instead as an increase in capital
+ accumulation in any particular sector will lead to an increase in overall
+ capital
+\emph on
+ 
+\emph default
+accumulation.
+\emph on
+)
+\end_layout
+
+\begin_layout Enumerate
+If trade liberalization in final goods decreases overall capital accumulation?
+\end_layout
+
+\begin_layout Enumerate
+If the interaction between trade liberalizations in intermediate and final
+ goods increases overall capital accumulation? 
+\end_layout
+
+\begin_layout Enumerate
+If capital accumulation increases 
+\emph on
+wage premium
+\emph default
+ (the ratio of wage between high-skilled and low-skilled labors) 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\noun on
+Trade liberalization:
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\noun on
+Capital Accumulation:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\noun on
+Wage premium:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Intermediate goods
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow\quad\uparrow\uparrow\,\triangle K$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Final goods
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow\quad\downarrow\;\:\triangle K$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Capital goods
+\begin_inset Formula $\times$
+\end_inset
+
+Final goods
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad\Rightarrow\quad\uparrow\;\:\triangle K$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow\quad\uparrow w_{H}/w_{L}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TRAVIS PART
+\end_layout
+
 \begin_layout Standard
 \begin_inset Formula $\vphantom{}$
 \end_inset
@@ -87,8 +800,8 @@
 
 \end_layout
 
-\begin_layout Standard
-__Estimating equations___
+\begin_layout Section
+Empirical model
 \end_layout
 
 \begin_layout Standard
@@ -228,16 +941,28 @@ We will use first difference to condition on country-specific effects.
  Our identification strategy is thus difference-in-differences, where the
  treatment is continuous (tariff and capital stock levels) rather than discrete.
  We need the parallel trend assumption for identification.
- This assumption requires countries 
+ On the capital-tariff relationship, this requires countries with a high
+ tariff would have had the same change in the rate of capital accumulation
+ as those with a low tariff, absent the actual change in trade policy.
+ Similarly, in the wage-capital relationship we need low-capital countries
+ to have had the same change in wage premium as the high-capital countries,
+ absent the actual rise in capital.
 \end_layout
 
 \begin_layout Standard
-, except with This creates a difference-in-differences.
-\end_layout
+Our data on disaggregated tariffs limits us to estimating the above equations
+ with just two periods: roughly the late 1980's to the early 2000's.
+ This time frame is well within the 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
-<Simply two reduced-form relationships.> , which will be augmented to 3sls
- when try to deal with endogeneioty in each eqn separately>
+short run
+\begin_inset Quotes erd
+\end_inset
+
+ period of Atolia, since his numerical simulations indicate worsening inequality
+ for thirty years or more.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -254,29 +979,8 @@ We will use first difference to condition on country-specific effects.
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha+\beta_{K}K_{it}+v_{it}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-__Data__
+\begin_layout Section
+Data
 \end_layout
 
 \begin_layout Standard
@@ -293,10 +997,6 @@ We used data from three sources: the Penn World Table, Estevadeordal & Taylor
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -629,10 +1329,6 @@ Estevadeordal and Taylor
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -729,11 +1425,8 @@ input{developed-summary-stats.tex}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
+\begin_layout Section
+Estimation
 \end_layout
 
 \begin_layout Standard
@@ -744,25 +1437,38 @@ input{developed-summary-stats.tex}
 \end_layout
 
 \begin_layout Standard
+Since we are estimating two equations with the same sample, a seemingly
+ unrelated regressions approach permits us to obtain more efficient estimates
+ of the parameters.
+ We have a small number of observations, so any increase in statistical
+ power is welcome.
+ In practice, the residuals of the two regressions are nearly uncorrelated,
+ so there is little advantage to using seemingly unrelated regressions compared
+ with estimating each equation individually.
+ 
+\end_layout
+
+\begin_layout Standard
+Endogeneity is a concern in the two equations.
+ To handle this problem, we can use three-stage least squares.
+ This involves simply instrumenting for endogenous variable sin each equation
+ individually and then using the seemingly unrelated regressions technique
+ to make use of the correlated residuals of the two equations.
+\end_layout
+
+\begin_layout Subsection
+Endogeneity in the capital-tariff equation
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\vphantom{}$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-<____Endogeneity in the capital-tariff equation____>
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-___Endogeneity in the wage-capital equation____
+\begin_layout Subsection
+Endogeneity in the wage-capital equation
 \end_layout
 
 \begin_layout Standard
@@ -965,8 +1671,8 @@ n, then it seems no other variable would be powerful enough to act as a
  In any case, the results
 \end_layout
 
-\begin_layout Standard
-___Results__
+\begin_layout Section*
+Results
 \end_layout
 
 \begin_layout Standard
@@ -1133,8 +1839,8 @@ input{SUR-reg-saturated.tex}
 ___ DRawbacks__
 \end_layout
 
-\begin_layout Standard
-___Conclusion/discussion___
+\begin_layout Section
+Conclusion/discussion
 \end_layout
 
 \begin_layout Standard
@@ -1178,6 +1884,17 @@ g countries offers limited support for the theory.
 
 \begin_layout Standard
 \begin_inset Formula $\vphantom{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "718"
+options "IEEEtran"
+
 \end_inset
 
 

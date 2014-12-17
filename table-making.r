@@ -180,6 +180,14 @@ fit.3sls.iv.world <- systemfit( eq.system, "3SLS",
   method3sls = "GMM" )
 
 
+
+wu.hausman.developing <- summary(ivreg(double.delta.capital.stock ~ d.ln.tau.capint.con  |   gatt75.later:total.tau.1985.early  , data=final.wide.df[final.wide.df$income.class.later=="developing" & final.wide.df$country!="KNA", ]), diagnostics=TRUE)$diagnostics["Wu-Hausman", "p-value"]
+
+
+
+wu.hausman.world <- summary(ivreg(double.delta.capital.stock ~ d.ln.tau.capint.con*income.class.later  |   gatt75.later:total.tau.1985.early*income.class.later  , data=final.wide.df[ final.wide.df$country!="KNA", ]), diagnostics=TRUE)$diagnostics["Wu-Hausman", "p-value"]
+
+
 tr1 <- extract(fit.3sls.iv.only.developing)
 tr1[[2]]@gof <- c(tr1[[2]]@gof, cov2cor(fit.3sls.iv.only.developing$residCov )[2,1])
 tr1[[2]]@gof.names <- c(tr1[[2]]@gof.names, "Residual $\\rho$ between equations")
@@ -189,6 +197,11 @@ tr1[[1]]@gof <- c(tr1[[1]]@gof,summary(test.weak.inst.developing )$fstatistic["v
 tr1[[1]]@gof.names <- c(tr1[[1]]@gof.names, "F-stat on first stage")
 tr1[[1]]@gof.decimal <- c(tr1[[1]]@gof.decimal, TRUE)
 
+tr1[[1]]@gof <- c(tr1[[1]]@gof, wu.hausman.developing)
+tr1[[1]]@gof.names <- c(tr1[[1]]@gof.names, "P-value of Wu-Hausman endogeneity test")
+tr1[[1]]@gof.decimal <- c(tr1[[1]]@gof.decimal, TRUE)
+
+
 
 tr2 <- extract(fit.3sls.iv.world)
 tr2[[2]]@gof <- c(tr2[[2]]@gof, cov2cor(fit.3sls.iv.world$residCov )[2,1])
@@ -197,6 +210,10 @@ tr2[[2]]@gof.decimal <- c(tr2[[2]]@gof.decimal, TRUE)
 
 tr2[[1]]@gof <- c(tr2[[1]]@gof,summary(test.weak.inst.world )$fstatistic["value"])
 tr2[[1]]@gof.names <- c(tr2[[1]]@gof.names, "F-stat on first stage")
+tr2[[1]]@gof.decimal <- c(tr2[[1]]@gof.decimal, TRUE)
+
+tr2[[1]]@gof <- c(tr2[[1]]@gof,wu.hausman.world)
+tr2[[1]]@gof.names <- c(tr2[[1]]@gof.names, "P-value of Wu-Hausman endogeneity test")
 tr2[[1]]@gof.decimal <- c(tr2[[1]]@gof.decimal, TRUE)
 
 # trying something out in accordance with http://stackoverflow.com/questions/19888757/add-p-value-of-hausman-test-or-other-additional-gof-measure-to-texreg-table
@@ -340,6 +357,86 @@ cat(fit.SUR.saturated.texreg, file=paste0(work.dir, "SUR-reg-saturated.tex"),
   sep="\n")
 
 
+  
+
+final.wide.df.for.summary <- final.wide.df[apply(final.wide.df[, c("d.ln.tau.capint",  "ln.wage.NP.over.wage.P.dif")], 1, FUN=function(x) !all(is.na(x))) & final.wide.df$country!="KNA", ]
+
+summary(final.wide.df.for.summary$income.class.later )
+
+unprocessed.summary.table <- by(final.wide.df.for.summary[, c("double.delta.capital.stock", "d.ln.tau.capint", "d.ln.tau.con", "d.ln.tau.capint.con", "ln.wage.NP.over.wage.P.dif", "ln.capital.stock.p.c.dif")], INDICES=final.wide.df.for.summary$income.class.later, 
+  FUN=function(x) {
+    cbind(
+      sapply(x, FUN=mean, na.rm=TRUE),
+      sapply(x, FUN=sd, na.rm=TRUE),
+      sapply(x, FUN=min, na.rm=TRUE),
+      sapply(x, FUN=max, na.rm=TRUE)
+      )
+  } 
+)
+
+table(final.wide.df.for.summary$income.class.later)
+
+
+# NOTE: Ok, in this version, there is no median
+
+colnames(unprocessed.summary.table[["developing"]]) <- c("Mean", "Std. dev", "Min", "Max")
+colnames(unprocessed.summary.table[["developed"]]) <- c("Mean", "Std. dev", "Min", "Max")
+
+library("stargazer")
+
+stargazer(unprocessed.summary.table[["developing"]], summary=FALSE, out.header = FALSE, 
+  out=paste0(work.dir, "developing-summary-stats.tex"), 
+  rownames=TRUE, title="Summary statistics of developing countries (first differences)"
+    )
+
+
+stargazer(unprocessed.summary.table[["developed"]], summary=FALSE, out.header = FALSE, 
+  out=paste0(work.dir, "developed-summary-stats.tex"), 
+  rownames=TRUE, title="Summary statistics of developed countries (first differences)"
+    )
+
+
+
+
+
+
+#,  column.separate=c(4,4), column.labels =c("test1", "test2"), float.env = "sidewaystable", font.size="small",
+
+
+
+
+#unprocessed.summary.table[["developing"]][grepl("tau", rownames(unprocessed.summary.table[["developing"]])) ,] <- 
+
+#processed.summary.table <- cbind(
+#  unprocessed.summary.table[[1]][, 1],
+#  unprocessed.summary.table[[2]][, 1],
+#  unprocessed.summary.table[[1]][, 2],
+#  unprocessed.summary.table[[2]][, 2],
+#  unprocessed.summary.table[[1]][, 3],
+#  unprocessed.summary.table[[2]][, 3],
+#  unprocessed.summary.table[[1]][, 4],
+#  unprocessed.summary.table[[2]][, 4]
+#)
+
+
+
+#colnames(processed.summary.table) <- c("Mean, developing", "Mean, treat", "Std dev, control", "Std dev, treat", "Min, control", "Min, treat", "Max, control", "Max, treat")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -365,6 +462,65 @@ replace.vars(replacement.matrix=var.names,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+## FULL SATURATED 3sls TESTING BELOW
+
+
+
+eq.system <- list(first = double.delta.capital.stock ~ (d.ln.tau.capint.con + d.ln.tau.capint + d.ln.tau.con)*income.class.early ,
+  second= ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif*income.class.early)
+
+inst1 <- ~ (gtdep.later:total.tau.1985.early + gatt75.later:total.tau.1985.early + gatt75.later:gtdep.later:I(total.tau.1985.early^2 ) )*income.class.early
+inst2 <- ~ ln.capital.stock.p.c.dif*income.class.early
+instlist <- list( inst1, inst2 )
+
+fit.3sls.saturated.world <- systemfit( eq.system, "3SLS", 
+  inst = instlist, 
+  data = final.wide.df[final.wide.df$country!="KNA", ],
+  method3sls = "GMM" )
+
+  
+
+eq.system <- list(first = double.delta.capital.stock ~ ( d.ln.tau.capint.con + d.ln.tau.capint + d.ln.tau.con) ,
+  second= ln.wage.NP.over.wage.P.dif ~ ln.capital.stock.p.c.dif)
+
+inst1 <- ~ (gtdep.later:total.tau.1985.early + gatt75.later:total.tau.1985.early + gatt75.later:gtdep.later:I(total.tau.1985.early^2 ) )
+inst2 <- ~ ln.capital.stock.p.c.dif
+instlist <- list( inst1, inst2 )
+
+fit.3sls.saturated.developing <- systemfit( eq.system, "3SLS", 
+  inst = instlist, 
+  data = final.wide.df[final.wide.df$income.class.later=="developing" & final.wide.df$country!="KNA", ],
+  method3sls = "GMM" )
+
+
+
+summary(ivreg(double.delta.capital.stock ~ (d.ln.tau.capint.con + d.ln.tau.capint + d.ln.tau.con)*income.class.early |  (gtdep.later:total.tau.1985.early + gatt75.later:total.tau.1985.early + gatt75.later:gtdep.later:I(total.tau.1985.early^2 ) )*income.class.early, data=final.wide.df[final.wide.df$country!="KNA", ]), diagnostics=TRUE)
+
+
+summary(ivreg(double.delta.capital.stock ~ (d.ln.tau.capint.con + d.ln.tau.capint + d.ln.tau.con) |  (gtdep.later:total.tau.1985.early + gatt75.later:total.tau.1985.early + gatt75.later:gtdep.later:I(total.tau.1985.early^2 )) , data=final.wide.df[final.wide.df$income.class.later=="developing" & final.wide.df$country!="KNA", ]), diagnostics=TRUE)
+
+
+summary(ivreg(double.delta.capital.stock ~ d.ln.tau.capint.con  |   gatt75.later:total.tau.1985.early  , data=final.wide.df[final.wide.df$income.class.later=="developing" & final.wide.df$country!="KNA", ]), diagnostics=TRUE)
+
+summary(ivreg(double.delta.capital.stock ~ d.ln.tau.capint.con  |   gatt75.later:total.tau.1985.early  , data=final.wide.df[final.wide.df$income.class.later=="developing" & final.wide.df$country!="KNA", ]), diagnostics=TRUE)$diagnostics["Wu-Hausman", "p-value"]
+
+
+final.wide.df[, c("country", "gatt75.later", "d.ln.tau.capint.con")]
+final.wide.df[, c("country", "total.tau.1985.early", "d.ln.tau.capint.con")]
+
+#gatt75.later: DEU (Germany)
+#total.tau.1985.early:  ISR
 
 
 
