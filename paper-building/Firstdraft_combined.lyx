@@ -1468,10 +1468,13 @@ Endogeneity in the capital-tariff equation
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
+To deal with possible endogeneity problem in this equation, we will follow
+ the instrumental variable approach done in Estavadeordal & Taylor (2013).
+ The author study the effect of trade liberalization 
+\end_layout
 
-
+\begin_layout Standard
+Endogeneity in the wage-capital equation
 \end_layout
 
 \begin_layout Subsection
