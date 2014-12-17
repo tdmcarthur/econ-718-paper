@@ -191,18 +191,10 @@ key "Wood94"
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
-Nevertheless, this evidence are not consistent with the experiences of Latin
- America and some other Asian countries.
- Some studies find that trade reform in Latin American countries during
- the mid 1980s has resulted in higher wage premium (Hanson and Harrison
- (1999) 
-=======
 Nevertheless, this evidence is not consistent with the experiences of Latin
  America and others.
  Some studies find that trade reforms in Mexico and Chile during mid 1980s
  have resulted in higher wage premium (Hanson and Harrison (1999) 
->>>>>>> FETCH_HEAD
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Hanson99"
@@ -334,107 +326,11 @@ key "Atolia07"
  construction), export and import-competing sectors.
  Export sector produces low-skilled-intensive goods while import-competing
  sector produces high-skilled-intensive goods.
-<<<<<<< HEAD
- Inputs in this model are composed of capital stock, imported capital goods
- (i.e.
- machinery) and labor (low-skilled and high-skilled).
- Capital stock is produced using imported capital goods and non-traded goods
- (e.g.
- construction).
- It is mobile but subjected to adjustment costs.
- Labor is freely mobile across sectors.
- 
-\end_layout
-
-\begin_layout Standard
-Under free trade in the Atolia model, lowered tariffs on intermediate good
- reduces the cost of capital accumulation, while tariff reduction in final
- goods expose import-competing sector to foreign competition.
- This implies that export sector will suddenly increase rate of capital
- accumulation due to cheaper price of capital.
- On the other hand, import-competing sector will contract and it will have
- to decumulate its capital stock.
- This transition will be slow as capital stock are not freely mobile across
- sectors.
- Trade liberalization will lead to 
-\emph on
-asymmetric capital accumulation;
-\emph default
- Export sector suddenly increases its capital accumulation while import-competin
-g sector gradually decumulate its capital stock.
- Now let's assume that high-skilled labor is complementary to capital goods.
- The export sector will need to hire more high-skilled workers to match
- the new level of capital goods.
- This will increase the demand for high-skilled labor and thus their relative
- wage.
- For the short-run, trade will therefore increase wage inequality through
- the process of 
-\emph on
-asymmetric capital accumulation
-\emph default
-.
- In the long run, however, the economy will reach the new steady state.
- In this model, there is a dynamic on how inequality change with trade.
- The adverse effect of trade liberalization on wage inequality is only temporary.
- 
-\end_layout
-
-\begin_layout Standard
-An important caveat in this model lie in the assumption that developing
- countries acquire all its intermediate goods from abroad.
- Even though this is a strong assumption, there are some supporting evidences.
- Alfaro and Ahmed (2009)
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "Alfaro09"
-
-\end_inset
-
- take a look into disaggreated trade data and find that most developing
- countries import their intermediate goods
-=======
  Inputs
->>>>>>> FETCH_HEAD
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-<<<<<<< HEAD
-This is called 
-\begin_inset Quotes eld
-\end_inset
-
-capital goods
-\begin_inset Quotes erd
-\end_inset
-
- in Alfaro and Ahmed (2009), but they are intermediate goods by definition
- in Atolia (2007).
- 
-\end_layout
-
-\end_inset
-
- from a small set of developed countries.
- 
-\end_layout
-
-\begin_layout Standard
-To our knowledge, there has not been any empirical work studying the effect
- of trade on wage inequality via 
-\emph on
-capital accumulation
-\emph default
-.
- Therefore, we would like to test this relationship based on Atolia's model
- using data from developing countries.
- 
-\end_layout
-
-\begin_layout Subsection
-Research question and hypothesis
-\end_layout
-=======
 In Atolia's terminology, inputs compose of capital goods, imported intermediate
  goods (i.e.
  machineries), and labor.
@@ -452,7 +348,6 @@ intermediate goods
  His 
 \begin_inset Quotes eld
 \end_inset
->>>>>>> FETCH_HEAD
 
 capital goods
 \begin_inset Quotes erd
@@ -477,15 +372,6 @@ capital goods
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
-Specifically, we would like to test:
-\end_layout
-
-\begin_layout Enumerate
-Whether trade liberalization in intermediate goods (this refers to fixed
- inputs of production) increases overall capital accumulation.
- 
-=======
 Under free trade in the Atolia model, lowered tariffs on intermediate good
  reduces the cost of capital accumulation, while tariff reduction in consumption
  goods expose import-competing sector to foreign competition.
@@ -520,7 +406,6 @@ status open
 
 \begin_layout Plain Layout
 
->>>>>>> FETCH_HEAD
 \end_layout
 
 \begin_layout Plain Layout
@@ -921,9 +806,15 @@ The Atolia model predicts sector-specific changes in capital accumulation.
 
 \begin_layout Standard
 \begin_inset Formula 
+<<<<<<< HEAD
 \begin{equation}
 \ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}
 \end{equation}
+=======
+\[
+\ln(\dfrac{K_{it}}{K_{it-1}})=\alpha\:+\:\beta_{\tau K}\;\tau_{it}^{K}\:+\:\beta_{\tau C}\;\tau_{it}^{C}\:+\:\beta_{\tau K\times C}\;(\tau_{it}^{K}\times\tau_{it}^{C})\:+\: u_{it}
+\]
+>>>>>>> FETCH_HEAD
 
 \end_inset
 
@@ -998,9 +889,15 @@ The second equation that the Atolia model suggests is:
 
 \begin_layout Standard
 \begin_inset Formula 
+<<<<<<< HEAD
 \begin{equation}
 \ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}
 \end{equation}
+=======
+\[
+\ln(\dfrac{w_{H\, it}}{w_{L\, it}})=\alpha'\:+\:\beta_{K}\;\ln K_{it}\:+\: v_{it}
+\]
+>>>>>>> FETCH_HEAD
 
 \end_inset
 
@@ -1026,9 +923,9 @@ where
 \end_layout
 
 \begin_layout Standard
-Under the Atolia assumption of complementarity between high skill labor
+Under the Atolia assumption of complementarity between high-skilled labor
  and capital, a higher stock of capital should raise the wage premium for
- high-skill workers.
+ high-skilled workers.
  Hence the prediction of the theory is 
 \begin_inset Formula $\beta_{K}>0$
 \end_inset
@@ -1075,7 +972,7 @@ Our data on disaggregated tariffs limits us to estimating the above equations
 \begin_inset Quotes eld
 \end_inset
 
-short run
+short-run
 \begin_inset Quotes erd
 \end_inset
 
@@ -1744,7 +1641,7 @@ Wages in supervisory and technical occupations were defined as
 \begin_inset Quotes eld
 \end_inset
 
-high skill
+high-skilled
 \begin_inset Quotes erd
 \end_inset
 
@@ -1753,7 +1650,7 @@ high skill
 \begin_inset Quotes eld
 \end_inset
 
-low skill
+low-skilled
 \begin_inset Quotes erd
 \end_inset
 
@@ -1933,6 +1830,22 @@ input{3sls-parsimonious.tex}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{SUR-reg-saturated.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 For completeness, we also present the results with the 
 \begin_inset Quotes eld
 \end_inset
@@ -1958,22 +1871,6 @@ saturated
  coefficients is so large that the results are not worth presenting.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-input{SUR-reg-saturated.tex}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Conclusion
 \end_layout
@@ -1997,13 +1894,8 @@ Our estimation strategy suffers from a few weaknesses.
  softens confidence in our results somewhat.
  We were not able to obtain sector-specific estimates of capital stock,
  which prevents us from having a sharp identification of the Atolia model.
-<<<<<<< HEAD
  Finally, in recent years some economists have challenged the robustness
  of cross-country regressions (Durlauf 2009
-=======
- Finally, in recent years economists have challenged the robustness of cross-cou
-ntry regressions (Durlauf 2009
->>>>>>> FETCH_HEAD
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Durlauf09"
