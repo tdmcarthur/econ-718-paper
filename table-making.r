@@ -15,6 +15,7 @@ if (Sys.info()["user"]=="Mint") {
 
 # install.packages("texreg")
 library("texreg")
+library("systemfit")
 
 
 
