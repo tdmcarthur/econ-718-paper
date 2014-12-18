@@ -964,23 +964,22 @@ We are worried about possible endogeneity in equation 1 since factors like
  institutions may play a role affecting both trade openness and capital
  accumulation.
  To deal with this problem, we will follow the instrumental variable technique
- from Estevadeordal & Taylor (2013).
+ from Estevadeordal & Taylor (2013)
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Estevadeordal13"
+
+\end_inset
+
+.
  The paper studies the effect of trade liberalization on economic growth
  using two different instruments: 
 \begin_inset Formula 
 \[
-Average\, Tariffs_{1985}\times GATT\, membership_{1975}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
+\begin{array}[t]{c}
+Average\, Tariffs_{1985}\times GATT\, membership_{1975}\\
 Average\, Tariffs_{1985}\times Great\, Depression\, Intensity
+\end{array}
 \]
 
 \end_inset

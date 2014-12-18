@@ -173,26 +173,8 @@ wage premium
 \end_layout
 
 \begin_layout Standard
-This prediction of the HO theory applies the case of the East Asian tigers
- where trade liberalization was followed by a period of decreasing wage
- inequality.
- During 1960s to 1970s, Hong Kong, South Korea, Singapore and Taiwan went
- through export-oriented industrialization.
- As a result, wage premium went down at a faster rate after the liberalization
- comparing to other periods (Wood, 1994)
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "Wood94"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Nevertheless, this evidence is not consistent with the experiences of Latin
- America and others.
+Nevertheless, this prediction is inconsistent with the experiences of Latin
+ America and some Asian countries.
  Some studies find that trade reforms in Mexico and Chile during mid 1980s
  have resulted in higher wage premium (Hanson and Harrison (1999) 
 \begin_inset CommandInset citation
@@ -226,26 +208,6 @@ key "Hasan2010"
  more protected sectors--especially service sector, in which wage premium
  tends to be higher.
  In conclusion, trade increase wage inequality in these economies.
- 
-\end_layout
-
-\begin_layout Standard
-Why would some countries experience reduction in wage premium following
- trade liberalization while others experience an increasing gap? Wood (1997)
- 
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "Wood97"
-
-\end_inset
-
-explains that the contrasting experience of East Asia (1960-70s) and Latin
- America (mid-1980s to 1990s) stems from differing world market environment
- in the two periods.
- By the mid-1980s, China had emerged as an important player in the world
- economy, and the world has shifted toward using skill-complementary technology.
- Wood argues that these two factors are significant cause affecting the
- role of trade liberalization on wage inequality in Latin America.
  
 \end_layout
 
@@ -806,15 +768,9 @@ The Atolia model predicts sector-specific changes in capital accumulation.
 
 \begin_layout Standard
 \begin_inset Formula 
-<<<<<<< HEAD
 \begin{equation}
-\ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}
-\end{equation}
-=======
-\[
 \ln(\dfrac{K_{it}}{K_{it-1}})=\alpha\:+\:\beta_{\tau K}\;\tau_{it}^{K}\:+\:\beta_{\tau C}\;\tau_{it}^{C}\:+\:\beta_{\tau K\times C}\;(\tau_{it}^{K}\times\tau_{it}^{C})\:+\: u_{it}
-\]
->>>>>>> FETCH_HEAD
+\end{equation}
 
 \end_inset
 
@@ -889,15 +845,9 @@ The second equation that the Atolia model suggests is:
 
 \begin_layout Standard
 \begin_inset Formula 
-<<<<<<< HEAD
 \begin{equation}
-\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}
-\end{equation}
-=======
-\[
 \ln(\dfrac{w_{H\, it}}{w_{L\, it}})=\alpha'\:+\:\beta_{K}\;\ln K_{it}\:+\: v_{it}
-\]
->>>>>>> FETCH_HEAD
+\end{equation}
 
 \end_inset
 
