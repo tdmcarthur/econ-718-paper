@@ -1877,7 +1877,8 @@ In light of our empirical test, we cannot reject the Atolia theory.
 \end_layout
 
 \begin_layout Standard
-Our estimation strategy suffers from a few weaknesses.
+Our estimation strategy suffers from a few weaknesses that we hope to address
+ in the future.
  Our inability to eliminate possible endogeneity in the wage-capital equation
  softens confidence in our results somewhat.
  We were not able to obtain sector-specific estimates of capital stock,

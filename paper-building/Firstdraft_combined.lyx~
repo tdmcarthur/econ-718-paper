@@ -806,15 +806,9 @@ The Atolia model predicts sector-specific changes in capital accumulation.
 
 \begin_layout Standard
 \begin_inset Formula 
-<<<<<<< HEAD
 \begin{equation}
-\ln\dfrac{K_{it}}{K_{it-1}}=\alpha+\beta_{\tau K}\tau_{it}^{K}+\beta_{\tau C}\tau_{it}^{C}+\beta_{\tau K\times C}\tau_{it}^{K}\times\tau_{it}^{C}+u_{it}
-\end{equation}
-=======
-\[
 \ln(\dfrac{K_{it}}{K_{it-1}})=\alpha\:+\:\beta_{\tau K}\;\tau_{it}^{K}\:+\:\beta_{\tau C}\;\tau_{it}^{C}\:+\:\beta_{\tau K\times C}\;(\tau_{it}^{K}\times\tau_{it}^{C})\:+\: u_{it}
-\]
->>>>>>> FETCH_HEAD
+\end{equation}
 
 \end_inset
 
@@ -889,15 +883,9 @@ The second equation that the Atolia model suggests is:
 
 \begin_layout Standard
 \begin_inset Formula 
-<<<<<<< HEAD
 \begin{equation}
-\ln\dfrac{w_{H\, it}}{w_{L\, it}}=\alpha'+\beta_{K}\ln K_{it}+v_{it}
-\end{equation}
-=======
-\[
 \ln(\dfrac{w_{H\, it}}{w_{L\, it}})=\alpha'\:+\:\beta_{K}\;\ln K_{it}\:+\: v_{it}
-\]
->>>>>>> FETCH_HEAD
+\end{equation}
 
 \end_inset
 
