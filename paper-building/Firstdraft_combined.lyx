@@ -173,26 +173,8 @@ wage premium
 \end_layout
 
 \begin_layout Standard
-This prediction of the HO theory applies the case of the East Asian tigers
- where trade liberalization was followed by a period of decreasing wage
- inequality.
- During 1960s to 1970s, Hong Kong, South Korea, Singapore and Taiwan went
- through export-oriented industrialization.
- As a result, wage premium went down at a faster rate after the liberalization
- comparing to other periods (Wood, 1994)
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "Wood94"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Nevertheless, this evidence is not consistent with the experiences of Latin
- America and others.
+Nevertheless, this prediction is inconsistent with the experiences of Latin
+ America and some Asian countries.
  Some studies find that trade reforms in Mexico and Chile during mid 1980s
  have resulted in higher wage premium (Hanson and Harrison (1999) 
 \begin_inset CommandInset citation
@@ -226,26 +208,6 @@ key "Hasan2010"
  more protected sectors--especially service sector, in which wage premium
  tends to be higher.
  In conclusion, trade increase wage inequality in these economies.
- 
-\end_layout
-
-\begin_layout Standard
-Why would some countries experience reduction in wage premium following
- trade liberalization while others experience an increasing gap? Wood (1997)
- 
-\begin_inset CommandInset citation
-LatexCommand nocite
-key "Wood97"
-
-\end_inset
-
-explains that the contrasting experience of East Asia (1960-70s) and Latin
- America (mid-1980s to 1990s) stems from differing world market environment
- in the two periods.
- By the mid-1980s, China had emerged as an important player in the world
- economy, and the world has shifted toward using skill-complementary technology.
- Wood argues that these two factors are significant cause affecting the
- role of trade liberalization on wage inequality in Latin America.
  
 \end_layout
 
@@ -1002,23 +964,22 @@ We are worried about possible endogeneity in equation 1 since factors like
  institutions may play a role affecting both trade openness and capital
  accumulation.
  To deal with this problem, we will follow the instrumental variable technique
- from Estevadeordal & Taylor (2013).
+ from Estevadeordal & Taylor (2013)
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Estevadeordal13"
+
+\end_inset
+
+.
  The paper studies the effect of trade liberalization on economic growth
  using two different instruments: 
 \begin_inset Formula 
 \[
-Average\, Tariffs_{1985}\times GATT\, membership_{1975}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
+\begin{array}[t]{c}
+Average\, Tariffs_{1985}\times GATT\, membership_{1975}\\
 Average\, Tariffs_{1985}\times Great\, Depression\, Intensity
+\end{array}
 \]
 
 \end_inset
