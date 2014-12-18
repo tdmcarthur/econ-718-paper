@@ -120,6 +120,8 @@ Heckscher-Ohlin model and inconsistency in the data
 Let us first go back to the basic Heckscher-Ohlin (HO) trade model with
  two countries (the North and the South) and two goods (high-skilled and
  low-skilled-intensive goods).
+ We can think of the North as developed countries and the South as developing
+ counterparts.
  The North (
 \emph on
 the South
@@ -133,12 +135,10 @@ low-skilled labor
 low-skill
 \emph default
 ed-) intensive goods.
- We can think of the North as developed countries and the South as developing
- counterparts.
  When trade opens, we assume that cost of producing each good become the
  same across countries.
  Assuming zero trade costs (transportation, tariffs, etc.--also known as
- iceberg costs), the price of goods also become the same across countries.
+ iceberg costs), the price of goods become the same across countries.
  Under comparative a advantage framework, the North (
 \emph on
 the South
@@ -148,13 +148,14 @@ the South
 low-skill
 \emph default
 ed-) intensive goods.
- The Relative price of low-skilled intensive good will increase in the South.
+ The Relative price of low-skilled-intensive goods will increase in the
+ South.
  By Stolper-Samuelson theorem
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Stolper and Samuelson theorem describes that the return to the intensively-used
+Stolper and Samuelson theorem states that the return to the intensively-used
  factor will increase if the relative price of the good increases.
  
 \end_layout
@@ -167,8 +168,8 @@ Stolper and Samuelson theorem describes that the return to the intensively-used
 \emph on
 wage premium
 \emph default
- (the ratio of wage between high-skilled and low-skilled labors) in the
- developing countries.
+ (the ratio of wages between high-skilled and low-skilled labors) in developing
+ countries.
  
 \end_layout
 
@@ -176,25 +177,25 @@ wage premium
 Nevertheless, this prediction is inconsistent with the experiences of Latin
  America and some Asian countries.
  Some studies find that trade reforms in Mexico and Chile during mid 1980s
- have resulted in higher wage premium (Hanson and Harrison (1999) 
+ have resulted in higher wage premium --Hanson & Harrison (1999) 
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Hanson99"
 
 \end_inset
 
-, Beyer, Rojas and Vergara (1999) 
+and Beyer, Rojas & Vergara (1999)
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Beyer99"
 
 \end_inset
 
-).
- Both studies find that trade exposes low-skill intensive industry to competitio
-n from other countries with large supply of low-skilled labor.
+.
+ Both studies find that trade exposes low-skilled-intensive industry to
+ competition from other countries with large supply of low-skilled labors.
  This drives down the relative price of low-skilled-intensive goods and
- hence reducing relative wage for low-skilled labor.
+ hence reducing relative wage for low-skilled workers.
  Hasan and Jandoc (2010) 
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -202,12 +203,12 @@ key "Hasan2010"
 
 \end_inset
 
- studies the relationship using data from the Philippines during the second
- half of the 1990s.
+ studies the relationship in the Philippines during the second half of the
+ 1990s.
  They find that trade induces an employment shift from exposed sectors to
  more protected sectors--especially service sector, in which wage premium
  tends to be higher.
- In conclusion, trade increase wage inequality in these economies.
+ In conclusion, wage inequality increases under trade in these economies.
  
 \end_layout
 
@@ -219,8 +220,7 @@ key "Dornbusch80"
 
 \end_inset
 
-provides a formalized model explaining the rise of wage inequality under
- trade.
+provides a formalized model explaining how wage inequality rises with trade.
  This model is based on the HO trade model with two countries but a continuum
  of goods which are ranked by level of skill needed in the production technology.
  On average, the North (
@@ -237,7 +237,7 @@ e goods.
  This decreases relative wage of low-skilled labor.
  Suppose instead there is a positive shock to the South's supply of low-skilled
  labor.
- This decreases relative wage of low-skilled labor.
+ This also decreases relative wage of low-skilled labor.
  In both scenarios, wage inequality increases.
  If the two countries differ significantly, we can also have the case of
  complete specialization.
@@ -247,9 +247,9 @@ e goods.
  end of the skill-intensity rank.
  This allows us to consider the case of technological catch-up of developing
  countries.
- With an improvement of production technology in the South, the country
- can export goods in the higher skill-intensity range, raising the cutoff
- point.
+ Suppose there is a positive shock to the production technology in the South,
+ the country can export goods in the higher skill-intensity range, raising
+ the cutoff point.
  Zhu and Trefler (2005) 
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -263,9 +263,7 @@ key "Zhu05"
 \end_layout
 
 \begin_layout Standard
-Up to this point, it seems like Heckscher-Ohlin's prediction only held in
- the earlier wave of trade liberalization in East Asia and not after that.
- So, is trade liberalization is bad for wage equality after all? The answer
+So, is trade liberalization is bad for wage equality after all? The answer
  might be no, at least for the long run according to Atolia (2007).
  
 \end_layout
@@ -282,8 +280,9 @@ key "Atolia07"
 
 \end_inset
 
- constructed a model of trade in the context of Latin American countries.
- We believe that it can be extend to developing countries in general.
+ constructed a model to explain the welfare effect of trade liberalization
+ in Latin American countries.
+ We believe that it can be extended to developing countries in general.
  Assume there are three sectors in the economy: non-traded (e.g.
  construction), export and import-competing sectors.
  Export sector produces low-skilled-intensive goods while import-competing
@@ -324,23 +323,21 @@ capital goods
 \end_inset
 
  in this model are composed of capital stock, imported capital goods (i.e.
- machinery) and labor (low-skilled and high-skilled).
- Capital stock is produced using imported capital goods and non-traded goods
- (e.g.
- construction).
+ machineries) and labor (low-skilled and high-skilled).
+ Capital stock is produced using imported capital goods and non-traded goods.
  It is mobile but subjected to adjustment costs.
  Labor is freely mobile across sectors.
  
 \end_layout
 
 \begin_layout Standard
-Under free trade in the Atolia model, lowered tariffs on intermediate good
- reduces the cost of capital accumulation, while tariff reduction in consumption
- goods expose import-competing sector to foreign competition.
+Under free trade in the Atolia model, lowered tariffs on capital goods reduce
+ the cost of capital accumulation, while tariff reduction in consumption
+ goods exposes import-competing sector to foreign competition.
  This implies that export sector will suddenly increase rate of capital
  accumulation due to cheaper price of capital.
- On the other hand, import-competing sector will contract and it will have
- to decumulate its capital stock.
+ On the other hand, import-competing sector will contract due to foreign
+ competition, and it will have to decumulate its capital stock.
  This transition will be slow as capital stock are not freely mobile across
  sectors.
  Therefore, trade liberalization will lead to 
@@ -360,8 +357,12 @@ asymmetric capital accumulation
 .
  Table 1 summarizes the short-run dynamics in this model.
  In the long run, however, the economy will reach the new steady state.
-  
+ Atolia's numerical simulations indicate worsening inequality for thirty
+ year or more.
+ This defines short-term to be a few decades following the liberalization.
+ 
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -670,8 +671,8 @@ key "Alfaro09"
 
 \end_inset
 
- take a look into disaggreated trade data and find that most developing
- countries import their capital goods from a small set of developed countries.
+ take a look into disaggreated trade data and find that many developing
+ countries import large fractions of capital goods from developed countries.
  
 \end_layout
 
@@ -769,7 +770,7 @@ The Atolia model predicts sector-specific changes in capital accumulation.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\ln(\dfrac{K_{it}}{K_{it-1}})=\alpha\:+\:\beta_{\tau K}\;\tau_{it}^{K}\:+\:\beta_{\tau C}\;\tau_{it}^{C}\:+\:\beta_{\tau K\times C}\;(\tau_{it}^{K}\times\tau_{it}^{C})\:+\: u_{it}
+\ln(\dfrac{K_{it}}{K_{it-1}})=\alpha\:+\:\beta_{\tau K}\;\tau_{it}^{K}\:+\:\beta_{\tau C}\;\tau_{it}^{C}\:+\:\beta_{\tau(K\times C)}\;(\tau_{it}^{K}\times\tau_{it}^{C})\:+\: u_{it}
 \end{equation}
 
 \end_inset
@@ -823,7 +824,7 @@ ve import-competing sector to contract, with no corresponding rise in capital
  When both capital and consumption tariffs are cut, the export-oriented
  sector accumulates capital faster than the import-competing sector decumulates
  it, so we expect 
-\begin_inset Formula $\beta_{\tau K\times C}<0$
+\begin_inset Formula $\beta_{\tau(K\times C)}<0$
 \end_inset
 
 .
@@ -926,9 +927,7 @@ short-run
 \begin_inset Quotes erd
 \end_inset
 
- period of Atolia, since his numerical simulations indicate worsening inequality
- for thirty years or more.
- 
+ period of Atolia.
 \end_layout
 
 \begin_layout Section
@@ -960,27 +959,26 @@ Endogeneity in the capital-tariff equation
 \end_layout
 
 \begin_layout Standard
-We are worried about possible endogeneity in equation 1 since factors like
- institutions may play a role affecting both trade openness and capital
+We are worried about possible endogeneity in Equation (1) since factors
+ like institutions may play a role affecting both trade openness and capital
  accumulation.
- To deal with this problem, we will follow the instrumental variable technique
- from Estevadeordal & Taylor (2013).
+ To deal with this problem, we follow the instrumental variable technique
+ from Estevadeordal & Taylor (2013)
+\begin_inset CommandInset citation
+LatexCommand nocite
+key "Estevadeordal13"
+
+\end_inset
+
+.
  The paper studies the effect of trade liberalization on economic growth
  using two different instruments: 
 \begin_inset Formula 
 \[
-Average\, Tariffs_{1985}\times GATT\, membership_{1975}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-Average\, Tariffs_{1985}\times Great\, Depression\, Intensity
+\begin{array}[t]{c}
+Average\, Tariffs_{1985}\times GATT\, membership_{1975}\\
+Average\, Tariffs_{1985}\times Great\, Depression\, Depth
+\end{array}
 \]
 
 \end_inset
@@ -990,28 +988,34 @@ Average\, Tariffs_{1985}\times Great\, Depression\, Intensity
 
 \begin_layout Standard
 where 
-\begin_inset Formula $Great\, Depression\, Intensity=GDP_{1935}/GDP_{1929}.$
+\begin_inset Formula $Great\, Depression\, Depth=GDP_{1935}/GDP_{1929}.$
 \end_inset
 
  They believe that these instruments indicate both ability and willingness
  of countries to engage in trade liberalization movement in the 1980-90s.
- First part of both instruments is 
-\emph on
-average tariffs in 1985
-\emph default
-.
- Estevadeordal and Taylor (ET) argue that if a country has high tariff in
- 1985, it would have ability to have a big tariff cut in the following period.
- The second component of the first instrument is a binary variable indicating
- GATT membership in 1975.
+ For 
+\begin_inset Formula $Average\, Tariffs_{1985},$
+\end_inset
+
+ if a country had high tariff in 1985, it would have ability to have a big
+ tariff cut in the following period.
+ 
+\begin_inset Formula $GATT\, membership_{1975}$
+\end_inset
+
+ is a binary variable indicating General Agreement of Tariffs and Trade
+ (GATT) membership in 1975.
  If a country was a member of GATT, then it would be more likely to later
  join trade liberalization movement.
- For the second instrument, the second component is how much a country suffered
- from the Great Depression.
+ 
+\begin_inset Formula $Great\, Depression\, Depth$
+\end_inset
+
+ is how much a country suffered from the Great Depression.
  The authors believe that this determines policy makers' openness to trade.
- They find that these provide strong instruments for tariffs variables.
- To be able to use these instruments we have to make sure exclusion restrictions
- hold.
+ They find that these provide strong instruments for tariff reduction.
+ For us to be able to use these instruments, we need to make sure exclusion
+ restrictions hold.
  In other words, there is no direct relationship between the two instruments
  and our dependent variable 
 \emph on
@@ -1020,7 +1024,7 @@ capital accumulation.
 \emph default
 For 
 \emph on
-Great Depression Intensity, 
+Great Depression Depth, 
 \emph default
 we believe that factors affecting GDP in the 1930s are not the same factors
  affecting capital accumulation in the 1980-90s.
@@ -1038,7 +1042,7 @@ Endogeneity in the wage-capital equation
 \end_layout
 
 \begin_layout Standard
-We should be concerned about simultaneous causation in equation 2.
+We should be concerned about simultaneous causation in Equation (2).
  Modeling only one side of the supply-demand relationship is a well-known
  pitfall in econometrics.
  However, the relationship between capital stock and the wage premium is
@@ -1051,11 +1055,12 @@ and simultaneous equation system.
 
 \begin_layout Standard
 We will still take an instrumental variable approach.
- A straightforward instrument for the level of capital stock is 
+ A straightforward instrument for the level of capital stock is the price
+ of capital accumulation 
 \begin_inset Formula $r$
 \end_inset
 
-, the price of capital accumulation.
+.
  In a closed economy, 
 \begin_inset Formula $r$
 \end_inset
@@ -1078,13 +1083,13 @@ We will still take an instrumental variable approach.
  The import price of capital goods determines the domestic capital price
  in the Atolia model.
  Clearly we want to avoid assuming aspects to the Atolia model while we
- test it, however.
- We can rely on other models in which international financial markets can
- exogenously determine 
+ test it.
+ However, we can rely on other models in which international financial markets
+ can exogenously determine 
 \begin_inset Formula $r$
 \end_inset
 
- (Barro, Mankiw, & Sala-I-Martin 1995) 
+ (Barro, Mankiw & Sala-I-Martin 1995)
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Barro95"
@@ -1119,7 +1124,7 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_inset
 
 , then capital should be accumulated faster.
- If 
+ SHOULDN'T THIS BE THE OTHER WAY AROUND? If 
 \begin_inset Formula $\nicefrac{\partial F}{\partial K}>r$
 \end_inset
 
@@ -1138,7 +1143,7 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_inset
 
 .
- Our RHS variable in equation 2 is in levels of 
+ Our RHS variable in Equation (2) is in levels of 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1219,7 +1224,7 @@ The fatal flaw in the approach outlined above is that
 
  is 0.20.
  In light of the rule of thumb that an instrument is weak if the F-stat
- is less than ten, this instrument appears to be useless (Staiger & Stock
+ is less than ten, this instrument appears to be useless (Staiger & Stock,
  1997)
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -1230,7 +1235,7 @@ key "Staiger97"
 .
  Therefore, we have to discard this approach.
  If we cannot detect an effect of the price of investment on capital accumulatio
-n, then it seems no other variable would be powerful enough to act as a
+n, then it seems no other variables would be powerful enough to act as a
  strong instrument, so here we abandon our efforts to handle endogeneity
  in the wage-capital equation.
  As consolation, the weakness of 
@@ -1275,6 +1280,7 @@ key "oww"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1293,14 +1299,14 @@ Data sources
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1309,7 +1315,7 @@ Variable
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1318,7 +1324,7 @@ Variable
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1327,7 +1333,7 @@ Variable
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1338,7 +1344,7 @@ Source
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1347,7 +1353,7 @@ Per capita capital stock growth
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1356,7 +1362,7 @@ Per capita capital stock growth
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1365,7 +1371,7 @@ Per capita capital stock growth
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1376,7 +1382,7 @@ Penn World Table
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1385,7 +1391,7 @@ Per capita capital stock
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1394,7 +1400,7 @@ Per capita capital stock
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1403,7 +1409,7 @@ Per capita capital stock
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1414,7 +1420,7 @@ Penn World Table
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1423,7 +1429,7 @@ Disaggregated tariffs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1432,7 +1438,7 @@ Disaggregated tariffs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1441,7 +1447,7 @@ Disaggregated tariffs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1452,7 +1458,7 @@ Estevadeordal & Taylor (2013)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1461,7 +1467,7 @@ Disaggregated wages
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1470,7 +1476,7 @@ Disaggregated wages
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1479,7 +1485,7 @@ Disaggregated wages
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1490,7 +1496,7 @@ Occupational Wages of the World
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1499,7 +1505,7 @@ Aggregated 1985 tariffs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1508,7 +1514,7 @@ Aggregated 1985 tariffs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1517,7 +1523,7 @@ Aggregated 1985 tariffs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1528,7 +1534,45 @@ Estevadeordal & Taylor (2013)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1537,7 +1581,7 @@ Great Depression depth
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1546,7 +1590,7 @@ Great Depression depth
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1555,7 +1599,7 @@ Great Depression depth
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1693,8 +1737,8 @@ Given that many coefficients are not different from zero, the table shows
  of the point estimate is consistent with the theory.
  The level of capital stock, however, does have an effect on the wage premium
  that is different from zero at the 5% level.
- We have estimated that a one percent rise in the per capita capital stock
- leads to a 0.3% rise in the ratio of high-skill wages to low-skill wages.
+ We have estimated that a 1% rise in the per capita capital stock leads
+ to a 0.3% rise in the ratio of high-skill wages to low-skill wages.
  
 \end_layout
 
@@ -1839,7 +1883,8 @@ In light of our empirical test, we cannot reject the Atolia theory.
 \end_layout
 
 \begin_layout Standard
-Our estimation strategy suffers from a few weaknesses.
+Our estimation strategy suffers from a few weaknesses that we hope to address
+ in the future.
  Our inability to eliminate possible endogeneity in the wage-capital equation
  softens confidence in our results somewhat.
  We were not able to obtain sector-specific estimates of capital stock,
