@@ -135,11 +135,11 @@ low-skilled labor
 low-skill
 \emph default
 ed-) intensive goods.
- When trade opens, we assume that cost of producing each good become the
- same across countries.
+ When trade opens, we assume that the cost of producing each good become
+ the same across countries.
  Assuming zero trade costs (transportation, tariffs, etc.--also known as
  iceberg costs), the price of goods become the same across countries.
- Under comparative a advantage framework, the North (
+ Under a comparative advantage framework, the North (
 \emph on
 the South
 \emph default
@@ -148,9 +148,9 @@ the South
 low-skill
 \emph default
 ed-) intensive goods.
- The Relative price of low-skilled-intensive goods will increase in the
+ The relative price of low-skilled-intensive goods will increase in the
  South.
- By Stolper-Samuelson theorem
+ By the Stolper-Samuelson theorem
 \begin_inset Foot
 status collapsed
 
@@ -176,8 +176,8 @@ wage premium
 \begin_layout Standard
 Nevertheless, this prediction is inconsistent with the experiences of Latin
  America and some Asian countries.
- Some studies find that trade reforms in Mexico and Chile during mid 1980s
- have resulted in higher wage premium --Hanson & Harrison (1999) 
+ Researchers have proposed varied explanations for this.
+ Some studies such as Hanson & Harrison (1999) 
 \begin_inset CommandInset citation
 LatexCommand nocite
 key "Hanson99"
@@ -191,8 +191,9 @@ key "Beyer99"
 
 \end_inset
 
-.
- Both studies find that trade exposes low-skilled-intensive industry to
+find that trade reforms in Mexico and Chile during mid 1980s have resulted
+ in higher wage premium.
+ Both studies find that trade exposes the low-skill-intensive industry to
  competition from other countries with large supply of low-skilled labors.
  This drives down the relative price of low-skilled-intensive goods and
  hence reducing relative wage for low-skilled workers.
@@ -234,7 +235,7 @@ low-skill
 ed-) intensive goods.
  Suppose there is a positive shock in the world demand for high-skilled-intensiv
 e goods.
- This decreases relative wage of low-skilled labor.
+ This decreases the relative wage of low-skilled labor.
  Suppose instead there is a positive shock to the South's supply of low-skilled
  labor.
  This also decreases relative wage of low-skilled labor.
@@ -247,9 +248,9 @@ e goods.
  end of the skill-intensity rank.
  This allows us to consider the case of technological catch-up of developing
  countries.
- Suppose there is a positive shock to the production technology in the South,
- the country can export goods in the higher skill-intensity range, raising
- the cutoff point.
+ Supposing there is a positive shock to the production technology in the
+ South, the country can export goods in the higher skill-intensity range,
+ raising the cutoff point.
  Zhu and Trefler (2005) 
 \begin_inset CommandInset citation
 LatexCommand nocite
@@ -257,8 +258,8 @@ key "Zhu05"
 
 \end_inset
 
- finds empirical evidence supporting how technological catch-up under trade
- increase wage inequality in the developing countries.
+ finds empirical evidence supporting the theory that technological catch-up
+ under trade increase wage inequality in the developing countries.
  
 \end_layout
 
@@ -285,16 +286,16 @@ key "Atolia07"
  We believe that it can be extended to developing countries in general.
  Assume there are three sectors in the economy: non-traded (e.g.
  construction), export and import-competing sectors.
- Export sector produces low-skilled-intensive goods while import-competing
- sector produces high-skilled-intensive goods.
+ The export sector produces low-skilled-intensive goods while the import-competi
+ng sector produces high-skilled-intensive goods.
  Inputs
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-In Atolia's terminology, inputs compose of capital goods, imported intermediate
- goods (i.e.
- machineries), and labor.
+In Atolia's terminology, inputs are composed of capital goods, imported
+ intermediate goods (i.e.
+ machinery), and labor.
  We change the terminologies in order to be consistent with other parts
  of the paper.
  In particular, Atolia's 
@@ -323,7 +324,7 @@ capital goods
 \end_inset
 
  in this model are composed of capital stock, imported capital goods (i.e.
- machineries) and labor (low-skilled and high-skilled).
+ machineriy) and labor (low-skilled and high-skilled).
  Capital stock is produced using imported capital goods and non-traded goods.
  It is mobile but subjected to adjustment costs.
  Labor is freely mobile across sectors.
@@ -331,12 +332,12 @@ capital goods
 \end_layout
 
 \begin_layout Standard
-Under free trade in the Atolia model, lowered tariffs on capital goods reduce
- the cost of capital accumulation, while tariff reduction in consumption
- goods exposes import-competing sector to foreign competition.
- This implies that export sector will suddenly increase rate of capital
+In the transition to free trade in the Atolia model, lowered tariffs on
+ capital goods reduce the cost of capital accumulation, while tariff reduction
+ in consumption goods exposes the import-competing sector to foreign competition.
+ This implies that export sector will suddenly increase its rate of capital
  accumulation due to cheaper price of capital.
- On the other hand, import-competing sector will contract due to foreign
+ On the other hand, the import-competing sector will contract due to foreign
  competition, and it will have to decumulate its capital stock.
  This transition will be slow as capital stock are not freely mobile across
  sectors.
@@ -346,7 +347,7 @@ asymmetric capital accumulation;
 \emph default
  Export sector suddenly increases its capital accumulation while import-competin
 g sector gradually decumulate its capital stock.
- Under the assumption of capital-skill complimentarity, the export sector
+ Under the assumption of capital-skill complementarity, the export sector
  will increase the demand for high-skilled labor.
  This will increase their relative wage.
  For the short-run, trade will therefore increase wage inequality through
@@ -358,7 +359,7 @@ asymmetric capital accumulation
  Table 1 summarizes the short-run dynamics in this model.
  In the long run, however, the economy will reach the new steady state.
  Atolia's numerical simulations indicate worsening inequality for thirty
- year or more.
+ years or more.
  This defines short-term to be a few decades following the liberalization.
  
 \begin_inset Float table
@@ -693,8 +694,8 @@ Research question and hypothesis
 \end_layout
 
 \begin_layout Standard
-Main research question: Does trade liberalization increase wage inequality
- in the short run through 
+Our main research question is: Does trade liberalization increase wage inequalit
+y in the short run through 
 \emph on
 asymmetric capital accumulation
 \begin_inset Foot
@@ -738,7 +739,7 @@ Whether the interaction between trade liberalizations in capital and consumption
 \end_layout
 
 \begin_layout Enumerate
-Whether capital accumulation increases 
+Whether capital accumulation increases the 
 \emph on
 wage premium
 \emph default
@@ -770,7 +771,7 @@ The Atolia model predicts sector-specific changes in capital accumulation.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\ln(\dfrac{K_{it}}{K_{it-1}})=\alpha\:+\:\beta_{\tau K}\;\tau_{it}^{K}\:+\:\beta_{\tau C}\;\tau_{it}^{C}\:+\:\beta_{\tau(K\times C)}\;(\tau_{it}^{K}\times\tau_{it}^{C})\:+\: u_{it}
+\ln\left(\dfrac{K_{it}}{K_{it-1}}\right)=\alpha\:+\:\beta_{\tau K}\;\tau_{it}^{K}\:+\:\beta_{\tau C}\;\tau_{it}^{C}\:+\:\beta_{\tau(K\times C)}\;(\tau_{it}^{K}\times\tau_{it}^{C})\:+\: u_{it}
 \end{equation}
 
 \end_inset
@@ -828,9 +829,9 @@ ve import-competing sector to contract, with no corresponding rise in capital
 \end_inset
 
 .
- This cross term is interpreted as an interaction effect: the additional
- effect when a country is a liberalizer in both capital and consumption
- goods trade.
+ This cross term is interpreted as an interaction effect, i.e.
+ the additional effect when a country is a liberalizer in both capital and
+ consumption goods trade.
  Atolia is silent on what would happen if only capital tariffs were cut,
  but the economy-wide lower price in capital should increase the incentive
  to accumulate capital, so we predict that 
@@ -847,7 +848,7 @@ The second equation that the Atolia model suggests is:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\ln(\dfrac{w_{H\, it}}{w_{L\, it}})=\alpha'\:+\:\beta_{K}\;\ln K_{it}\:+\: v_{it}
+\ln\left(\dfrac{w_{H\, it}}{w_{L\, it}}\right)=\alpha'\:+\:\beta_{K}\;\ln K_{it}\:+\: v_{it}
 \end{equation}
 
 \end_inset
@@ -889,8 +890,8 @@ Since capital appears on the left side of the first equation and the right
  side of the second equation, the structure of the two equations above may
  suggest a two-stage least squares approach.
  However, proceeding in that way would require us to assume that trade liberaliz
-ation only affects the wage premium through its affect on capital accumulation,
- which we are not prepared to claim.
+ation only affects the wage premium through its affect on capital accumulation
+ We are not prepared to make this claim.
  Moreover, the capital-tariff equation deals with the 
 \shape italic
 growth
@@ -1012,7 +1013,8 @@ where
 \end_inset
 
  is how much a country suffered from the Great Depression.
- The authors believe that this determines policy makers' openness to trade.
+ Estevadeordal & Taylor believe that this determines policy makers' openness
+ to trade.
  They find that these provide strong instruments for tariff reduction.
  For us to be able to use these instruments, we need to make sure exclusion
  restrictions hold.
@@ -1034,7 +1036,7 @@ GATT membership,
 \emph default
 we also believe that the decision to enter GATT in 1975 should not have
  any impact on 1980s to 1990s capital accumulation.
- Therefore, exclusion restriction should be valid.
+ Therefore, the exclusion restriction should be valid.
 \end_layout
 
 \begin_layout Subsection
@@ -1082,7 +1084,7 @@ We will still take an instrumental variable approach.
  can be determined exogenously.
  The import price of capital goods determines the domestic capital price
  in the Atolia model.
- Clearly we want to avoid assuming aspects to the Atolia model while we
+ Clearly, we want to avoid assuming aspects to the Atolia model while we
  test it.
  However, we can rely on other models in which international financial markets
  can exogenously determine 
@@ -1120,12 +1122,12 @@ According to the firm's optimization problem, if an exogenous shock to
 \end_inset
 
  leads to 
-\begin_inset Formula $\nicefrac{\partial F}{\partial K}<r$
+\begin_inset Formula $\nicefrac{\partial F}{\partial K}>r$
 \end_inset
 
 , then capital should be accumulated faster.
- SHOULDN'T THIS BE THE OTHER WAY AROUND? If 
-\begin_inset Formula $\nicefrac{\partial F}{\partial K}>r$
+ If 
+\begin_inset Formula $\nicefrac{\partial F}{\partial K}<r$
 \end_inset
 
 , then the capital stock should shrink.
@@ -1249,7 +1251,7 @@ n, then it seems no other variables would be powerful enough to act as a
  probably does not affect it either.
  Hence, the problem of endogeneity that spurred this exercise may not be
  worrisome.
- In any case, the results<><>
+ 
 \end_layout
 
 \begin_layout Section
@@ -1299,7 +1301,7 @@ Data sources
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="4">
+<lyxtabular version="3" rows="7" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1534,44 +1536,6 @@ Estevadeordal & Taylor (2013)
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
@@ -1660,8 +1624,8 @@ low-skilled
 \end_layout
 
 \begin_layout Standard
-Estevadeordal & Taylor recorded three different tariff measures: consumption
- goods, intermediate goods, and capital goods.
+Estevadeordal & Taylor recorded three different tariff measures: tariffs
+ on consumption goods, intermediate goods, and capital goods.
  They could not obtain disaggregated tariff data for the same years in each
  country, so the measured tariff rates are spread over a number of years.
  In their main regression specification, Estevadeordal & Taylor used the
@@ -1719,13 +1683,14 @@ Results and discussion
 \begin_layout Standard
 Among developing countries, the correlation between changes in capital and
  consumption tariffs is 0.89.
- Thus, regressing capital accumulation against both variables (and their
- product) would inflate the variance of the estimated coefficients.
+ Thus, regressing the rate of capital accumulation against both variables
+ (and their product) would inflate the variance of the estimated coefficients.
  Any effect may be masked by this variance inflation.
  Therefore, we will start by presenting a parsimonious specification that
  only includes the product of the two tariffs, which is our main coefficient
  of interest.
- Table 5 displays these results.
+ Table 5 displays these results for the seemingly unrelated regressions
+ model.
 \end_layout
 
 \begin_layout Standard
@@ -1756,8 +1721,8 @@ We also include an estimation of the same model with both developed and
  not statistically significant.
  If these effects were statistically significant, we might conclude that
  the Atolia mechanism holds for developing countries but not developed countries.
- Finally, the results suggest that the positive effect of capital stock
- on the wage premium holds only for developing countries.
+ Finally, the results for the wage-capital equation suggest that the positive
+ effect of capital stock on the wage premium holds only for developing countries.
  This result is visualized in Figure 1.
 \end_layout
 
@@ -1791,8 +1756,8 @@ When the tariff level is instrumented by
 \begin_inset Formula $Average\, Tariffs_{1985}\times GATT\, membership_{1975}$
 \end_inset
 
-, the results for the developing country sample, shown in Table 6, are basically
- unchanged.
+ in a three-stage least squares design, the results for the developing country
+ sample, shown in Table 6, are basically unchanged.
  On the other hand, the signs of the coefficients on the capital-tariff
  equation for the world sample are the opposite of what they were in the
  uninstrumented regression.
@@ -1803,8 +1768,8 @@ When the tariff level is instrumented by
  means that we cannot conclude that any violation of the Atolia theory really
  exists.
  A Wu-Hausman test cannot reject the null hypothesis of no endogeneity,
- but the test is expected to have low power in this environment of a small
- number of observations.
+ but the test is expected to have low power in this environment of having
+ a small number of observations.
 \end_layout
 
 \begin_layout Standard
@@ -1848,8 +1813,8 @@ saturated
 \begin_inset Quotes erd
 \end_inset
 
- model of capital tariffs, consumption tariffs, and their product in Table
- 7.
+ seemingly unrelated regressions model of capital tariffs, consumption tariffs,
+ and their product in Table 7.
  As expected, the high correlation between the two tariffs greatly inflates
  the variance of the coefficients.
  The point estimates are consistent with the Atolia theory, however, since
@@ -1897,25 +1862,12 @@ key "Durlauf09"
 \end_inset
 
 ).
- Nevertheless, <our analaysis is a good attempt to bring Atolia theory to
- data>
+ Nevertheless, we have moderate confidence in our results.
+ Our analysis suggests that an augmented Hechscher-Ohlin model has a role
+ to play in explaining the impact of trade liberalization on domestic inequality.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\vphantom{}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "718"
